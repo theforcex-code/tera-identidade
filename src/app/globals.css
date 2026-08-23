@@ -15,11 +15,10 @@
   --color-terra: #16110b; /* camada escura quente (quase preto) */
 
   /* Fontes (mapeadas das variáveis do next/font) */
-  --font-suisse: var(--font-suisse), "Helvetica Neue", Arial, sans-serif;
-  --font-suisse-mono: var(--font-suisse-mono), ui-monospace, monospace;
-  --font-monument: var(--font-monument), "Arial Black", sans-serif;
-  --font-favorit: var(--font-favorit), "Helvetica Neue", Arial, sans-serif;
-  --font-museo: var(--font-museo), "Helvetica Neue", Arial, sans-serif;
+  --font-univers: var(--font-univers), "Helvetica Neue", Arial, sans-serif;
+  --font-univers-cn: var(--font-univers-cn), "Arial Narrow", "Helvetica Neue", sans-serif;
+  --font-forma: var(--font-forma), "Helvetica Neue", Arial, sans-serif;
+  --font-futura: var(--font-futura), "Century Gothic", "Jost", sans-serif;
 }
 
 html {
@@ -52,26 +51,20 @@ body {
   letter-spacing: -0.02em;
 }
 
-/* Monument Extended — fonte real (já é extended); peso bold */
-.font-monument {
-  font-family: var(--font-monument);
+/* Forma DJR — secundária da Dobra (grotesca com densidade; variável wght/wdth) */
+.font-forma {
+  font-family: var(--font-forma);
+  font-weight: 500;
+}
+/* Futura — secundária da Quebra (geométrica abstrata) */
+.font-futura {
+  font-family: var(--font-futura);
   font-weight: 700;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.005em;
 }
-.font-monument-regular {
-  font-family: var(--font-monument);
+.font-futura-regular {
+  font-family: var(--font-futura);
   font-weight: 400;
-  letter-spacing: 0;
-}
-.font-favorit {
-  font-family: var(--font-favorit);
-}
-/* MuseoModerno — primária da Dobra (geométrica arredondada, variável) */
-.font-museo {
-  font-family: var(--font-museo);
-}
-.font-mono-suisse {
-  font-family: var(--font-suisse-mono);
 }
 
 /* Lenis */
@@ -96,6 +89,6 @@ html.lenis body {
 }
 
 ::selection {
-  background: var(--color-oxido);
-  color: var(--color-branco);
+  background: var(--color-branco);
+  color: var(--color-preto);
 }

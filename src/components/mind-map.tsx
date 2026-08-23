@@ -1,60 +1,15 @@
 "use client";
 
-import Image from "next/image";
+import { TIERS, type NodeDef } from "@/lib/mindmap-data";
+import { useContent } from "@/components/content-provider";
+import { EditableImage, EditOverlay } from "@/components/editable";
 
 /* ------------------------------------------------------------------
    MAPA MENTAL TÉRA — diagrama em níveis (tiers)
    Fluxo vertical, alinhado e limpo: cada nível é uma linha centrada,
    conectada ao próximo por um traço reto. Sem linhas curvas cruzando.
+   As imagens e textos de cada nó são editáveis no localhost (dev).
 ------------------------------------------------------------------- */
-
-interface NodeDef {
-  id: string;
-  label: string;
-  img: string;
-  milestone?: boolean;
-  desc?: string;
-}
-
-// Níveis, de cima (origem) para baixo (dobra).
-const TIERS: NodeDef[][] = [
-  [{ id: "tera", label: "TÉRA", img: "/mapa/tera-hero.jpg", milestone: true }],
-  [
-    { id: "escala", label: "Escala", img: "/mapa/escala.jpg" },
-    { id: "solo", label: "Solo", img: "/mapa/solo.jpg" },
-    { id: "extraordinario", label: "Extraordinário", img: "/mapa/extraordinario.jpg" },
-  ],
-  [
-    {
-      id: "espetaculos",
-      label: "Espetáculos Multidimensionais",
-      img: "/mapa/espetaculos.jpg",
-      milestone: true,
-      desc: "Arquitetura, arte, cultura, tecnologia, natureza e presença em um só acontecimento.",
-    },
-  ],
-  [
-    { id: "tempo", label: "Tempo", img: "/mapa/tempo.jpg", desc: "Passado, presente e possível coexistem." },
-    { id: "perspectiva", label: "Perspectiva", img: "/mapa/perspectiva.jpg", desc: "A experiência muda conforme o ponto de vista." },
-    { id: "participacao", label: "Participação", img: "/mapa/participacao.jpg", desc: "A presença modifica o acontecimento." },
-  ],
-  [
-    {
-      id: "realidade",
-      label: "Realidade Expandida",
-      img: "/mapa/realidade-expandida.jpg",
-      milestone: true,
-      desc: "Diferentes percepções coexistem em um mesmo acontecimento.",
-    },
-  ],
-  [
-    { id: "continuidade", label: "Continuidade", img: "/mapa/continuidade.jpg", desc: "Os estados pertencem ao mesmo campo." },
-    { id: "relacao", label: "Relação", img: "/mapa/relacao.jpg", desc: "Cada estado se define pelas relações que estabelece." },
-  ],
-  [{ id: "tecido", label: "Tecido da Realidade", img: "/mapa/tecido.jpg", milestone: true, desc: "Um campo contínuo formado por relações." }],
-  [{ id: "dobra", label: "Dobra", img: "/mapa/dobra.jpg", milestone: true, desc: "Reconfigurar essas relações sem romper sua continuidade." }],
-  [{ id: "dobrar", label: "Dobrar o Tecido da Realidade", img: "/mapa/dobrar.jpg", milestone: true }],
-];
 
 function Connector() {
   return (
@@ -64,36 +19,61 @@ function Connector() {
   );
 }
 
-function Node({ n }: { n: NodeDef }) {
+// Nó da capa: wordmark "téra" (SVG preto) contido, invertido pra branco no
+// tile escuro — sem overlay redundante. Continua editável.
+function TeraMark({
+  id,
+  defaultSrc,
+  label,
+}: {
+  id: string;
+  defaultSrc: string;
+  label: string;
+}) {
+  const { content } = useContent();
+  const src = content.mindmap[id]?.img || defaultSrc;
   return (
-    <div className="flex w-40 flex-col items-center text-center md:w-52">
-      <div className="relative h-28 w-28 overflow-hidden rounded-2xl border border-white/10 bg-neutral-800 shadow-[0_12px_40px_-18px_rgba(0,0,0,0.9)] md:h-36 md:w-36">
-        <Image
-          src={n.img}
-          alt={n.label}
-          fill
-          priority
-          sizes="180px"
-          className="object-cover grayscale"
-        />
-        {n.id === "tera" && (
-          <div className="absolute inset-0 grid place-content-center bg-preto/45">
-            <span className="font-monument text-xl tracking-tight text-branco md:text-2xl">
-              TÉRA
-            </span>
-          </div>
+    <div className="relative flex h-full w-full items-center justify-center p-5">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={src} alt={label} className="h-auto w-full object-contain invert" />
+      <EditOverlay group="mindmap" id={id} />
+    </div>
+  );
+}
+
+function Node({ n }: { n: NodeDef }) {
+  const { content } = useContent();
+  const ov = content.mindmap[n.id];
+  const label = ov?.label ?? n.label;
+  const desc = ov?.desc ?? n.desc;
+
+  return (
+    <div className="flex w-44 flex-col items-center text-center md:w-56">
+      <div className="relative h-28 w-28 overflow-hidden rounded-md border border-white/10 bg-neutral-900 shadow-[0_12px_40px_-18px_rgba(0,0,0,0.9)] md:h-36 md:w-36">
+        {n.id === "tera" ? (
+          <TeraMark id={n.id} defaultSrc={n.img} label={label} />
+        ) : (
+          <EditableImage
+            group="mindmap"
+            id={n.id}
+            defaultSrc={n.img}
+            alt={label}
+            grayscale
+          />
         )}
       </div>
       <div
-        className={`mt-3 font-suisse leading-tight ${
-          n.milestone ? "text-[15px] text-branco md:text-base" : "text-[13px] text-branco/75"
+        className={`mt-3 font-univers leading-tight ${
+          n.milestone
+            ? "text-base text-branco md:text-lg"
+            : "text-sm text-branco/80 md:text-base"
         }`}
       >
-        {n.label}
+        {label}
       </div>
-      {n.desc && (
-        <div className="mt-1.5 max-w-[180px] font-suisse text-[10px] leading-snug text-branco/45">
-          {n.desc}
+      {desc && (
+        <div className="mt-2 max-w-[200px] font-univers text-[12px] leading-snug text-branco/55">
+          {desc}
         </div>
       )}
     </div>
