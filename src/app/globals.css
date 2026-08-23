@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+/* ==================================================================
+   TÉRA — TOKENS DE IDENTIDADE
+   Paleta "Camadas do Subsolo": preto/branco constantes,
+   óxido/ocre como camadas minerais variáveis.
+================================================================== */
+@theme inline {
+  /* Cores */
+  --color-preto: #0a0a0a;
+  --color-branco: #f7f7f5;
+  --color-oxido: #873f32;
+  --color-ocre: #a88952;
+  --color-creme: #e9e3d5; /* afloramento — camada clara quente */
+  --color-terra: #16110b; /* camada escura quente (quase preto) */
+
+  /* Fontes (mapeadas das variáveis do next/font) */
+  --font-suisse: var(--font-suisse), "Helvetica Neue", Arial, sans-serif;
+  --font-suisse-mono: var(--font-suisse-mono), ui-monospace, monospace;
+  --font-monument: var(--font-monument), "Arial Black", sans-serif;
+  --font-favorit: var(--font-favorit), "Helvetica Neue", Arial, sans-serif;
+  --font-museo: var(--font-museo), "Helvetica Neue", Arial, sans-serif;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: auto; /* o smooth scroll é controlado pelo Lenis */
+}
+
+body {
+  background: var(--color-preto);
+  color: var(--color-branco);
+}
+
+/* ------------------------------------------------------------------
+   UTILITÁRIOS DE TIPOGRAFIA
+------------------------------------------------------------------- */
+/* Tamanhos de display (clamp — não dependem de valores arbitrários) */
+.display-hero {
+  font-size: clamp(4.5rem, 20vw, 22rem);
+  line-height: 0.8;
+  letter-spacing: -0.04em;
+}
+.display-xl {
+  font-size: clamp(3.5rem, 13vw, 12rem);
+  line-height: 0.85;
+  letter-spacing: -0.03em;
+}
+.display-lg {
+  font-size: clamp(2.5rem, 7vw, 6rem);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+}
+
+/* Monument Extended — fonte real (já é extended); peso bold */
+.font-monument {
+  font-family: var(--font-monument);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.font-monument-regular {
+  font-family: var(--font-monument);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.font-favorit {
+  font-family: var(--font-favorit);
+}
+/* MuseoModerno — primária da Dobra (geométrica arredondada, variável) */
+.font-museo {
+  font-family: var(--font-museo);
+}
+.font-mono-suisse {
+  font-family: var(--font-suisse-mono);
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+
+/* Esconde a scrollbar mantendo o scroll */
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+::selection {
+  background: var(--color-oxido);
+  color: var(--color-branco);
+}
