@@ -68,7 +68,7 @@ export function makeFrames(offset = 0): Frame[] {
 // Aplicações gerais — grade de 6 (mesmo tamanho de tile dos grids de 9).
 const APP_MEDIA: Item[] = [
   { src: "/media/app-1.mp4", type: "video", alt: "Aplicação — vídeo" },
-  { src: "/media/dobra-3.png", type: "image", alt: "Aplicação — pôster" },
+  { src: "/media/app-2.png", type: "image", alt: "Aplicação — pôster" },
   { src: "/media/quebra-2.png", type: "image", alt: "Aplicação — pôster geométrico" },
   { src: "/media/quebra-6.png", type: "image", alt: "Aplicação — referência gráfica" },
   { src: "/media/dobra-4.png", type: "image", alt: "Aplicação — marca" },
