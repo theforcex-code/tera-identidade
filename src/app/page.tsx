@@ -8,6 +8,9 @@ import { useGSAP } from "@gsap/react";
 import { MindMap } from "@/components/mind-map";
 import { EditableImage } from "@/components/editable";
 import { DynamicFrameLayout } from "@/components/ui/dynamic-frame-layout";
+import { NeueMontrealExplorer } from "@/components/ui/neue-montreal-explorer";
+import { NeueMontrealSpecimen } from "@/components/ui/neue-montreal-specimen";
+import { VibracaoPaletteBoard } from "@/components/ui/vibracao-palette-board";
 import { makeFrames } from "@/components/media-frames";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
@@ -253,53 +256,57 @@ export default function Page() {
         <TopicDivider label="Continuidade" name="Moodboard" fontClass="font-forma font-extralight" />
         <MediaWall offset={0} grayscale={true} />
 
-        {/* 04 · Tipografia — Roboto Flex: a mesma estrutura em 3 larguras */}
-        <TopicDivider label="Continuidade" name="Tipografia" fontClass="font-forma font-extralight" />
+        {/* 04 · Tipografia — Neue Montreal como base do Caminho 01 */}
+        <TopicDivider label="Continuidade" name="Tipografia" fontClass="font-neue-montreal font-medium" />
         <section className={SECTION}>
           <div className={SHELL}>
-            {/* Mesma diagramação da paleta: texto à esquerda, specimens à direita */}
             <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16">
               <div className="max-w-md">
                 <SectionHead num="04" kicker="Continuidade — Tipografia" />
-                <h3 className="mt-8 font-forma text-3xl font-light italic leading-tight text-branco md:text-4xl">
-                  Roboto Flex
+                <h3 className="mt-8 font-neue-montreal text-3xl font-medium leading-tight text-branco md:text-4xl">
+                  Neue Montreal
                 </h3>
                 <p className="mt-6 font-univers text-lg leading-snug text-branco/80">
                   Continuidade tipográfica.
                 </p>
                 <p className="mt-6 font-univers text-base leading-relaxed text-branco/55">
-                  Uma estrutura que se estende e se contrai sem perder sua
-                  identidade. A forma muda sem deixar de ser a mesma.
+                  Uma base contínua e precisa, capaz de variar em presença sem
+                  perder a clareza da estrutura.
                 </p>
               </div>
-              {/* Specimens — extended / regular / condensed */}
               <div className="flex flex-col gap-6 md:gap-8">
-                <RobotoSpecimen variant="extended" widthClass="rf-extended" />
-                <RobotoSpecimen variant="regular" widthClass="rf-regular" />
-                <RobotoSpecimen variant="condensed" widthClass="rf-condensed" />
+                <NeueMontrealSpecimen label="LIGHT" className="font-light">NEUE MONTREAL</NeueMontrealSpecimen>
+                <NeueMontrealSpecimen label="REGULAR" className="font-normal">NEUE MONTREAL</NeueMontrealSpecimen>
+                <NeueMontrealSpecimen label="MEDIUM" className="font-medium">NEUE MONTREAL</NeueMontrealSpecimen>
+                <NeueMontrealSpecimen label="BOLD" className="font-bold">NEUE MONTREAL</NeueMontrealSpecimen>
               </div>
             </div>
             {/* Secundária — Futura (mesma estrutura) */}
             <FuturaBoard />
-            {/* Motion — o tipo variável em movimento (pixel-stretch): a forma se estende sem se romper */}
+            <NeueMontrealExplorer />
             <figure className="mt-24 overflow-hidden rounded-2xl border border-white/10 bg-black md:mt-32">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/media/continuidade-tipografia-motion.gif"
-                alt="Tipografia em movimento — pixel-stretch: a forma se estende e se contrai"
+                alt="Tipografia em movimento: a forma se estende e se contrai"
                 className="h-full w-full object-cover grayscale"
               />
               <figcaption className="px-6 py-4 font-univers text-sm leading-snug text-branco/55">
-                Em movimento, a estrutura se estende e se contrai sem se romper —
-                a forma muda sem deixar de ser a mesma.
+                Em movimento, a estrutura se estende e se contrai sem se romper.
               </figcaption>
             </figure>
           </div>
         </section>
 
         {/* 04 · Paleta — Vibração da Matéria (segue o PDF do Caminho 01) */}
-        <TopicDivider label="Continuidade" name="Paleta" fontClass="font-forma font-extralight" />
+        <TopicDivider label="Continuidade" name="Paleta" fontClass="font-neue-montreal font-medium" />
         <PaletaCaminho num="04" path="Continuidade" data={VIBRACAO_DATA} />
+        <section className={SECTION}>
+          <div className={SHELL}>
+            <SectionHead num="04" kicker="Continuidade — Sistema cromático" />
+            <VibracaoPaletteBoard />
+          </div>
+        </section>
 
         {/* ================= 05 · CAMINHO 02 · POSSIBILIDADE ================= */}
         {/* Capa — GIF de fundo editável */}
@@ -759,7 +766,7 @@ function PaletaPossibilidade() {
             {POSSIBILIDADE_PALETTE.map((color, index) => (
               <article
                 key={color.name}
-                className={`palette-column relative flex min-w-0 flex-1 flex-col justify-between p-6 ${color.text} ${
+                className={`palette-column group relative flex min-w-0 flex-1 flex-col justify-between p-6 ${color.text} ${
                   index === 2 ? "ring-1 ring-inset ring-white/45" : ""
                 }`}
                 style={{ background: color.hex }}

@@ -57,8 +57,20 @@ const forma = localFont({
   ],
 });
 
-// Roboto Flex — variável (wght 100–1000, wdth 25–151%). Tipografia do Caminho 01:
-// a mesma estrutura em extended / regular / condensed = continuidade tipográfica.
+// Neue Montreal — tipografia primária do Caminho 01 (Continuidade).
+const neueMontreal = localFont({
+  variable: "--font-neue-montreal",
+  display: "swap",
+  src: [
+    { path: "../../public/fonts/NeueMontrealLight.otf", weight: "300", style: "normal" },
+    { path: "../../public/fonts/NeueMontrealRegular.otf", weight: "400", style: "normal" },
+    { path: "../../public/fonts/NeueMontrealMedium.otf", weight: "500", style: "normal" },
+    { path: "../../public/fonts/NeueMontrealBold.otf", weight: "700", style: "normal" },
+    { path: "../../public/fonts/NeueMontrealBoldItalic.otf", weight: "700", style: "italic" },
+  ],
+});
+
+// Roboto Flex permanece disponível como ativo histórico da apresentação.
 const robotoFlex = localFont({
   variable: "--font-roboto-flex",
   display: "swap",
@@ -107,7 +119,7 @@ export default async function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`${univers.variable} ${universCn.variable} ${forma.variable} ${robotoFlex.variable} ${inter.variable} ${futura.variable} h-full antialiased`}
+      className={`${univers.variable} ${universCn.variable} ${forma.variable} ${neueMontreal.variable} ${robotoFlex.variable} ${inter.variable} ${futura.variable} h-full antialiased`}
     >
       <body className="min-h-full bg-preto text-branco font-univers">
         <ContentProvider initial={content}>

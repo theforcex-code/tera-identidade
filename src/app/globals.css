@@ -20,6 +20,7 @@
   --font-forma: var(--font-forma), "Helvetica Neue", Arial, sans-serif;
   --font-futura: var(--font-futura), "Century Gothic", "Jost", sans-serif;
   --font-roboto-flex: var(--font-roboto-flex), "Roboto", Arial, sans-serif;
+  --font-neue-montreal: var(--font-neue-montreal), "Helvetica Neue", Arial, sans-serif;
   --font-inter: var(--font-inter), "Inter", "Helvetica Neue", Arial, sans-serif;
 }
 
@@ -58,7 +59,12 @@ body {
   font-family: var(--font-forma);
   font-weight: 500;
 }
-/* Roboto Flex — tipografia do Caminho 01 (variável: mesma forma em 3 larguras) */
+/* Neue Montreal — tipografia primária do Caminho 01. */
+.font-neue-montreal {
+  font-family: var(--font-neue-montreal);
+}
+
+/* Roboto Flex — ativo histórico do Caminho 01. */
 .font-roboto-flex {
   font-family: var(--font-roboto-flex);
   font-variation-settings: "wght" 400, "wdth" 100;
