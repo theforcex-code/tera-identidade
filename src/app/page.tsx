@@ -746,32 +746,46 @@ const POSSIBILIDADE_PALETTE = [
   { name: "Marrom Terra", hex: "#6E4A30", rgb: "110 / 74 / 48", cmyk: "0 / 33 / 56 / 57", text: "text-branco" },
   { name: "Terracota", hex: "#A54E1F", rgb: "165 / 78 / 31", cmyk: "0 / 53 / 81 / 35", text: "text-branco" },
   { name: "Ocre Iluminado", hex: "#C7955D", rgb: "199 / 149 / 93", cmyk: "0 / 25 / 53 / 22", text: "text-preto" },
-];
+] as const;
 
 function PaletaPossibilidade() {
   return (
-    <section className={SECTION}>
+    <section className={`${SECTION} flex min-h-[100dvh] items-center py-12 md:py-16`}>
       <div className={SHELL}>
         <SectionHead num="05" kicker="Possibilidade — Paleta" />
 
-        <div className="mt-16 overflow-x-auto pb-2">
-          <div className="mx-auto min-w-[980px] overflow-hidden rounded-2xl bg-preto ring-1 ring-white/10">
-            <div className="grid" style={{ gridTemplateColumns: "repeat(7, minmax(0, 1fr))" }}>
-              {POSSIBILIDADE_PALETTE.map((color, index) => (
-                <article
-                  key={color.name}
-                  className={`relative flex min-w-0 items-center justify-center px-6 text-center ${color.text} ${
-                    index === 2 ? "ring-1 ring-inset ring-white/45" : ""
-                  }`}
-                  style={{ height: "560px", background: color.hex }}
-                >
-                  <p className="max-w-[12ch] font-inter text-xl font-bold leading-[1.08] not-italic md:text-2xl">
+        <div className="mt-10 overflow-x-auto pb-2 md:mt-12">
+          <div className="palette-board mx-auto min-w-[980px] overflow-hidden rounded-2xl bg-preto ring-1 ring-white/10">
+            {POSSIBILIDADE_PALETTE.map((color, index) => (
+              <article
+                key={color.name}
+                className={`palette-column relative flex min-w-0 flex-1 flex-col justify-between p-6 ${color.text} ${
+                  index === 2 ? "ring-1 ring-inset ring-white/45" : ""
+                }`}
+                style={{ background: color.hex }}
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <span className={`${LABEL} text-[10px] opacity-65`}>
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span className={`${LABEL} text-right text-[9px] opacity-0 transition-opacity duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-65`}>
+                    {index < 3 ? "Base" : "Acento"}
+                  </span>
+                </div>
+
+                <div className="my-auto pr-4">
+                  <h3 className="font-inter text-2xl font-bold leading-[0.98] tracking-tight not-italic md:text-3xl">
                     {color.name}
-                  </p>
-                  <span className="absolute bottom-6 left-6 right-6 h-px bg-current opacity-25" />
-                </article>
-              ))}
-            </div>
+                  </h3>
+                </div>
+
+                <div className="space-y-1.5 font-univers text-[10px] leading-snug opacity-0 transition-opacity duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-70">
+                  <p>HEX {color.hex}</p>
+                  <p>RGB {color.rgb}</p>
+                  <p>CMYK {color.cmyk}</p>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </div>
