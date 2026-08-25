@@ -19,6 +19,8 @@
   --font-univers-cn: var(--font-univers-cn), "Arial Narrow", "Helvetica Neue", sans-serif;
   --font-forma: var(--font-forma), "Helvetica Neue", Arial, sans-serif;
   --font-futura: var(--font-futura), "Century Gothic", "Jost", sans-serif;
+  --font-roboto-flex: var(--font-roboto-flex), "Roboto", Arial, sans-serif;
+  --font-inter: var(--font-inter), "Inter", "Helvetica Neue", Arial, sans-serif;
 }
 
 html {
@@ -56,6 +58,29 @@ body {
   font-family: var(--font-forma);
   font-weight: 500;
 }
+/* Roboto Flex — tipografia do Caminho 01 (variável: mesma forma em 3 larguras) */
+.font-roboto-flex {
+  font-family: var(--font-roboto-flex);
+  font-variation-settings: "wght" 400, "wdth" 100;
+}
+.rf-extended {
+  font-family: var(--font-roboto-flex);
+  font-variation-settings: "wght" 700, "wdth" 151, "opsz" 40;
+}
+.rf-regular {
+  font-family: var(--font-roboto-flex);
+  font-variation-settings: "wght" 400, "wdth" 100, "opsz" 20;
+}
+.rf-condensed {
+  font-family: var(--font-roboto-flex);
+  font-variation-settings: "wght" 500, "wdth" 62, "opsz" 14;
+}
+
+/* Inter — tipografia do Caminho 02 (base modular; variável wght) */
+.font-inter {
+  font-family: var(--font-inter);
+}
+
 /* Futura — secundária da Quebra (geométrica abstrata) */
 .font-futura {
   font-family: var(--font-futura);
@@ -65,6 +90,22 @@ body {
 .font-futura-regular {
   font-family: var(--font-futura);
   font-weight: 400;
+}
+.font-futura-light {
+  font-family: var(--font-futura);
+  font-weight: 300;
+}
+
+/* Apresentação em slides — cada seção é um card de bordas arredondadas */
+.slides > section {
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  overflow: hidden;
+}
+@media (max-width: 767px) {
+  .slides > section {
+    border-radius: 20px;
+  }
 }
 
 /* Lenis */

@@ -36,6 +36,8 @@ export function EditableImage({
   alt,
   fit = "cover",
   grayscale = false,
+  invert = false,
+  className = "",
 }: {
   group: Group;
   id: string;
@@ -43,6 +45,8 @@ export function EditableImage({
   alt: string;
   fit?: "cover" | "contain";
   grayscale?: boolean;
+  invert?: boolean;
+  className?: string;
 }) {
   const { content } = useContent();
   const ov = group === "mindmap" ? content.mindmap[id] : content.images[id];
@@ -55,7 +59,7 @@ export function EditableImage({
         alt={alt}
         className={`absolute inset-0 h-full w-full ${
           fit === "cover" ? "object-cover" : "object-contain"
-        } ${grayscale ? "grayscale" : ""}`}
+        } ${grayscale ? "grayscale" : ""} ${invert ? "invert" : ""} ${className}`}
         style={frameStyle(ov)}
       />
       <EditOverlay group={group} id={id} />

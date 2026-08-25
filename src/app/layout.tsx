@@ -57,6 +57,28 @@ const forma = localFont({
   ],
 });
 
+// Roboto Flex — variável (wght 100–1000, wdth 25–151%). Tipografia do Caminho 01:
+// a mesma estrutura em extended / regular / condensed = continuidade tipográfica.
+const robotoFlex = localFont({
+  variable: "--font-roboto-flex",
+  display: "swap",
+  src: [
+    { path: "../../public/fonts/RobotoFlex.woff2", weight: "100 1000", style: "normal" },
+  ],
+});
+
+// Inter — tipografia do Caminho 02 (Possibilidade): cortes roman dedicados.
+const inter = localFont({
+  variable: "--font-inter",
+  display: "swap",
+  src: [
+    { path: "../../public/fonts/Inter-Regular.ttf", weight: "400", style: "normal" },
+    { path: "../../public/fonts/Inter-Medium.ttf", weight: "500", style: "normal" },
+    { path: "../../public/fonts/Inter-Bold.ttf", weight: "700", style: "normal" },
+    { path: "../../public/fonts/Inter-Italic.woff2", weight: "100 900", style: "italic" },
+  ],
+});
+
 // Futura PT — geométrica; cortes Light → Bold.
 const futura = localFont({
   variable: "--font-futura",
@@ -85,7 +107,7 @@ export default async function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`${univers.variable} ${universCn.variable} ${forma.variable} ${futura.variable} h-full antialiased`}
+      className={`${univers.variable} ${universCn.variable} ${forma.variable} ${robotoFlex.variable} ${inter.variable} ${futura.variable} h-full antialiased`}
     >
       <body className="min-h-full bg-preto text-branco font-univers">
         <ContentProvider initial={content}>

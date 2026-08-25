@@ -20,52 +20,41 @@ const DOBRA_MEDIA: Item[] = [
   { src: "/media/dobra-4.png", type: "image", alt: "Dobra — marca" },
   { src: "/media/continuidade.mp4", type: "video", alt: "Dobra — vídeo continuidade" },
   { src: "/media/dobra-5.gif", type: "image", alt: "Dobra — animação" },
-  { src: "/media/dobra-6.gif", type: "image", alt: "Dobra — animação" },
-  { src: "/media/dobra-7.gif", type: "image", alt: "Dobra — logotipo animado" },
-  { src: "/media/dobra-8.mp4", type: "video", alt: "Dobra — vídeo fluxo" },
+  { src: "/media/moodboard-c1-video.mp4", type: "video", alt: "Continuidade — vídeo pixel-stretch" },
+  { src: "/media/moodboard-c1-stretch.png", type: "image", alt: "Continuidade — colagem pixel-stretch (parque)" },
+  { src: "/media/moodboard-c1-klalam.jpg", type: "image", alt: "Continuidade — mural tipográfico KLALAM" },
+  { src: "/media/dobra-1.png", type: "image", alt: "Dobra — frame de abertura" },
 ];
 
-// Camada 02 · Ruptura — alternância (referências gráficas de alto contraste)
+// Camada 02 · Possibilidade — alternância (materiais reais; posições 4,5,7,9,10 atualizadas)
 const QUEBRA_MEDIA: Item[] = [
-  { src: "/media/quebra-1.png", type: "image", alt: "Ruptura — instalação LED tipográfica" },
-  { src: "/media/quebra-2.png", type: "image", alt: "Ruptura — pôsteres geométricos" },
-  { src: "/media/quebra-3.png", type: "image", alt: "Ruptura — tipografia em ripas" },
-  { src: "/media/quebra-4.png", type: "image", alt: "Ruptura — capa geométrica" },
-  { src: "/media/quebra-5.gif", type: "image", alt: "Ruptura — animação gráfica" },
-  { src: "/media/quebra-6.png", type: "image", alt: "Ruptura — referência gráfica" },
-  { src: "/media/quebra-7.gif", type: "image", alt: "Ruptura — animação gráfica" },
-  { src: "/media/quebra-8.png", type: "image", alt: "Ruptura — referência gráfica" },
-  { src: "/media/quebra-9.gif", type: "image", alt: "Ruptura — animação gráfica" },
+  { src: "/media/mod-4.mp4", type: "video", alt: "Possibilidade — material 04" },
+  { src: "/media/quebra-2.png", type: "image", alt: "Possibilidade — pôsteres geométricos" },
+  { src: "/media/quebra-3.png", type: "image", alt: "Possibilidade — tipografia em ripas" },
+  { src: "/media/quebra-1.png", type: "image", alt: "Possibilidade — instalação LED tipográfica" },
+  { src: "/media/mod-5.mp4", type: "video", alt: "Possibilidade — material 05" },
+  { src: "/media/quebra-6.png", type: "image", alt: "Possibilidade — referência gráfica" },
+  { src: "/media/mod-7.png", type: "image", alt: "Possibilidade — material 07" },
+  { src: "/media/quebra-8.png", type: "image", alt: "Possibilidade — referência gráfica" },
+  { src: "/media/mod-9.webp", type: "image", alt: "Possibilidade — material 09" },
+  { src: "/media/mod-10.mp4", type: "video", alt: "Possibilidade — material 10" },
 ];
 
-const GRID = [
-  { x: 0, y: 0 },
-  { x: 4, y: 0 },
-  { x: 8, y: 0 },
-  { x: 0, y: 4 },
-  { x: 4, y: 4 },
-  { x: 8, y: 4 },
-  { x: 0, y: 8 },
-  { x: 4, y: 8 },
-  { x: 8, y: 8 },
-];
-
+// Grade de 10 mídias — arranjo (colunas × linhas) é definido no
+// DynamicFrameLayout (5×2 no desktop, 2×5 no mobile via fullScreen).
 export function makeFrames(offset = 0): Frame[] {
   const media = offset === 0 ? DOBRA_MEDIA : QUEBRA_MEDIA;
-  return GRID.map((pos, i) => {
-    const item = media[i % media.length];
-    return {
-      id: i + 1 + offset * 100,
-      media: item.src,
-      type: item.type,
-      alt: item.alt,
-      defaultPos: { ...pos, w: 4, h: 4 },
-      mediaSize: 1,
-    };
-  });
+  return media.map((item, i) => ({
+    id: i + 1 + offset * 100,
+    media: item.src,
+    type: item.type,
+    alt: item.alt,
+    defaultPos: { x: 0, y: 0, w: 4, h: 4 },
+    mediaSize: 1,
+  }));
 }
 
-// Aplicações gerais — grade de 6 (mesmo tamanho de tile dos grids de 9).
+// Aplicações gerais — grade de 10 (mesmo layout 5×2 dos media walls).
 const APP_MEDIA: Item[] = [
   { src: "/media/app-1.mp4", type: "video", alt: "Aplicação — vídeo" },
   { src: "/media/app-2.png", type: "image", alt: "Aplicação — pôster" },
@@ -73,6 +62,10 @@ const APP_MEDIA: Item[] = [
   { src: "/media/quebra-6.png", type: "image", alt: "Aplicação — referência gráfica" },
   { src: "/media/dobra-4.png", type: "image", alt: "Aplicação — marca" },
   { src: "/media/quebra-8.png", type: "image", alt: "Aplicação — referência gráfica" },
+  { src: "/media/dobra-2.png", type: "image", alt: "Aplicação — tipografia em perspectiva" },
+  { src: "/media/quebra-4.png", type: "image", alt: "Aplicação — capa geométrica" },
+  { src: "/media/dobra-8.mp4", type: "video", alt: "Aplicação — vídeo fluxo" },
+  { src: "/media/quebra-5.gif", type: "image", alt: "Aplicação — animação gráfica" },
 ];
 
 export function makeAppFrames(): Frame[] {

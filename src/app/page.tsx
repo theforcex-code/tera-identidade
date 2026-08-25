@@ -8,7 +8,7 @@ import { useGSAP } from "@gsap/react";
 import { MindMap } from "@/components/mind-map";
 import { EditableImage } from "@/components/editable";
 import { DynamicFrameLayout } from "@/components/ui/dynamic-frame-layout";
-import { makeFrames, makeAppFrames } from "@/components/media-frames";
+import { makeFrames } from "@/components/media-frames";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -92,7 +92,7 @@ export default function Page() {
     <ReactLenis root ref={lenisRef}>
       <main
         ref={mainRef}
-        className="bg-preto text-branco selection:bg-branco selection:text-preto"
+        className="slides bg-preto px-2 py-2 text-branco selection:bg-branco selection:text-preto md:px-4 md:py-3"
       >
         {/* ============ 00 · CAPA ============ */}
         <section className="relative h-screen w-full overflow-hidden bg-preto">
@@ -120,23 +120,21 @@ export default function Page() {
                 <span className={`${LABEL} text-[11px] text-preto/45`}>Manifesto</span>
               </div>
             </header>
-            <h2 className="mt-8 max-w-4xl font-univers text-3xl font-light leading-[1.08] tracking-tight md:text-6xl">
-              A identidade como estrutura de suporte — nunca competindo com a
-              obra.
+            <h2 className="mt-8 max-w-4xl font-univers text-4xl font-light leading-[1.08] tracking-tight md:text-7xl">
+              Uma identidade para espetáculos que ainda não existem.
             </h2>
-            <div className="mt-14 grid max-w-4xl gap-10 font-univers text-base leading-relaxed text-preto/70 md:grid-cols-2 md:text-lg">
+            <div className="mt-14 grid max-w-4xl gap-10 font-univers text-lg leading-relaxed text-preto/70 md:grid-cols-2 md:text-xl">
               <p>
-                Téra é um espaço imersivo de arte, tecnologia e experiências
-                multidimensionais, no subsolo da Cidade Matarazzo. A identidade
-                funciona como estrutura de suporte para diferentes artistas e
-                obras, sem competir visualmente com o conteúdo.
+                Téra nasce para receber artistas, linguagens e obras de
+                diferentes naturezas. Por isso, sua identidade não define uma
+                estética fechada: estabelece um sistema reconhecível, capaz de se
+                transformar a cada espetáculo.
               </p>
               <p>
-                Os dois caminhos partem do mesmo princípio: a identidade
-                permanece reconhecível enquanto pode se transformar conforme a
-                experiência. A diferença está no{" "}
-                <span className="text-preto">comportamento</span> dessa
-                transformação.
+                Essa capacidade se desenvolve em dois caminhos. Continuidade
+                explora a transformação de uma mesma matéria através do tempo.
+                Possibilidade investiga as variações produzidas pelo espaço, pela
+                perspectiva e pela interferência.
               </p>
             </div>
           </div>
@@ -147,9 +145,8 @@ export default function Page() {
           <div className={SHELL}>
             <SectionHead
               num="02"
-              kicker="Mapa conceitual"
-              title="Da escala à dobra."
-              desc="Um campo contínuo de relações. Cada nível se desdobra no próximo, até dobrar o tecido da realidade."
+              kicker="Fluxograma"
+              title="A construção do conceito."
             />
             <div className="mt-20">
               <MindMap />
@@ -157,255 +154,299 @@ export default function Page() {
           </div>
         </section>
 
-        {/* ============ 03 · DOIS CAMINHOS ============ */}
-        <section className="relative bg-preto w-full md:flex md:min-h-screen md:flex-col md:justify-center">
-          <div className={`${SHELL} py-24 md:py-36`}>
-            <SectionHead
-              center
-              num="03"
-              kicker="O sistema se desdobra em"
-              title="Dois caminhos."
-              desc="Mesmo princípio, dois comportamentos: a continuidade da Dobra e o contraste da Ruptura."
-            />
+        {/* ============ 03 · CONCEITO CENTRAL ============ */}
+        {/* Espaço amplo: hero em 16:9 mostra a imagem INTEIRA (contain, sem
+            recorte) + parágrafo com respiro. A seção cresce além de 1 tela,
+            então o pin do empilhamento nunca corta o conteúdo. */}
+        <section className="relative w-full overflow-hidden border-t border-white/10 bg-preto">
+          <div className={`${SHELL} pt-24 md:pt-28`}>
+            <span className={`${LABEL} text-xs text-branco/50`}>
+              03 — Conceito central
+            </span>
           </div>
 
-          <div className="mx-auto grid w-full max-w-4xl md:grid-cols-2">
-            {/* CAMINHO 01 · DOBRA */}
-            <div className="flex min-h-[45vh] flex-col items-center justify-center gap-8 px-8 py-16 text-center md:min-h-[55vh]">
-              <div className="flex w-full max-w-sm items-center justify-center">
-                <span className={`${LABEL} text-xs text-branco/50`}>Caminho 01</span>
-              </div>
-              <h3 className="display-lg font-forma font-extralight">Dobra</h3>
-              <div className="max-w-sm">
-                <p className="font-forma text-lg leading-snug text-branco/70">
-                  A forma permanece reconhecível; sua relação com o espaço se
-                  transforma.
-                </p>
-                <p className={`mt-4 ${LABEL} text-[11px] text-branco/45`}>
-                  Transformação · permanência · transição
-                </p>
-              </div>
+          {/* Hero — mãos tecendo (imagem inteira), título sobreposto */}
+          <figure className="relative mx-auto mt-8 aspect-video max-h-[82vh] w-full max-w-[1600px] overflow-hidden md:mt-10">
+            <div className="absolute inset-0">
+              <EditableImage
+                group="images"
+                id="conceito-geral"
+                defaultSrc="/media/conceito-central.png"
+                alt="Mãos tecendo — o tecido da realidade"
+                fit="contain"
+                grayscale
+              />
             </div>
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-preto/10 via-preto/10 to-preto/55" />
+            <figcaption className="absolute inset-0 z-[5] flex flex-col items-center justify-center px-8 text-center">
+              <h2 className="max-w-4xl font-univers text-4xl font-light leading-[1.05] tracking-tight text-branco drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)] md:text-6xl">
+                Dobrar o Tecido da Realidade
+              </h2>
+              <p className="mt-5 max-w-xl font-univers text-lg leading-snug text-branco/90 drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)] md:text-xl">
+                Expandir as formas de imaginar, sentir e habitar o mundo.
+              </p>
+            </figcaption>
+          </figure>
 
-            {/* CAMINHO 02 · QUEBRA */}
-            <div className="flex min-h-[45vh] flex-col items-center justify-center gap-8 px-8 py-16 text-center md:min-h-[55vh]">
-              <div className="flex w-full max-w-sm items-center justify-center">
-                <span className={`${LABEL} text-xs text-branco/50`}>Caminho 02</span>
-              </div>
-              <h3 className="display-lg font-futura">RUPTURA</h3>
-              <div className="max-w-sm">
-                <p className="font-univers text-lg leading-snug text-branco/70">
-                  Elementos diferentes entram em contraste sem perder a unidade
-                  do sistema.
-                </p>
-                <p className={`mt-4 ${LABEL} text-[11px] text-branco/45`}>
-                  Contraste · alternância · interrupção
-                </p>
-              </div>
-            </div>
+          {/* Parágrafo — abaixo da imagem, com respiro generoso */}
+          <div className={`${SHELL} py-24 md:py-36`}>
+            <p className="mx-auto max-w-2xl text-center font-univers text-lg leading-relaxed text-branco/70 md:text-xl">
+              Dobrar o tecido da realidade é abrir possibilidades no que
+              permanece: fazer um mesmo espaço assumir diferentes estados. Na
+              TÉRA, a cultura reativa o patrimônio e a imagem se torna
+              arquitetura. Real e virtual deixam de ocupar campos separados para
+              constituir dimensões de uma mesma experiência.
+            </p>
           </div>
         </section>
 
-        {/* ================= 04 · CAMINHO 01 · DOBRA ================= */}
-        <PathDivider num="04" camada="Caminho 01" name="Dobra" variant="dobra" />
+        {/* ================= 04 · CAMINHO 01 · CONTINUIDADE ================= */}
+        {/* Capa — GIF de fundo editável */}
+        <PathDivider
+          num="04"
+          camada="Caminho 01"
+          name="Continuidade"
+          variant="dobra"
+          subtitle="Dobra · continuidade · permanência"
+          media="/media/capa-continuidade.gif"
+          mediaId="capa-continuidade"
+          mediaZoom
+        />
 
-        {/* 04 · Conceito — painel dividido + imagem de apoio */}
+        {/* 04 · Descrição — painel dividido + imagem de apoio */}
         <Split
           id="dobra"
-          src="/media/apoio-dobra.png"
-          alt="Ágata — camadas minerais que continuam sem se romper"
+          src="/media/continuidade-conceito.png"
+          alt="Estratos do solo — camadas de tempo que se acumulam sem se romper"
         >
-          <Eyebrow>04 · Dobra — Conceito</Eyebrow>
+          <Eyebrow>04 · Continuidade — Descrição</Eyebrow>
           <p className="mt-8 border-l-2 border-white/30 pl-6 font-forma text-2xl font-light leading-snug md:text-4xl">
-            A forma não é substituída por outra: permanece reconhecível enquanto
-            sua relação com o espaço se modifica.
-          </p>
-        </Split>
-
-        {/* 04 · Tipografia — board de introdução */}
-        <TopicDivider label="Dobra" name="Tipografia" />
-        <section className={SECTION}>
-          <div className={SHELL}>
-            <TypeIntro
-              num="04"
-              path="Dobra"
-              primary="Univers"
-              secondary="Forma DJR"
-              principle="A dobra acontece quando a forma muda de peso, largura e escala mas continua pertencendo ao mesmo tecido. Univers e Forma DJR compartilham a genealogia grotesca — a transformação é contínua, não uma troca."
-              primaryClass="font-univers font-light"
-              bodyClass="font-univers"
-            />
-            <RationalePair
-              primary={{
-                name: "Univers — Primária",
-                text: "Neo-grotesca racional que estabelece o tecido comum da identidade. Sua construção em diferentes pesos e larguras — do Light ao Bold, do normal ao Condensed — permite criar variações mantendo reconhecimento e continuidade. É a estrutura estável a partir da qual a forma se deforma.",
-                uso: "Informação, textos, sinalização, programação, interface",
-                bodyClass: "font-univers",
-              }}
-              secondary={{
-                name: "Forma DJR — Secundária",
-                text: "Mantém proximidade com a tradição grotesca da Univers, mas acrescenta densidade, tensão, calor e uma textura muito particular. A pesquisa de David Jonathan Ross ajusta peso, largura e tamanhos ópticos à escala — o que a torna ideal para uma identidade que passa de Instagram a impressão, sinalização e LED monumental. A forma parece se deslocar e condensar sem abandonar sua origem.",
-                uso: "Grandes títulos, campanhas, obras, intervenções, LED",
-                bodyClass: "font-forma",
-              }}
-            />
-            <div className="mt-14 grid gap-px border border-white/10 bg-white/10 md:grid-cols-2">
-              <TypeSpecimen name="Univers" role="Primária" use="Estrutura, textos, sinalização" fontClass="font-univers" />
-              <TypeSpecimen name="Forma DJR" role="Secundária" use="Títulos, campanhas, LED" fontClass="font-forma" display />
-            </div>
-          </div>
-        </section>
-
-        {/* 04 · Aplicações — grid full-bleed em cor */}
-        <MediaWall offset={0} grayscale={false} />
-
-        {/* ================= 05 · CAMINHO 02 · QUEBRA ================= */}
-        <PathDivider num="05" camada="Caminho 02" name="Ruptura" variant="quebra" />
-
-        {/* 05 · Conceito — painel dividido + imagem de apoio */}
-        <Split
-          id="ruptura"
-          src="/media/apoio-quebra.png"
-          alt="Padrão de interferência — dois sistemas em contraste"
-          light
-          reverse
-        >
-          <Eyebrow>05 · Ruptura — Conceito</Eyebrow>
-          <p className="mt-8 font-futura text-3xl leading-[1.05] md:text-5xl">
-            CONTRASTE, ALTERNÂNCIA E RUPTURA.
+            O tempo se inscreve na matéria.
           </p>
           <p className="mt-8 max-w-md font-univers text-base leading-relaxed text-branco/60">
-            Diferentes estados coexistem e criam tensão entre si: uma forma
-            interrompe, desloca ou contrasta com outra. A identidade se constrói
-            pela diferença entre elementos.
+            Explora o espaço como uma matéria em formação contínua. Assim como o
+            solo preserva diferentes tempos em suas camadas, formas, imagens e
+            palavras se estendem pelo espaço, acompanham suas superfícies e
+            acumulam transformações sem perder sua unidade.
+          </p>
+          <p className={`mt-6 ${LABEL} text-[11px] text-branco/45`}>
+            camada · extensão · dobra · crescimento · vibração
           </p>
         </Split>
 
-        {/* 05 · Tipografia — board de introdução */}
-        <TopicDivider label="Ruptura" name="Tipografia" />
+        {/* 04 · Racional — entre o conceito e o moodboard (texto + pixel-stretch) */}
+        <Split
+          id="caminho1-racional"
+          src="/media/caminho1-racional.png"
+          alt="Continuidade — pixel-stretch: superfícies que acumulam diferentes tempos"
+        >
+          <Eyebrow>04 · Continuidade — Racional</Eyebrow>
+          <p className="mt-8 max-w-md font-univers text-lg leading-relaxed text-branco/70">
+            A TÉRA ocupa um espaço marcado por sucessivas transformações: solo,
+            arquitetura e tecnologia permanecem inscritos no mesmo lugar. Este
+            caminho traduz essa continuidade em uma identidade que se estende
+            pelas superfícies e acumula diferentes tempos sem perder sua unidade.
+          </p>
+        </Split>
+
+        {/* 04 · Moodboard — grade 5×2 full-bleed em preto e branco (coeso) */}
+        <TopicDivider label="Continuidade" name="Moodboard" fontClass="font-forma font-extralight" />
+        <MediaWall offset={0} grayscale={true} />
+
+        {/* 04 · Tipografia — Roboto Flex: a mesma estrutura em 3 larguras */}
+        <TopicDivider label="Continuidade" name="Tipografia" fontClass="font-forma font-extralight" />
         <section className={SECTION}>
           <div className={SHELL}>
-            <TypeIntro
-              num="05"
-              path="Ruptura"
-              primary="Univers"
-              secondary="Futura"
-              principle="A quebra não está em usar duas fontes diferentes: acontece quando a lógica racional da Univers é interrompida pela geometria abstrata da Futura — uma alternância entre dois estados formais."
-              bodyClass="font-univers"
-            />
-            <RationalePair
-              primary={{
-                name: "Univers — Primária",
-                text: "Continua sendo a base comum: neo-grotesca racional, construída sobre pesos e larguras que dão estrutura e continuidade. É a linguagem estável que a Futura vem interromper — sem ela, não haveria contra o que romper.",
-                uso: "Informação, textos, sinalização, interface",
-                bodyClass: "font-univers",
-              }}
-              secondary={{
-                name: "Futura — Secundária",
-                text: "Introduz outro estado formal. Paul Renner a concebeu como uma tentativa deliberada de abandonar a dinâmica da escrita e transformar a letra em uma forma mais estática e abstrata — geometria pura, uma nova forma para “o nosso tempo”. Sua personalidade histórica é forte, por isso deve ser usada de modo controlado: títulos, intervenções e momentos de maior impacto.",
-                uso: "Títulos, intervenções, momentos de impacto",
-                bodyClass: "font-futura-regular",
-              }}
-            />
-            <div className="mt-14 grid gap-px border border-white/10 bg-white/10 md:grid-cols-2">
-              <TypeSpecimen name="Univers" role="Primária" use="Estrutura, textos, sinalização" fontClass="font-univers" />
-              <TypeSpecimen name="Futura" role="Secundária" use="Títulos, intervenções, impacto" fontClass="font-futura" display />
+            {/* Mesma diagramação da paleta: texto à esquerda, specimens à direita */}
+            <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16">
+              <div className="max-w-md">
+                <SectionHead num="04" kicker="Continuidade — Tipografia" />
+                <h3 className="mt-8 font-forma text-3xl font-light italic leading-tight text-branco md:text-4xl">
+                  Roboto Flex
+                </h3>
+                <p className="mt-6 font-univers text-lg leading-snug text-branco/80">
+                  Continuidade tipográfica.
+                </p>
+                <p className="mt-6 font-univers text-base leading-relaxed text-branco/55">
+                  Uma estrutura que se estende e se contrai sem perder sua
+                  identidade. A forma muda sem deixar de ser a mesma.
+                </p>
+              </div>
+              {/* Specimens — extended / regular / condensed */}
+              <div className="flex flex-col gap-6 md:gap-8">
+                <RobotoSpecimen variant="extended" widthClass="rf-extended" />
+                <RobotoSpecimen variant="regular" widthClass="rf-regular" />
+                <RobotoSpecimen variant="condensed" widthClass="rf-condensed" />
+              </div>
             </div>
+            {/* Secundária — Futura (mesma estrutura) */}
+            <FuturaBoard />
+            {/* Motion — o tipo variável em movimento (pixel-stretch): a forma se estende sem se romper */}
+            <figure className="mt-24 overflow-hidden rounded-2xl border border-white/10 bg-black md:mt-32">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/media/continuidade-tipografia-motion.gif"
+                alt="Tipografia em movimento — pixel-stretch: a forma se estende e se contrai"
+                className="h-full w-full object-cover grayscale"
+              />
+              <figcaption className="px-6 py-4 font-univers text-sm leading-snug text-branco/55">
+                Em movimento, a estrutura se estende e se contrai sem se romper —
+                a forma muda sem deixar de ser a mesma.
+              </figcaption>
+            </figure>
           </div>
         </section>
 
-        {/* 05 · Aplicações — grid full-bleed em cor */}
-        <MediaWall offset={3} grayscale={false} />
+        {/* 04 · Paleta — Vibração da Matéria (segue o PDF do Caminho 01) */}
+        <TopicDivider label="Continuidade" name="Paleta" fontClass="font-forma font-extralight" />
+        <PaletaCaminho num="04" path="Continuidade" data={VIBRACAO_DATA} />
 
-        {/* 06 · Paleta — board de introdução */}
-        <TopicDivider name="Paleta" />
+        {/* ================= 05 · CAMINHO 02 · POSSIBILIDADE ================= */}
+        {/* Capa — GIF de fundo editável */}
+        <PathDivider
+          num="05"
+          camada="Caminho 02"
+          name="POSSIBILIDADE"
+          variant="quebra"
+          subtitle="Repetição · alternância · interferência"
+          media="/media/capa-possibilidade.mp4"
+          mediaId="capa-possibilidade"
+          fontClass="font-inter font-semibold"
+        />
 
-        {/* ============ 06 · PALETA (capítulo único de cor) ============ */}
+        {/* 05 · Descrição — painel dividido + vídeo (card portrait) */}
+        <Split
+          video="/media/caminho2-racional.mp4"
+          alt="Módulos que se repetem, alternam e sobrepõem"
+        >
+          <Eyebrow>05 · Possibilidade — Descrição</Eyebrow>
+          <p className="mt-8 border-l-2 border-white/30 pl-6 font-inter text-2xl font-bold leading-snug md:text-4xl">
+            O espaço contém outras configurações.
+          </p>
+          <p className="mt-8 max-w-md font-univers text-base leading-relaxed text-branco/60">
+            Explora o espaço como uma estrutura variável. Linhas, módulos e
+            imagens se repetem, alternam e sobrepõem. A interferência entre essas
+            partes revela novas formas.
+          </p>
+          <p className={`mt-6 ${LABEL} text-[11px] text-branco/45`}>
+            repetição · oscilação · sobreposição · ritmo · interferência
+          </p>
+        </Split>
+
+        {/* 05 · Racional — texto + moiré invertido (card do mesmo tamanho do vídeo) */}
+        <Split
+          id="possibilidade-racional"
+          src="/media/possibilidade-racional.png"
+          alt="Interferência — trama moiré: repetição e alternância"
+          invert
+        >
+          <Eyebrow>05 · Possibilidade — Racional</Eyebrow>
+          <p className="mt-8 max-w-md font-univers text-lg leading-relaxed text-branco/70">
+            A TÉRA é uma infraestrutura construída para fazer um mesmo espaço
+            assumir diferentes configurações. Este caminho parte de sua
+            arquitetura modular, das tramas que sustentam os painéis e da
+            resolução 32K para criar uma identidade baseada em repetição,
+            alternância e interferência.
+          </p>
+        </Split>
+
+        {/* 05 · Moodboard — grade 5×2 full-bleed em P&B */}
+        <TopicDivider label="Possibilidade" name="Moodboard" fontClass="font-inter font-semibold not-italic" />
+        <MediaWall offset={3} grayscale={true} />
+
+        {/* 05 · Tipografia — Inter: a mesma base modular em 3 cortes */}
+        <TopicDivider label="Possibilidade" name="Tipografia" fontClass="font-inter font-semibold not-italic" />
+        <section className={SECTION}>
+          <div className={SHELL}>
+            {/* Mesma diagramação da paleta: texto à esquerda, specimens à direita */}
+            <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16">
+              <div className="max-w-md">
+                <SectionHead num="05" kicker="Possibilidade — Tipografia" />
+                <h3 className="mt-8 font-inter text-3xl font-semibold leading-tight text-branco md:text-4xl">
+                  Inter
+                </h3>
+                <p className="mt-6 font-univers text-lg leading-snug text-branco/80">
+                  Estrutura modular.
+                </p>
+                <p className="mt-6 font-univers text-base leading-relaxed text-branco/55">
+                  Uma base precisa para organizar repetições, alternâncias e
+                  sobreposições.
+                </p>
+              </div>
+              {/* Specimens — Medium / Bold / Extra Light Italic */}
+              <div className="flex flex-col gap-6 md:gap-8">
+                <TextSpecimen label="INTER MEDIUM" styleClass="font-inter font-medium not-italic" />
+                <TextSpecimen label="INTER BOLD" styleClass="font-inter font-bold not-italic" />
+                <TextSpecimen label="INTER BOLD" styleClass="font-inter font-bold not-italic" />
+              </div>
+            </div>
+            {/* Secundária — Futura (mesma estrutura) */}
+            <FuturaBoard marginClass="mt-10" />
+          </div>
+        </section>
+
+        {/* 05 · Paleta — sistema cromático do Caminho 02 */}
+        <TopicDivider label="Possibilidade" name="Paleta" fontClass="font-inter font-semibold not-italic" />
+        <PaletaPossibilidade />
+
+        {/* ============ 06 · LOGO ============ */}
         <section className={SECTION}>
           <div className={SHELL}>
             <SectionHead
               num="06"
-              kicker="Sistema cromático"
-              title="A estrutura permanece; a matéria muda."
+              kicker="Sistema de marca"
+              title="Logo."
+              desc="Variações da marca aplicadas em diferentes contextos e suportes."
             />
-
-            {/* 01 · 02 — Cores institucionais */}
-            <div className="mt-16">
-              <p className={`${LABEL} text-[11px] text-branco/45`}>
-                01 / 02 · Cores institucionais
-              </p>
-              <p className="mt-3 max-w-2xl font-univers text-branco/55">
-                Permanentes. Garantem reconhecimento em todos os materiais, mesmo
-                quando nenhuma cor variável está presente.
-              </p>
-              <div className="mt-6 grid gap-px overflow-hidden rounded-lg border border-white/10 bg-white/10 md:grid-cols-2">
-                <InstitutionalColor
-                  name="Téra White"
-                  hex="#F5F4F0"
-                  rgb="245 / 244 / 240"
-                  cmyk="0 / 0 / 2 / 4"
-                  pantone="referência física a validar"
-                  role="Institucional · Campo"
-                  light
-                  note="Superfície, abertura, clareza e luz. Um branco levemente quebrado, com presença própria de marca."
-                  uso="Comunicação institucional, informações, programação, sinalização e interfaces."
-                  led="Máxima luminosidade e expansão."
-                />
-                <InstitutionalColor
-                  name="Téra Black"
-                  hex="#11110F"
-                  rgb="17 / 17 / 15"
-                  cmyk="0 / 0 / 12 / 93"
-                  pantone="Preto C"
-                  role="Institucional · Estrutura"
-                  note="Profundidade, contraste, silêncio e presença. Um quase-preto no lugar do preto absoluto."
-                  uso="Experiência, obras, artistas e o ambiente imersivo."
-                  led="Ausência de luz, intervalo e profundidade."
-                />
-              </div>
+            <div className="mt-16 grid gap-6 md:grid-cols-3">
+              {[
+                { id: "logo-1", src: "/brand/logo-1.svg", label: "Variação 01" },
+                { id: "logo-2", src: "/brand/logo-2.svg", label: "Variação 02" },
+                { id: "logo-3", src: "/brand/logo-3.svg", label: "Variação 03" },
+                { id: "logo-1-repetido", src: "/brand/logo-1.svg", label: "Variação 01" },
+                { id: "logo-2-repetido", src: "/brand/logo-2.svg", label: "Variação 02" },
+                { id: "logo-3-repetido", src: "/brand/logo-3.svg", label: "Variação 03" },
+              ].map((l) => (
+                <figure key={l.id} className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-branco">
+                  <div className="absolute inset-8">
+                    <EditableImage
+                      group="images"
+                      id={l.id}
+                      defaultSrc={l.src}
+                      alt={`TÉRA — ${l.label}`}
+                      fit="contain"
+                    />
+                  </div>
+                  <figcaption className={`absolute bottom-4 left-4 ${LABEL} text-[10px] text-preto/45`}>
+                    {l.label}
+                  </figcaption>
+                </figure>
+              ))}
             </div>
 
-            {/* 03 a 14 — Cores de matéria */}
-            <div className="mt-20">
-              <h3 className="font-univers text-2xl font-light tracking-tight md:text-4xl">
-                Cores de matéria.
-              </h3>
-              <p className="mt-4 max-w-2xl font-univers text-branco/55">
-                Diferentes estados e manifestações da matéria. Podem ser usadas
-                individualmente, combinadas ou transformadas em gradientes. Não
-                precisam combinar entre si: a unidade vem do sistema, não da
-                semelhança.
-              </p>
-              <div className="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-white/10 bg-white/10 sm:grid-cols-3 lg:grid-cols-4">
-                {MATERIAL.map((c) => (
-                  <MaterialSwatch key={c.code} {...c} />
-                ))}
-              </div>
+            <div className="mt-12 grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+              {[
+                { src: "/media/logo-motion-01.mp4", label: "Movimento 01" },
+                { src: "/media/logo-motion-02.mp4", label: "Movimento 02" },
+                { src: "/media/logo-motion-03.mp4", label: "Movimento 03" },
+                { src: "/media/logo-motion-04.mp4", label: "Movimento 04" },
+                { src: "/media/logo-motion-05.mp4", label: "Movimento 05" },
+              ].map((video) => (
+                <figure key={video.src} className="relative aspect-square overflow-hidden rounded-2xl border border-white/10 bg-preto">
+                  <video
+                    src={video.src}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="h-full w-full object-cover"
+                  />
+                  <figcaption className={`absolute bottom-4 left-4 ${LABEL} text-[10px] text-branco/45`}>
+                    {video.label}
+                  </figcaption>
+                </figure>
+              ))}
             </div>
-
-            {/* Conceito central */}
-            <div className="mt-20 border-t border-white/10 pt-12">
-              <p className={`${LABEL} text-[11px] text-branco/45`}>Conceito central</p>
-              <p className="mt-4 max-w-2xl font-univers text-2xl font-light leading-snug tracking-tight md:text-3xl">
-                A estrutura permanece. A matéria muda.
-              </p>
-              <p className="mt-4 max-w-2xl font-univers leading-relaxed text-branco/60">
-                White e Black garantem continuidade. As cores de matéria dão a cada
-                obra uma manifestação própria.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Aplicações — board de introdução + grade de 8 (tamanho dos outros) */}
-        <TopicDivider label="A identidade em uso" name="Aplicações" />
-        <section className="relative w-full bg-preto py-24 md:py-32">
-          <div className="w-full">
-            <DynamicFrameLayout
-              frames={makeAppFrames()}
-              gapSize={0}
-              grayscale={false}
-            />
           </div>
         </section>
 
@@ -415,18 +456,20 @@ export default function Page() {
             <SectionHead num="07" kicker="Princípio final" />
             <div className="mt-14 grid max-w-5xl gap-16 md:grid-cols-2">
               <div>
-                <h3 className="font-forma text-4xl font-extralight tracking-tight md:text-5xl">
-                  Dobra
+                <h3 className="font-univers text-4xl font-light tracking-tight md:text-5xl">
+                  Continuidade
                 </h3>
-                <p className="mt-6 font-forma text-lg leading-relaxed text-branco/70">
+                <p className="mt-6 font-univers text-lg leading-relaxed text-branco/70">
                   A identidade muda sem deixar de ser a mesma.
                 </p>
               </div>
               <div>
-                <h3 className="font-futura text-3xl md:text-4xl">RUPTURA</h3>
+                <h3 className="font-univers text-4xl font-light tracking-tight md:text-5xl">
+                  Possibilidade
+                </h3>
                 <p className="mt-6 font-univers text-lg leading-relaxed text-branco/70">
-                  A identidade cria significado a partir da diferença entre
-                  elementos.
+                  A identidade encontra novas formas na variação do espaço, da
+                  perspectiva e da interferência.
                 </p>
               </div>
             </div>
@@ -510,31 +553,44 @@ function Split({
   alt,
   children,
   reverse = false,
-  light = false,
   id,
+  video,
+  invert = false,
 }: {
-  src: string;
+  src?: string;
   alt: string;
   children: React.ReactNode;
   reverse?: boolean;
-  light?: boolean;
   id?: string;
+  video?: string;
+  invert?: boolean;
 }) {
+  // Mídia grande e contida (imagem inteira) sobre fundo preto — mesma cor do fundo.
   return (
     <section className="relative bg-preto grid min-h-[80vh] w-full border-t border-white/10 md:min-h-screen md:grid-cols-2">
       <figure
-        className={`relative flex min-h-[50vh] items-center justify-center overflow-hidden md:min-h-screen ${
-          light ? "bg-white p-8 md:p-12" : "bg-white/[0.03]"
-        } ${reverse ? "md:order-1" : "md:order-2"}`}
+        className={`relative flex min-h-[50vh] items-center justify-center overflow-hidden bg-preto p-6 md:min-h-screen md:p-10 ${
+          reverse ? "md:order-1" : "md:order-2"
+        }`}
       >
-        {id ? (
+        {video ? (
+          <video
+            src={video}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className={`max-h-full max-w-full rounded-2xl object-contain ${invert ? "invert" : ""}`}
+          />
+        ) : id ? (
           <div className="relative h-full w-full">
             <EditableImage
               group="images"
               id={id}
-              defaultSrc={src}
+              defaultSrc={src ?? ""}
               alt={alt}
-              fit={light ? "contain" : "cover"}
+              fit="contain"
+              invert={invert}
             />
           </div>
         ) : (
@@ -542,11 +598,7 @@ function Split({
           <img
             src={src}
             alt={alt}
-            className={
-              light
-                ? "max-h-full w-full object-contain"
-                : "absolute inset-0 h-full w-full object-cover"
-            }
+            className={`max-h-full max-w-full object-contain ${invert ? "invert" : ""}`}
           />
         )}
       </figure>
@@ -569,27 +621,67 @@ function Eyebrow({ children }: { children: React.ReactNode }) {
   return <p className={`${LABEL} text-[11px] text-branco/45`}>{children}</p>;
 }
 
+// Capa do caminho: tela cheia com a palavra e, opcionalmente, um GIF/vídeo de
+// fundo editável (o "GIF de capa" do roteiro) sob um véu escuro.
 function PathDivider({
   num,
   camada,
   name,
   variant,
+  subtitle,
+  media,
+  mediaId,
+  mediaZoom = false,
+  fontClass,
 }: {
   num: string;
   camada: string;
   name: string;
   variant: "dobra" | "quebra";
+  subtitle?: string;
+  media?: string;
+  mediaId?: string;
+  mediaZoom?: boolean;
+  fontClass?: string;
 }) {
   const dobra = variant === "dobra";
+  const nameFont = fontClass ?? (dobra ? "font-forma font-extralight" : "font-futura");
   return (
-    <section className="relative grid h-screen w-full place-content-center border-t border-white/10 bg-preto">
-      <div className="text-center">
+    <section className="relative grid h-screen w-full place-content-center overflow-hidden border-t border-white/10 bg-preto">
+      {media && mediaId && (
+        <>
+          <div className="absolute inset-0 overflow-hidden">
+            {media.endsWith(".mp4") ? (
+              <video
+                src={media}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="h-full w-full object-cover grayscale"
+              />
+            ) : (
+              <EditableImage
+                group="images"
+                id={mediaId}
+                defaultSrc={media}
+                alt={`${name} — capa`}
+                grayscale
+                className={mediaZoom ? "scale-125" : ""}
+              />
+            )}
+          </div>
+          <div className="absolute inset-0 bg-preto/65" />
+        </>
+      )}
+      <div className="relative z-[5] text-center">
         <p className={`mb-8 ${LABEL} text-sm text-branco/40`}>
           {num} · {camada}
         </p>
-        <h2 className={`display-xl ${dobra ? "font-forma font-extralight" : "font-futura"}`}>
-          {name}
-        </h2>
+        <h2 className={`display-xl ${nameFont}`}>{name}</h2>
+        {subtitle && (
+          <p className={`mt-6 ${LABEL} text-xs text-branco/55`}>{subtitle}</p>
+        )}
         <div className="mx-auto mt-10 h-px w-40 bg-white/40" />
       </div>
     </section>
@@ -614,6 +706,188 @@ function TopicDivider({
         )}
         <h2 className={`display-xl ${fontClass}`}>{name}</h2>
         <div className="mx-auto mt-10 h-px w-40 bg-white/40" />
+      </div>
+    </section>
+  );
+}
+
+// Capítulo de paleta (institucionais + cores de matéria). Renderizado dentro de
+// cada caminho — mesmo conteúdo cromático, cabeçalho parametrizado pelo caminho.
+// Paleta do Caminho 01 — "Vibração da Matéria" (segue caminho1-04.pdf):
+// base cromática reduzida (branco→cinza + preto) + 4 acentos que a luz revela.
+// Dados de paleta por caminho (a base institucional White/Black é comum).
+const VIBRACAO_DATA = {
+  titleFontClass: "font-forma font-light italic",
+  title: "Vibração da Matéria",
+  lead: ["Três cores estruturam o sistema.", "A luz revela seus acentos."],
+  body: "A identidade trabalha com uma base cromática reduzida, enquanto reflexos, brilhos e interferências introduzem variações pontuais conforme a matéria encontra a luz.",
+  materialSrc: "/media/vibracao-materia.png",
+  materialAlt: "Matéria em vibração",
+  materialAspect: "736 / 981",
+  gradientV: "linear-gradient(180deg, #EE2F58 0%, #46A2B7 38%, #FFAE0D 72%, #F93406 100%)",
+  gradientH: "linear-gradient(90deg, #EE2F58 0%, #46A2B7 38%, #FFAE0D 72%, #F93406 100%)",
+  accentsTitle: "Acentos — a luz revela.",
+  accentsBody: "Reflexos e interferências pontuais. Podem ser usadas isoladas, combinadas ou transformadas em gradiente — a unidade vem do sistema, não da semelhança.",
+  accents: [
+    { code: "A1", name: "Rosa", hex: "#EE2F58", rgb: "238 / 47 / 88", cmyk: "0 / 80 / 63 / 7", pantone: "a validar", tag: "Brilho", note: "Reflexo intenso — ponto de energia sobre a base." },
+    { code: "A2", name: "Ciano", hex: "#46A2B7", rgb: "70 / 162 / 183", cmyk: "62 / 12 / 0 / 28", pantone: "a validar", tag: "Reflexo", note: "Frieza mineral — luz que atravessa a superfície." },
+    { code: "A3", name: "Âmbar", hex: "#FFAE0D", rgb: "255 / 174 / 13", cmyk: "0 / 32 / 95 / 0", pantone: "a validar", tag: "Luz", note: "Calor luminoso — incidência direta sobre a matéria." },
+    { code: "A4", name: "Óxido", hex: "#F93406", rgb: "249 / 52 / 6", cmyk: "0 / 79 / 98 / 2", pantone: "a validar", tag: "Calor", note: "Incandescência — a matéria no limite térmico." },
+  ],
+  conceitoTitle: "A estrutura permanece. A matéria muda.",
+  conceitoBody: "Branco e Preto garantem continuidade. Os acentos dão a cada obra uma manifestação própria — a matéria encontrando a luz.",
+};
+
+const POSSIBILIDADE_PALETTE = [
+  { name: "Preto Carvão", hex: "#171819", rgb: "23 / 24 / 25", cmyk: "8 / 4 / 0 / 90", usage: "20%" },
+  { name: "Cinza Concreto Escuro", hex: "#292B2C", rgb: "41 / 43 / 44", cmyk: "7 / 2 / 0 / 83", usage: "15%" },
+  { name: "Cinza Mineral", hex: "#B8B5AF", rgb: "184 / 181 / 175", cmyk: "0 / 2 / 5 / 28", usage: "15%" },
+  { name: "Azul Ardósia", hex: "#354A55", rgb: "53 / 74 / 85", cmyk: "38 / 13 / 0 / 67", usage: "12,5%" },
+  { name: "Marrom Terra", hex: "#6E4A30", rgb: "110 / 74 / 48", cmyk: "0 / 33 / 56 / 57", usage: "12,5%" },
+  { name: "Terracota", hex: "#A54E1F", rgb: "165 / 78 / 31", cmyk: "0 / 53 / 81 / 35", usage: "12,5%" },
+  { name: "Ocre Iluminado", hex: "#C7955D", rgb: "199 / 149 / 93", cmyk: "0 / 25 / 53 / 22", usage: "12,5%" },
+];
+
+function PaletaPossibilidade() {
+  return (
+    <section className={SECTION}>
+      <div className={SHELL}>
+        <SectionHead num="05" kicker="Possibilidade — Paleta" />
+
+        <div className="mt-16 overflow-x-auto pb-2">
+          <div className="mx-auto min-w-[980px] overflow-hidden rounded-2xl border border-white/10 bg-preto">
+            <div className="grid" style={{ gridTemplateColumns: "repeat(7, minmax(0, 1fr))" }}>
+              {POSSIBILIDADE_PALETTE.map((color, index) => (
+                <article
+                  key={color.name}
+                  className={`relative flex min-w-0 items-center justify-center px-5 text-center ${
+                    index === 2 ? "border-r-2 border-white/50" : "border-r border-white/10"
+                  } last:border-r-0`}
+                  style={{ height: "520px", background: color.hex }}
+                >
+                  <p className="font-inter text-lg font-bold leading-tight not-italic text-white drop-shadow-[0_1px_10px_rgba(0,0,0,0.28)] md:text-xl">
+                    {color.name}
+                  </p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// Paleta de um caminho: matéria + gradiente + swatches, base institucional e
+// acentos com dados completos. Conteúdo vem de `data` (Vibração / Interferência).
+function PaletaCaminho({
+  num,
+  path,
+  data,
+}: {
+  num: string;
+  path: string;
+  data: typeof VIBRACAO_DATA;
+}) {
+  return (
+    <section className={SECTION}>
+      <div className={SHELL}>
+        <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16">
+          {/* Texto */}
+          <div className="max-w-md">
+            <SectionHead num={num} kicker={`${path} — Paleta`} />
+            <h3 className={`mt-8 ${data.titleFontClass} text-3xl leading-tight text-branco md:text-4xl`}>
+              {data.title}
+            </h3>
+            <p className="mt-6 font-univers text-lg leading-snug text-branco/80">
+              {data.lead.map((l, i) => (
+                <span key={i}>
+                  {l}
+                  {i < data.lead.length - 1 && <br />}
+                </span>
+              ))}
+            </p>
+            <p className="mt-6 font-univers text-base leading-relaxed text-branco/55">
+              {data.body}
+            </p>
+          </div>
+
+          {/* Matéria + base (branco/preto) + gradiente dos acentos + swatches (Screenshot_5) */}
+          <div className="flex h-[340px] gap-3 md:h-[460px]">
+            <div
+              className="h-full shrink-0 overflow-hidden rounded-xl"
+              style={{ aspectRatio: data.materialAspect }}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={data.materialSrc}
+                alt={data.materialAlt}
+                className={`block h-full w-full object-cover ${
+                  path === "Possibilidade" ? "scale-[1.035]" : ""
+                }`}
+              />
+            </div>
+            <div
+              className="flex-[0.7] rounded-xl border border-white/10"
+              style={{ background: "linear-gradient(to bottom, #ffffff, #8a8a8a)" }}
+              aria-label="Base clara"
+            />
+            <div
+              className="flex-[0.7] rounded-xl border border-white/10"
+              style={{ background: "linear-gradient(to bottom, #3a3a3a, #050505)" }}
+              aria-label="Base escura"
+            />
+            <div
+              className="flex-[0.7] rounded-xl border border-white/10"
+              style={{ background: data.gradientV }}
+              aria-label="Gradiente dos acentos"
+            />
+            <div className="flex flex-[1.15] flex-col gap-3">
+              {data.accents.map((a) => (
+                <div key={a.hex} className="flex flex-1 items-stretch gap-2">
+                  <div
+                    className="flex-1 rounded-xl border border-white/10"
+                    style={{ background: a.hex }}
+                  />
+                  <span className="flex w-14 items-center font-univers text-[10px] tracking-wider text-branco/50">
+                    {a.hex.replace("#", "")}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Acentos — gradiente + dados completos por cor */}
+        <div className="mt-20">
+          <h3 className="font-univers text-2xl font-light tracking-tight md:text-4xl">
+            {data.accentsTitle}
+          </h3>
+          <p className="mt-4 max-w-2xl font-univers text-branco/55">
+            {data.accentsBody}
+          </p>
+          <div
+            className="mt-8 h-14 w-full rounded-xl border border-white/10 md:h-16"
+            style={{ background: data.gradientH }}
+            aria-label="Gradiente dos acentos"
+          />
+          <div className="mt-4 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-4">
+            {data.accents.map((c) => (
+              <MaterialSwatch key={c.code} {...c} />
+            ))}
+          </div>
+        </div>
+
+        {/* Conceito */}
+        <div className="mt-20 border-t border-white/10 pt-12">
+          <p className={`${LABEL} text-[11px] text-branco/45`}>Conceito</p>
+          <p className="mt-4 max-w-2xl font-univers text-2xl font-light leading-snug tracking-tight md:text-3xl">
+            {data.conceitoTitle}
+          </p>
+          <p className="mt-4 max-w-2xl font-univers leading-relaxed text-branco/60">
+            {data.conceitoBody}
+          </p>
+        </div>
       </div>
     </section>
   );
@@ -685,6 +959,86 @@ function RationalePair({
   );
 }
 
+// Alfabeto em pares Aa Bb Cc … (specimen Roboto Flex, como no PDF do Caminho 01).
+const ALPHA_PAIRS =
+  "Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz";
+
+// Card de largura da Roboto Flex — mesma forma, larguras diferentes (continuidade).
+function RobotoSpecimen({
+  variant,
+  widthClass,
+}: {
+  variant: string;
+  widthClass: string;
+}) {
+  return (
+    <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 md:p-7">
+      <div className="mb-4 flex items-baseline justify-between gap-3">
+        <span className={`${widthClass} text-xl leading-none text-branco md:text-2xl`}>
+          ROBOTO FLEX
+        </span>
+        <span className={`${LABEL} text-[10px] text-branco/45`}>{variant}</span>
+      </div>
+      <p className={`${widthClass} break-words text-base leading-snug text-branco/85 md:text-lg`}>
+        {ALPHA_PAIRS}
+      </p>
+      <p className={`${widthClass} mt-2 text-base tracking-wider text-branco/55 md:text-lg`}>
+        {NUMS}
+      </p>
+    </div>
+  );
+}
+
+// Card de peso da Inter — a mesma base modular em cortes diferentes (Caminho 02).
+function TextSpecimen({
+  label,
+  styleClass,
+}: {
+  label: string;
+  styleClass: string;
+}) {
+  return (
+    <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 md:p-7">
+      <p className={`${styleClass} mb-4 text-xl leading-none text-branco md:text-2xl`}>
+        {label}
+      </p>
+      <p className={`${styleClass} break-words text-base leading-snug text-branco/85 md:text-lg`}>
+        {ALPHA_PAIRS}
+      </p>
+      <p className={`${styleClass} mt-2 text-base tracking-wider text-branco/55 md:text-lg`}>
+        {NUMS}
+      </p>
+    </div>
+  );
+}
+
+// Board da tipografia secundária (Futura) — mesma estrutura da primária.
+// Presente nos dois caminhos: o contraponto geométrico à base.
+function FuturaBoard({ marginClass = "mt-16" }: { marginClass?: string }) {
+  return (
+    <div className={`${marginClass} grid items-center gap-12 border-t border-white/10 pt-16 md:grid-cols-2 md:gap-16`}>
+      <div className="max-w-md">
+        <p className={`${LABEL} text-[11px] text-branco/45`}>Secundária</p>
+        <h3 className="mt-3 font-futura text-3xl leading-tight text-branco md:text-4xl">
+          Futura
+        </h3>
+        <p className="mt-6 font-univers text-lg leading-snug text-branco/80">
+          Geometria abstrata.
+        </p>
+        <p className="mt-6 font-univers text-base leading-relaxed text-branco/55">
+          Entra em títulos, intervenções e momentos de maior impacto — o
+          contraponto geométrico à base.
+        </p>
+      </div>
+      <div className="flex flex-col gap-6 md:gap-8">
+        <TextSpecimen label="FUTURA BOLD" styleClass="font-futura" />
+        <TextSpecimen label="FUTURA BOOK" styleClass="font-futura-regular" />
+        <TextSpecimen label="FUTURA LIGHT" styleClass="font-futura-light" />
+      </div>
+    </div>
+  );
+}
+
 function TypeSpecimen({
   name,
   role,
@@ -699,7 +1053,7 @@ function TypeSpecimen({
   display?: boolean;
 }) {
   return (
-    <div className="bg-white/[0.03] p-8 md:p-12">
+    <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-8 md:p-12">
       <div className="mb-8 flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
         <div>
           <span className={`${LABEL} text-xs text-branco`}>{name}</span>
@@ -729,69 +1083,15 @@ function MediaWall({
   grayscale?: boolean;
 }) {
   return (
-    <section className="relative bg-preto flex w-full flex-col justify-center border-t border-white/10 py-16 md:min-h-screen md:py-20">
-      {/* full-bleed, sem borda, tela inteira */}
-      <div className="w-full">
-        <DynamicFrameLayout frames={makeFrames(offset)} gapSize={0} grayscale={grayscale} />
-      </div>
+    <section className="relative w-full bg-preto">
+      {/* full-bleed: grade 5×2 (desktop) / 2×5 (mobile) na altura do viewport */}
+      <DynamicFrameLayout
+        frames={makeFrames(offset)}
+        gapSize={0}
+        grayscale={grayscale}
+        fullScreen
+      />
     </section>
-  );
-}
-
-// Cores institucionais — campos de cor grandes com dados completos.
-function InstitutionalColor({
-  name,
-  hex,
-  rgb,
-  cmyk,
-  pantone,
-  role,
-  note,
-  uso,
-  led,
-  light = false,
-}: {
-  name: string;
-  hex: string;
-  rgb: string;
-  cmyk: string;
-  pantone: string;
-  role: string;
-  note: string;
-  uso: string;
-  led: string;
-  light?: boolean;
-}) {
-  const fg = light ? "text-preto" : "text-branco";
-  const sub = light ? "text-preto/60" : "text-branco/60";
-  const soft = light ? "text-preto/45" : "text-branco/45";
-  return (
-    <div
-      className="flex min-h-[420px] flex-col justify-between p-8 md:p-10"
-      style={{ background: hex }}
-    >
-      <div className="flex items-start justify-between">
-        <span className={`${LABEL} text-[11px] ${soft}`}>{role}</span>
-        <span className={`font-univers text-xs ${soft}`}>{hex}</span>
-      </div>
-      <div>
-        <p className={`font-univers text-3xl font-light tracking-tight md:text-4xl ${fg}`}>
-          {name}
-        </p>
-        <div className={`mt-3 flex flex-wrap gap-x-5 gap-y-1 font-univers text-[11px] ${soft}`}>
-          <span>RGB {rgb}</span>
-          <span>CMYK {cmyk}</span>
-          <span>Pantone {pantone}</span>
-        </div>
-        <p className={`mt-5 max-w-sm font-univers text-sm leading-relaxed ${sub}`}>{note}</p>
-        <p className={`mt-3 max-w-sm font-univers text-xs leading-relaxed ${sub}`}>
-          <span className={fg}>Uso.</span> {uso}
-        </p>
-        <p className={`mt-1.5 max-w-sm font-univers text-xs leading-relaxed ${sub}`}>
-          <span className={fg}>LED.</span> {led}
-        </p>
-      </div>
-    </div>
   );
 }
 

@@ -64,27 +64,38 @@ interface DynamicFrameLayoutProps {
   gapSize?: number;
   /** Aplica preto e branco em todas as mídias (default true) */
   grayscale?: boolean;
+  /**
+   * Tela inteira: preenche a altura do viewport com uma grade 5×2 no desktop
+   * (2×5 no mobile). Tiles deixam de ser quadrados e cobrem a célula. Ideal
+   * para 10 mídias. Sem esta flag, mantém o grid quadrado de 3 colunas.
+   */
+  fullScreen?: boolean;
 }
 
 /**
- * Grade estática de mídias (fotos e vídeos). Sem animação de hover —
- * grid 3×3 fixo. Vídeos tocam em loop mudo automaticamente.
+ * Grade estática de mídias (fotos e vídeos). Sem animação de hover.
+ * - Padrão: grid de 3 colunas com tiles quadrados.
+ * - fullScreen: grade 5×2 (desktop) / 2×5 (mobile) na altura do viewport.
+ * Vídeos tocam em loop mudo automaticamente.
  */
 export function DynamicFrameLayout({
   frames: initialFrames,
   className,
   gapSize = 4,
   grayscale = true,
+  fullScreen = false,
 }: DynamicFrameLayoutProps) {
   const [frames] = useState<Frame[]>(initialFrames);
 
+  const gridCls = fullScreen
+    ? "grid h-[100svh] w-full grid-cols-2 grid-rows-5 md:grid-cols-5 md:grid-rows-2"
+    : "grid w-full grid-cols-3";
+  const tileCls = fullScreen ? "relative h-full w-full" : "relative aspect-square";
+
   return (
-    <div
-      className={`grid w-full grid-cols-3 ${className ?? ""}`}
-      style={{ gap: `${gapSize}px` }}
-    >
+    <div className={`${gridCls} ${className ?? ""}`} style={{ gap: `${gapSize}px` }}>
       {frames.map((frame) => (
-        <div key={frame.id} className="relative aspect-square">
+        <div key={frame.id} className={tileCls}>
           <FrameComponent
             media={frame.media}
             type={inferType(frame.media, frame.type)}
