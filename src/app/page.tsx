@@ -739,13 +739,13 @@ const VIBRACAO_DATA = {
 };
 
 const POSSIBILIDADE_PALETTE = [
-  { name: "Preto Carvão", hex: "#171819", rgb: "23 / 24 / 25", cmyk: "8 / 4 / 0 / 90", usage: "20%" },
-  { name: "Cinza Concreto Escuro", hex: "#292B2C", rgb: "41 / 43 / 44", cmyk: "7 / 2 / 0 / 83", usage: "15%" },
-  { name: "Cinza Mineral", hex: "#B8B5AF", rgb: "184 / 181 / 175", cmyk: "0 / 2 / 5 / 28", usage: "15%" },
-  { name: "Azul Ardósia", hex: "#354A55", rgb: "53 / 74 / 85", cmyk: "38 / 13 / 0 / 67", usage: "12,5%" },
-  { name: "Marrom Terra", hex: "#6E4A30", rgb: "110 / 74 / 48", cmyk: "0 / 33 / 56 / 57", usage: "12,5%" },
-  { name: "Terracota", hex: "#A54E1F", rgb: "165 / 78 / 31", cmyk: "0 / 53 / 81 / 35", usage: "12,5%" },
-  { name: "Ocre Iluminado", hex: "#C7955D", rgb: "199 / 149 / 93", cmyk: "0 / 25 / 53 / 22", usage: "12,5%" },
+  { name: "Preto Carvão", hex: "#171819", rgb: "23 / 24 / 25", cmyk: "8 / 4 / 0 / 90", text: "text-branco" },
+  { name: "Cinza Concreto Escuro", hex: "#292B2C", rgb: "41 / 43 / 44", cmyk: "7 / 2 / 0 / 83", text: "text-branco" },
+  { name: "Cinza Mineral", hex: "#B8B5AF", rgb: "184 / 181 / 175", cmyk: "0 / 2 / 5 / 28", text: "text-preto" },
+  { name: "Azul Ardósia", hex: "#354A55", rgb: "53 / 74 / 85", cmyk: "38 / 13 / 0 / 67", text: "text-branco" },
+  { name: "Marrom Terra", hex: "#6E4A30", rgb: "110 / 74 / 48", cmyk: "0 / 33 / 56 / 57", text: "text-branco" },
+  { name: "Terracota", hex: "#A54E1F", rgb: "165 / 78 / 31", cmyk: "0 / 53 / 81 / 35", text: "text-branco" },
+  { name: "Ocre Iluminado", hex: "#C7955D", rgb: "199 / 149 / 93", cmyk: "0 / 25 / 53 / 22", text: "text-preto" },
 ];
 
 function PaletaPossibilidade() {
@@ -755,19 +755,20 @@ function PaletaPossibilidade() {
         <SectionHead num="05" kicker="Possibilidade — Paleta" />
 
         <div className="mt-16 overflow-x-auto pb-2">
-          <div className="mx-auto min-w-[980px] overflow-hidden rounded-2xl border border-white/10 bg-preto">
+          <div className="mx-auto min-w-[980px] overflow-hidden rounded-2xl bg-preto ring-1 ring-white/10">
             <div className="grid" style={{ gridTemplateColumns: "repeat(7, minmax(0, 1fr))" }}>
               {POSSIBILIDADE_PALETTE.map((color, index) => (
                 <article
                   key={color.name}
-                  className={`relative flex min-w-0 items-center justify-center px-5 text-center ${
-                    index === 2 ? "border-r-2 border-white/50" : "border-r border-white/10"
-                  } last:border-r-0`}
-                  style={{ height: "520px", background: color.hex }}
+                  className={`relative flex min-w-0 items-center justify-center px-6 text-center ${color.text} ${
+                    index === 2 ? "ring-1 ring-inset ring-white/45" : ""
+                  }`}
+                  style={{ height: "560px", background: color.hex }}
                 >
-                  <p className="font-inter text-lg font-bold leading-tight not-italic text-white drop-shadow-[0_1px_10px_rgba(0,0,0,0.28)] md:text-xl">
+                  <p className="max-w-[12ch] font-inter text-xl font-bold leading-[1.08] not-italic md:text-2xl">
                     {color.name}
                   </p>
+                  <span className="absolute bottom-6 left-6 right-6 h-px bg-current opacity-25" />
                 </article>
               ))}
             </div>
