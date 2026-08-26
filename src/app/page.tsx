@@ -9,6 +9,7 @@ import { MindMap } from "@/components/mind-map";
 import { EditableImage } from "@/components/editable";
 import { DynamicFrameLayout } from "@/components/ui/dynamic-frame-layout";
 import { makeFrames } from "@/components/media-frames";
+import { AreiaLab } from "@/components/areia-lab";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -131,10 +132,12 @@ export default function Page() {
                 transformar a cada espetáculo.
               </p>
               <p>
-                Essa capacidade se desenvolve em dois caminhos. Continuidade
-                explora a transformação de uma mesma matéria através do tempo.
-                Possibilidade investiga as variações produzidas pelo espaço, pela
-                perspectiva e pela interferência.
+                Essa capacidade se desenvolve em dois caminhos, e o conceito já
+                tem uma palavra para cada um. Matéria nasce do que ficou: o
+                módulo das chapas gradeadas, a emenda dos gabinetes, a marca
+                vazada com luz atravessando por trás. Luz nasce do que entrou: a
+                matéria escoa, entra por uma fresta e preenche as letras por
+                dentro.
               </p>
             </div>
           </div>
@@ -165,51 +168,88 @@ export default function Page() {
             </span>
           </div>
 
-          {/* Hero — mãos tecendo (imagem inteira), título sobreposto */}
+          {/* Hero — o geodo: pedra bruta por fora, cristal por dentro. A
+              imagem do conceito inteiro numa peça só. */}
           <figure className="relative mx-auto mt-8 aspect-video max-h-[82vh] w-full max-w-[1600px] overflow-hidden md:mt-10">
             <div className="absolute inset-0">
               <EditableImage
                 group="images"
                 id="conceito-geral"
-                defaultSrc="/media/conceito-central.png"
-                alt="Mãos tecendo — o tecido da realidade"
+                defaultSrc="/media/mood-materia-r0-03.jpeg"
+                alt="Geodo — a pedra bruta por fora, o cristal que emite luz por dentro"
                 fit="contain"
-                grayscale
               />
             </div>
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-preto/10 via-preto/10 to-preto/55" />
             <figcaption className="absolute inset-0 z-[5] flex flex-col items-center justify-center px-8 text-center">
               <h2 className="max-w-4xl font-univers text-4xl font-light leading-[1.05] tracking-tight text-branco drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)] md:text-6xl">
-                Dobrar o Tecido da Realidade
+                Da matéria à luz
               </h2>
               <p className="mt-5 max-w-xl font-univers text-lg leading-snug text-branco/90 drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)] md:text-xl">
-                Expandir as formas de imaginar, sentir e habitar o mundo.
+                Onde havia terra, hoje há luz.
               </p>
             </figcaption>
           </figure>
 
+          {/* Tese — a premissa que sustenta o conceito inteiro */}
+          <div className={`${SHELL} pt-24 md:pt-32`}>
+            <p className="mx-auto max-w-3xl text-center font-univers text-3xl font-light leading-[1.15] tracking-tight text-branco md:text-5xl">
+              A tecnologia não é o oposto da natureza. É a natureza reorganizada
+              pela inteligência.
+            </p>
+          </div>
+
           {/* Parágrafo — abaixo da imagem, com respiro generoso */}
-          <div className={`${SHELL} py-24 md:py-36`}>
+          <div className={`${SHELL} py-20 md:py-28`}>
             <p className="mx-auto max-w-2xl text-center font-univers text-lg leading-relaxed text-branco/70 md:text-xl">
-              Dobrar o tecido da realidade é abrir possibilidades no que
-              permanece: fazer um mesmo espaço assumir diferentes estados. Na
-              TÉRA, a cultura reativa o patrimônio e a imagem se torna
-              arquitetura. Real e virtual deixam de ocupar campos separados para
-              constituir dimensões de uma mesma experiência.
+              Para receber o projeto, a obra escavou o subsolo do antigo Hospital
+              Matarazzo: retirou-se a terra em volta da fundação e os pilares
+              ficaram de pé. O LED ocupa hoje esse mesmo plano escavado — onde
+              havia terra, hoje há luz, e toda noite o público atravessa essa
+              fundação para chegar até ela. A própria tela repete o percurso: do
+              quartzo vem o silício, e do silício vem o fóton que o olho absorve.
+              A matéria produziu luz; agora a luz age sobre a matéria.
+            </p>
+          </div>
+
+          {/* O percurso, frase a frase — mesma espinha vertical do fluxograma */}
+          <div className={`${SHELL} pb-20 md:pb-28`}>
+            <ol className="mx-auto flex max-w-xl flex-col items-center gap-0">
+              {[
+                "Terra vira cristal.",
+                "Cristal vira circuito.",
+                "Circuito controla cristal.",
+                "Cristal emite luz.",
+                "Luz encontra o corpo.",
+              ].map((linha, i) => (
+                <li key={linha} className="flex flex-col items-center">
+                  {i > 0 && <span aria-hidden className="h-8 w-px bg-white/20" />}
+                  <span className="py-2 text-center font-univers text-xl font-light leading-snug text-branco md:text-3xl">
+                    {linha}
+                  </span>
+                </li>
+              ))}
+            </ol>
+          </div>
+
+          {/* Fechamento — placa invertida, a mesma linguagem do fluxograma */}
+          <div className={`${SHELL} pb-24 md:pb-36`}>
+            <p className="mx-auto max-w-3xl bg-branco px-6 py-4 text-center font-univers text-xl font-bold uppercase leading-[1.4] tracking-[0.06em] text-preto md:text-3xl">
+              A tecnologia não escapa da natureza. Ela a reorganiza.
             </p>
           </div>
         </section>
 
-        {/* ================= 04 · CAMINHO 01 · CONTINUIDADE ================= */}
-        {/* Capa — GIF de fundo editável */}
+        {/* ================= 04 · CAMINHO 01 · MATÉRIA ================= */}
+        {/* Capa — o grid pixelado: o módulo antes de qualquer imagem */}
         <PathDivider
           num="04"
           camada="Caminho 01"
-          name="Continuidade"
+          name="Matéria"
           variant="dobra"
-          subtitle="Dobra · continuidade · permanência"
-          media="/media/capa-continuidade.gif"
-          mediaId="capa-continuidade"
+          subtitle="Chapa · grid · corte · dobra · vão"
+          media="/media/capa-modulacao.gif"
+          mediaId="capa-materia"
           mediaZoom
         />
 
@@ -217,59 +257,61 @@ export default function Page() {
         <Split
           id="dobra"
           src="/media/continuidade-conceito.png"
-          alt="Estratos do solo — camadas de tempo que se acumulam sem se romper"
+          alt="Estratos do solo — a terra que ficou, camada sobre camada"
         >
-          <Eyebrow>04 · Continuidade — Descrição</Eyebrow>
+          <Eyebrow>04 · Matéria — Descrição</Eyebrow>
           <p className="mt-8 border-l-2 border-white/30 pl-6 font-forma text-2xl font-light leading-snug md:text-4xl">
-            O tempo se inscreve na matéria.
+            A identidade nasce do que ficou.
           </p>
           <p className="mt-8 max-w-md font-univers text-base leading-relaxed text-branco/60">
-            Explora o espaço como uma matéria em formação contínua. Assim como o
-            solo preserva diferentes tempos em suas camadas, formas, imagens e
-            palavras se estendem pelo espaço, acompanham suas superfícies e
-            acumulam transformações sem perder sua unidade.
+            O grid de 1×1 m das chapas gradeadas, a emenda dos gabinetes, o
+            formato da tela de LED, a terra que ficou nos pilares. Tudo o que é
+            sólido, imutável, geométrico — a moldura que não muda de um
+            espetáculo para o outro.
           </p>
           <p className={`mt-6 ${LABEL} text-[11px] text-branco/45`}>
-            camada · extensão · dobra · crescimento · vibração
+            chapa · grid · módulo · corte · dobra · vão
           </p>
         </Split>
 
         {/* 04 · Racional — entre o conceito e o moodboard (texto + pixel-stretch) */}
         <Split
           id="caminho1-racional"
-          src="/media/caminho1-racional.png"
-          alt="Continuidade — pixel-stretch: superfícies que acumulam diferentes tempos"
+          src="/media/mood-materia-r0-00.jpeg"
+          alt="Matéria — o módulo repetido: a superfície antes de qualquer imagem"
         >
-          <Eyebrow>04 · Continuidade — Racional</Eyebrow>
+          <Eyebrow>04 · Matéria — Racional</Eyebrow>
           <p className="mt-8 max-w-md font-univers text-lg leading-relaxed text-branco/70">
-            A TÉRA ocupa um espaço marcado por sucessivas transformações: solo,
-            arquitetura e tecnologia permanecem inscritos no mesmo lugar. Este
-            caminho traduz essa continuidade em uma identidade que se estende
-            pelas superfícies e acumula diferentes tempos sem perder sua unidade.
+            A fundação original do antigo Hospital Matarazzo foi preservada:
+            retirou-se a terra em volta e os pilares ficaram de pé, aparentes na
+            entrada. Este caminho parte do que sobrou dessa operação — o concreto
+            aparente, a chapa gradeada de 1×1 m, a emenda dos gabinetes — e
+            transforma a arquitetura da sala na moldura da identidade.
           </p>
         </Split>
 
         {/* 04 · Moodboard — grade 5×2 full-bleed em preto e branco (coeso) */}
-        <TopicDivider label="Continuidade" name="Moodboard" fontClass="font-forma font-extralight" />
+        <TopicDivider label="Matéria" name="Moodboard" fontClass="font-forma font-extralight" />
         <MediaWall offset={0} grayscale={true} />
 
         {/* 04 · Tipografia — Roboto Flex: a mesma estrutura em 3 larguras */}
-        <TopicDivider label="Continuidade" name="Tipografia" fontClass="font-forma font-extralight" />
+        <TopicDivider label="Matéria" name="Tipografia" fontClass="font-forma font-extralight" />
         <section className={SECTION}>
           <div className={SHELL}>
             {/* Mesma diagramação da paleta: texto à esquerda, specimens à direita */}
             <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16">
               <div className="max-w-md">
-                <SectionHead num="04" kicker="Continuidade — Tipografia" />
+                <SectionHead num="04" kicker="Matéria — Tipografia" />
                 <h3 className="mt-8 font-forma text-3xl font-light italic leading-tight text-branco md:text-4xl">
                   Roboto Flex
                 </h3>
                 <p className="mt-6 font-univers text-lg leading-snug text-branco/80">
-                  Continuidade tipográfica.
+                  A moldura tipográfica.
                 </p>
                 <p className="mt-6 font-univers text-base leading-relaxed text-branco/55">
                   Uma estrutura que se estende e se contrai sem perder sua
-                  identidade. A forma muda sem deixar de ser a mesma.
+                  identidade — como a chapa, que muda de largura e continua sendo
+                  o mesmo módulo.
                 </p>
               </div>
               {/* Specimens — extended / regular / condensed */}
@@ -298,70 +340,73 @@ export default function Page() {
         </section>
 
         {/* 04 · Paleta — Vibração da Matéria (segue o PDF do Caminho 01) */}
-        <TopicDivider label="Continuidade" name="Paleta" fontClass="font-forma font-extralight" />
-        <PaletaCaminho num="04" path="Continuidade" data={VIBRACAO_DATA} />
+        <TopicDivider label="Matéria" name="Paleta" fontClass="font-forma font-extralight" />
+        <PaletaMateria />
 
-        {/* ================= 05 · CAMINHO 02 · POSSIBILIDADE ================= */}
-        {/* Capa — GIF de fundo editável */}
+        {/* ================= 05 · CAMINHO 02 · LUZ ================= */}
+        {/* Capa — a matéria escoando: o plasma antes de virar forma */}
         <PathDivider
           num="05"
           camada="Caminho 02"
-          name="POSSIBILIDADE"
+          name="LUZ"
           variant="quebra"
-          subtitle="Repetição · alternância · interferência"
-          media="/media/capa-possibilidade.mp4"
-          mediaId="capa-possibilidade"
+          subtitle="Plasma · onda · orgânico · preenchimento"
+          media="/media/mood-luz-r0-01.mp4"
+          mediaId="capa-luz"
+          grayscale={false}
           fontClass="font-inter font-semibold"
+          mediaZoom
         />
 
         {/* 05 · Descrição — painel dividido + vídeo (card portrait) */}
         <Split
-          video="/media/caminho2-racional.mp4"
-          alt="Módulos que se repetem, alternam e sobrepõem"
+          video="/media/mood-luz-r0-04.mp4"
+          alt="A matéria escoa e entra por uma fresta"
         >
-          <Eyebrow>05 · Possibilidade — Descrição</Eyebrow>
+          <Eyebrow>05 · Luz — Descrição</Eyebrow>
           <p className="mt-8 border-l-2 border-white/30 pl-6 font-inter text-2xl font-bold leading-snug md:text-4xl">
-            O espaço contém outras configurações.
+            A identidade nasce do que entrou.
           </p>
           <p className="mt-8 max-w-md font-univers text-base leading-relaxed text-branco/60">
-            Explora o espaço como uma estrutura variável. Linhas, módulos e
-            imagens se repetem, alternam e sobrepõem. A interferência entre essas
-            partes revela novas formas.
+            A matéria escoa, entra por uma fresta e preenche as letras por
+            dentro. A onda, o orgânico, o plasma, as artes de cada espetáculo:
+            tudo o que muda de uma obra para a outra e encontra na moldura o seu
+            limite.
           </p>
           <p className={`mt-6 ${LABEL} text-[11px] text-branco/45`}>
-            repetição · oscilação · sobreposição · ritmo · interferência
+            plasma · onda · fresta · escoamento · preenchimento
           </p>
         </Split>
 
         {/* 05 · Racional — texto + moiré invertido (card do mesmo tamanho do vídeo) */}
         <Split
-          id="possibilidade-racional"
-          src="/media/possibilidade-racional.png"
-          alt="Interferência — trama moiré: repetição e alternância"
-          invert
+          video="/media/mood-luz-r1-01.mp4"
+          alt="A letra preenchida por dentro — o plasma dentro da forma"
         >
-          <Eyebrow>05 · Possibilidade — Racional</Eyebrow>
+          <Eyebrow>05 · Luz — Racional</Eyebrow>
           <p className="mt-8 max-w-md font-univers text-lg leading-relaxed text-branco/70">
-            A TÉRA é uma infraestrutura construída para fazer um mesmo espaço
-            assumir diferentes configurações. Este caminho parte de sua
-            arquitetura modular, das tramas que sustentam os painéis e da
-            resolução 32K para criar uma identidade baseada em repetição,
-            alternância e interferência.
+            Quatro faces de LED ocupam o fundo do vão, no mesmo plano de onde a
+            terra saiu. Este caminho parte do que entrou nesse lugar — a imagem
+            em 32K, o plasma, a obra de cada artista — para criar uma identidade
+            que não tem forma própria: assume a do espetáculo que estiver
+            acontecendo.
           </p>
         </Split>
 
         {/* 05 · Moodboard — grade 5×2 full-bleed em P&B */}
-        <TopicDivider label="Possibilidade" name="Moodboard" fontClass="font-inter font-semibold not-italic" />
-        <MediaWall offset={3} grayscale={true} />
+        <TopicDivider label="Luz" name="Moodboard" fontClass="font-inter font-semibold not-italic" />
+        {/* Em cor, ao contrário do de Matéria: a moldura é P&B, o que a
+            preenche é que traz cor — a regra do conceito, aplicada ao deck. */}
+        <MediaWall offset={3} grayscale={false} />
 
         {/* 05 · Tipografia — Inter: a mesma base modular em 3 cortes */}
-        <TopicDivider label="Possibilidade" name="Tipografia" fontClass="font-inter font-semibold not-italic" />
+        <TopicDivider label="Luz" name="Tipografia" fontClass="font-inter font-semibold not-italic" />
         <section className={SECTION}>
           <div className={SHELL}>
             {/* Mesma diagramação da paleta: texto à esquerda, specimens à direita */}
             <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16">
               <div className="max-w-md">
-                <SectionHead num="05" kicker="Possibilidade — Tipografia" />
+                <SectionHead num="05" kicker="Luz — Tipografia" />
                 <h3 className="mt-8 font-inter text-3xl font-semibold leading-tight text-branco md:text-4xl">
                   Inter
                 </h3>
@@ -386,8 +431,53 @@ export default function Page() {
         </section>
 
         {/* 05 · Paleta — sistema cromático do Caminho 02 */}
-        <TopicDivider label="Possibilidade" name="Paleta" fontClass="font-inter font-semibold not-italic" />
-        <PaletaPossibilidade />
+        <TopicDivider label="Luz" name="Paleta" fontClass="font-inter font-semibold not-italic" />
+
+        {/* 05 · Paleta em movimento — Lab 02 · Areia (theforcex-code/tera-areia),
+            servido de /public/areia para o deck não depender de rede. Cada grão
+            guarda a cor do instante em que caiu: a paleta vira estrato. */}
+        <section className={SECTION}>
+          <div className={SHELL}>
+            <SectionHead num="05" kicker="Luz — Paleta em movimento" />
+            <div className="mt-8 grid gap-8 md:grid-cols-[minmax(0,1fr)_320px] md:items-end">
+              <h3 className="font-inter text-3xl font-semibold leading-tight text-branco md:text-5xl">
+                A matéria escoa e preenche as letras por dentro.
+              </h3>
+              <p className="font-univers text-base leading-relaxed text-branco/60">
+                Grãos de 1 pixel caem, escorregam e assentam dentro do wordmark.
+                Cada camada guarda a cor do instante em que caiu — o logo cheio é
+                um registro do tempo que levou para enchê-lo, e a paleta vira
+                estrato.
+              </p>
+            </div>
+
+            <p className="mt-12 flex flex-wrap gap-6 font-univers text-sm text-branco/45">
+              <span>
+                Lab 02 · Areia — a roda do mouse rola a apresentação; clique no
+                lab para girar e dar zoom, Esc volta ao scroll.
+              </span>
+              <a href="/areia/index.html" target="_blank" rel="noreferrer" className="underline decoration-white/30 underline-offset-4 hover:text-branco">
+                WebGPU
+              </a>
+              <a href="/areia/3d.html?encher" target="_blank" rel="noreferrer" className="underline decoration-white/30 underline-offset-4 hover:text-branco">
+                WebGL
+              </a>
+              <a href="/areia/2d.html" target="_blank" rel="noreferrer" className="underline decoration-white/30 underline-offset-4 hover:text-branco">
+                2D
+              </a>
+            </p>
+          </div>
+        </section>
+
+        {/* O lab ocupa a tela inteira: a interface dele já é full-bleed, então
+            qualquer moldura aqui só rouba área do wordmark se enchendo. */}
+        <AreiaLab
+          srcGpu="/areia/index.html?paleta=plasma"
+          srcWebgl="/areia/3d.html?encher&paleta=plasma"
+          title="Lab 02 · Areia — o wordmark Téra preenchido por areia"
+        />
+
+        <PaletaCaminho num="05" path="Luz" data={VIBRACAO_DATA} />
 
         {/* ============ 06 · LOGO ============ */}
         <section className={SECTION}>
@@ -457,29 +547,29 @@ export default function Page() {
             <div className="mt-14 grid max-w-5xl gap-16 md:grid-cols-2">
               <div>
                 <h3 className="font-univers text-4xl font-light tracking-tight md:text-5xl">
-                  Continuidade
+                  Matéria
                 </h3>
                 <p className="mt-6 font-univers text-lg leading-relaxed text-branco/70">
-                  A identidade muda sem deixar de ser a mesma.
+                  A identidade nasce do que ficou: o grid, a chapa, o vão. O que
+                  é sólido, imutável, geométrico.
                 </p>
               </div>
               <div>
                 <h3 className="font-univers text-4xl font-light tracking-tight md:text-5xl">
-                  Possibilidade
+                  Luz
                 </h3>
                 <p className="mt-6 font-univers text-lg leading-relaxed text-branco/70">
-                  A identidade encontra novas formas na variação do espaço, da
-                  perspectiva e da interferência.
+                  A identidade nasce do que entrou: a onda, o plasma, a obra de
+                  cada artista. O que muda a cada espetáculo.
                 </p>
               </div>
             </div>
-            <p className="mt-20 max-w-2xl font-univers leading-relaxed text-branco/55">
-              Em ambos os caminhos, a identidade permanece{" "}
-              <span className="text-branco">
-                discreta, flexível e subordinada à obra
-              </span>{" "}
-              — uma estrutura capaz de receber diferentes artistas, linguagens e
-              experiências.
+            <p className="mt-20 max-w-2xl font-univers text-2xl leading-relaxed text-branco md:text-3xl">
+              Terra é memória. Luz é o presente.
+              <br />
+              <span className="text-branco/55">
+                Matéria é a moldura. Luz é o que a preenche.
+              </span>
             </p>
             <Logo invert className="mt-16 w-[60vw] max-w-[640px]" />
           </div>
@@ -633,6 +723,7 @@ function PathDivider({
   mediaId,
   mediaZoom = false,
   fontClass,
+  grayscale = true,
 }: {
   num: string;
   camada: string;
@@ -643,6 +734,8 @@ function PathDivider({
   mediaId?: string;
   mediaZoom?: boolean;
   fontClass?: string;
+  /** Matéria é a moldura: P&B. Luz é o que a preenche: cor. */
+  grayscale?: boolean;
 }) {
   const dobra = variant === "dobra";
   const nameFont = fontClass ?? (dobra ? "font-forma font-extralight" : "font-futura");
@@ -658,7 +751,7 @@ function PathDivider({
                 loop
                 muted
                 playsInline
-                className="h-full w-full object-cover grayscale"
+                className={`h-full w-full object-cover ${grayscale ? "grayscale" : ""}`}
               />
             ) : (
               <EditableImage
@@ -666,7 +759,7 @@ function PathDivider({
                 id={mediaId}
                 defaultSrc={media}
                 alt={`${name} — capa`}
-                grayscale
+                grayscale={grayscale}
                 className={mediaZoom ? "scale-125" : ""}
               />
             )}
@@ -718,9 +811,9 @@ function TopicDivider({
 // Dados de paleta por caminho (a base institucional White/Black é comum).
 const VIBRACAO_DATA = {
   titleFontClass: "font-forma font-light italic",
-  title: "Vibração da Matéria",
-  lead: ["Três cores estruturam o sistema.", "A luz revela seus acentos."],
-  body: "A identidade trabalha com uma base cromática reduzida, enquanto reflexos, brilhos e interferências introduzem variações pontuais conforme a matéria encontra a luz.",
+  title: "Vibração da Luz",
+  lead: ["A moldura permanece.", "A luz é o que muda de cor."],
+  body: "A base cromática da matéria é fixa e reduzida. Reflexos, brilhos e interferências introduzem variações pontuais conforme a luz encontra a superfície — e cada espetáculo traz as suas.",
   materialSrc: "/media/vibracao-materia.png",
   materialAlt: "Matéria em vibração",
   materialAspect: "736 / 981",
@@ -734,11 +827,11 @@ const VIBRACAO_DATA = {
     { code: "A3", name: "Âmbar", hex: "#FFAE0D", rgb: "255 / 174 / 13", cmyk: "0 / 32 / 95 / 0", pantone: "a validar", tag: "Luz", note: "Calor luminoso — incidência direta sobre a matéria." },
     { code: "A4", name: "Óxido", hex: "#F93406", rgb: "249 / 52 / 6", cmyk: "0 / 79 / 98 / 2", pantone: "a validar", tag: "Calor", note: "Incandescência — a matéria no limite térmico." },
   ],
-  conceitoTitle: "A estrutura permanece. A matéria muda.",
-  conceitoBody: "Branco e Preto garantem continuidade. Os acentos dão a cada obra uma manifestação própria — a matéria encontrando a luz.",
+  conceitoTitle: "A moldura permanece. A luz muda.",
+  conceitoBody: "Branco e Preto garantem continuidade. Os acentos dão a cada obra uma manifestação própria — a luz encontrando a matéria.",
 };
 
-const POSSIBILIDADE_PALETTE = [
+const MATERIA_PALETTE = [
   { name: "Preto Carvão", hex: "#171819", rgb: "23 / 24 / 25", cmyk: "8 / 4 / 0 / 90", usage: "20%" },
   { name: "Cinza Concreto Escuro", hex: "#292B2C", rgb: "41 / 43 / 44", cmyk: "7 / 2 / 0 / 83", usage: "15%" },
   { name: "Cinza Mineral", hex: "#B8B5AF", rgb: "184 / 181 / 175", cmyk: "0 / 2 / 5 / 28", usage: "15%" },
@@ -748,16 +841,36 @@ const POSSIBILIDADE_PALETTE = [
   { name: "Ocre Iluminado", hex: "#C7955D", rgb: "199 / 149 / 93", cmyk: "0 / 25 / 53 / 22", usage: "12,5%" },
 ];
 
-function PaletaPossibilidade() {
+/** Luminância relativa (WCAG) de um hex. */
+function luminancia(hex: string) {
+  const n = parseInt(hex.slice(1), 16);
+  const canal = (v: number) => {
+    const c = v / 255;
+    return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+  };
+  return (
+    0.2126 * canal((n >> 16) & 255) +
+    0.7152 * canal((n >> 8) & 255) +
+    0.0722 * canal(n & 255)
+  );
+}
+
+/** Tinta preta ou branca, a que render mais contraste sobre o swatch.
+    Preto ganha acima de L≈0,179 — é onde as duas razões se cruzam, não 0,5. */
+function tintaSobre(hex: string) {
+  return luminancia(hex) > 0.1791 ? "preta" : "branca";
+}
+
+function PaletaMateria() {
   return (
     <section className={SECTION}>
       <div className={SHELL}>
-        <SectionHead num="05" kicker="Possibilidade — Paleta" />
+        <SectionHead num="04" kicker="Matéria — Paleta" />
 
         <div className="mt-16 overflow-x-auto pb-2">
           <div className="mx-auto min-w-[980px] overflow-hidden rounded-2xl border border-white/10 bg-preto">
             <div className="grid" style={{ gridTemplateColumns: "repeat(7, minmax(0, 1fr))" }}>
-              {POSSIBILIDADE_PALETTE.map((color, index) => (
+              {MATERIA_PALETTE.map((color, index) => (
                 <article
                   key={color.name}
                   className={`relative flex min-w-0 items-center justify-center px-5 text-center ${
@@ -765,7 +878,16 @@ function PaletaPossibilidade() {
                   } last:border-r-0`}
                   style={{ height: "520px", background: color.hex }}
                 >
-                  <p className="font-inter text-lg font-bold leading-tight not-italic text-white drop-shadow-[0_1px_10px_rgba(0,0,0,0.28)] md:text-xl">
+                  {/* Tinta escolhida pela luminância do swatch: em Cinza
+                      Mineral e Ocre Iluminado o texto branco ficava ilegível. */}
+                  <p
+                    className="font-forma text-lg font-light leading-tight md:text-xl"
+                    style={
+                      tintaSobre(color.hex) === "preta"
+                        ? { color: "#0a0a0a" }
+                        : { color: "#ffffff", textShadow: "0 1px 10px rgba(0,0,0,0.28)" }
+                    }
+                  >
                     {color.name}
                   </p>
                 </article>
