@@ -79,6 +79,18 @@ const robotoFlex = localFont({
   ],
 });
 
+// PP Neue Montreal Mono — secundária do Caminho 01, para legendas e dados técnicos.
+const neueMontrealMono = localFont({
+  variable: "--font-neue-montreal-mono",
+  display: "swap",
+  src: [
+    { path: "../../public/fonts/PPNeueMontrealMono-Regular.ttf", weight: "400", style: "normal" },
+    { path: "../../public/fonts/PPNeueMontrealMono-Book.ttf", weight: "450", style: "normal" },
+    { path: "../../public/fonts/PPNeueMontrealMono-Medium.ttf", weight: "500", style: "normal" },
+    { path: "../../public/fonts/PPNeueMontrealMono-Bold.ttf", weight: "700", style: "normal" },
+  ],
+});
+
 // Inter — tipografia do Caminho 02 (Possibilidade): cortes roman dedicados.
 const inter = localFont({
   variable: "--font-inter",
@@ -119,7 +131,7 @@ export default async function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`${univers.variable} ${universCn.variable} ${forma.variable} ${neueMontreal.variable} ${robotoFlex.variable} ${inter.variable} ${futura.variable} h-full antialiased`}
+      className={`${univers.variable} ${universCn.variable} ${forma.variable} ${neueMontreal.variable} ${neueMontrealMono.variable} ${robotoFlex.variable} ${inter.variable} ${futura.variable} h-full antialiased`}
     >
       <body className="min-h-full bg-preto text-branco font-univers">
         <ContentProvider initial={content}>

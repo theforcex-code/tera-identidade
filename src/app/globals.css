@@ -21,6 +21,7 @@
   --font-futura: var(--font-futura), "Century Gothic", "Jost", sans-serif;
   --font-roboto-flex: var(--font-roboto-flex), "Roboto", Arial, sans-serif;
   --font-neue-montreal: var(--font-neue-montreal), "Helvetica Neue", Arial, sans-serif;
+  --font-neue-montreal-mono: var(--font-neue-montreal-mono), "SFMono-Regular", Consolas, monospace;
   --font-inter: var(--font-inter), "Inter", "Helvetica Neue", Arial, sans-serif;
 }
 
@@ -62,6 +63,11 @@ body {
 /* Neue Montreal — tipografia primária do Caminho 01. */
 .font-neue-montreal {
   font-family: var(--font-neue-montreal);
+}
+
+/* PP Neue Montreal Mono — legendas e dados técnicos do Caminho 01. */
+.font-neue-montreal-mono {
+  font-family: var(--font-neue-montreal-mono);
 }
 
 /* Roboto Flex — ativo histórico do Caminho 01. */
@@ -111,6 +117,26 @@ body {
 @media (max-width: 767px) {
   .slides > section {
     border-radius: 20px;
+  }
+}
+
+@keyframes neue-breathe {
+  0% {
+    font-weight: 300;
+    transform: translateY(5px) scaleX(0.88);
+  }
+  50% {
+    font-weight: var(--neue-weight);
+    transform: translateY(-4px) scaleX(var(--neue-width));
+  }
+  100% {
+    font-weight: 700;
+    transform: translateY(0) scaleX(1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-\[neue-breathe_3\.2s_alternate_infinite\] {
+    animation: none;
   }
 }
 

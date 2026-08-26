@@ -7,9 +7,10 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { MindMap } from "@/components/mind-map";
 import { EditableImage } from "@/components/editable";
+import { AnimatedText } from "@/components/ui/animated-text";
 import { DynamicFrameLayout } from "@/components/ui/dynamic-frame-layout";
-import { NeueMontrealExplorer } from "@/components/ui/neue-montreal-explorer";
 import { NeueMontrealSpecimen } from "@/components/ui/neue-montreal-specimen";
+import { TextRoll } from "@/components/ui/text-roll";
 import { VibracaoPaletteBoard } from "@/components/ui/vibracao-palette-board";
 import { makeFrames } from "@/components/media-frames";
 
@@ -281,9 +282,15 @@ export default function Page() {
                 <NeueMontrealSpecimen label="BOLD" className="font-bold">NEUE MONTREAL</NeueMontrealSpecimen>
               </div>
             </div>
-            {/* Secundária — Futura (mesma estrutura) */}
-            <FuturaBoard />
-            <NeueMontrealExplorer />
+            <NeueMontrealMonoBoard />
+            <div className="mt-24 space-y-20 overflow-hidden md:mt-32 md:space-y-32">
+              <div className="flex min-h-[320px] items-center justify-center overflow-hidden md:min-h-[440px]">
+                <TextRoll />
+              </div>
+              <div className="flex min-h-[320px] items-center justify-center overflow-hidden md:min-h-[440px]">
+                <AnimatedText text="Neue Montreal" duration={4.2} delayMultiplier={0.18} />
+              </div>
+            </div>
             <figure className="mt-24 overflow-hidden rounded-2xl border border-white/10 bg-black md:mt-32">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -1034,22 +1041,41 @@ function TextSpecimen({
   );
 }
 
-// Board da tipografia secundária (Futura) — mesma estrutura da primária.
-// Presente nos dois caminhos: o contraponto geométrico à base.
+// PP Neue Montreal Mono — secundária do Caminho 01, para legendas e dados.
+function NeueMontrealMonoBoard() {
+  return (
+    <div className="mt-16 grid items-center gap-12 border-t border-white/10 pt-16 md:grid-cols-2 md:gap-16">
+      <div className="max-w-md">
+        <p className="font-neue-montreal-mono text-[11px] uppercase tracking-[0.18em] text-branco/45">Secundária</p>
+        <h3 className="mt-3 font-neue-montreal-mono text-3xl font-medium leading-tight text-branco md:text-4xl">
+          PP Neue Montreal Mono
+        </h3>
+        <p className="mt-6 font-neue-montreal-mono text-lg leading-snug text-branco/80">
+          Ritmo técnico e precisão editorial.
+        </p>
+        <p className="mt-6 font-neue-montreal-mono text-base leading-relaxed text-branco/55">
+          Entra em legendas, especificações e textos auxiliares para estabelecer contraste com a tipografia primária.
+        </p>
+      </div>
+      <div className="flex flex-col gap-6 md:gap-8">
+        <TextSpecimen label="MONO BOOK" styleClass="font-neue-montreal-mono font-normal" />
+        <TextSpecimen label="MONO MEDIUM" styleClass="font-neue-montreal-mono font-medium" />
+        <TextSpecimen label="MONO BOLD" styleClass="font-neue-montreal-mono font-bold" />
+      </div>
+    </div>
+  );
+}
+
+// Futura permanece como secundária apenas no Caminho 02.
 function FuturaBoard({ marginClass = "mt-16" }: { marginClass?: string }) {
   return (
     <div className={`${marginClass} grid items-center gap-12 border-t border-white/10 pt-16 md:grid-cols-2 md:gap-16`}>
       <div className="max-w-md">
         <p className={`${LABEL} text-[11px] text-branco/45`}>Secundária</p>
-        <h3 className="mt-3 font-futura text-3xl leading-tight text-branco md:text-4xl">
-          Futura
-        </h3>
-        <p className="mt-6 font-univers text-lg leading-snug text-branco/80">
-          Geometria abstrata.
-        </p>
+        <h3 className="mt-3 font-futura text-3xl leading-tight text-branco md:text-4xl">Futura</h3>
+        <p className="mt-6 font-univers text-lg leading-snug text-branco/80">Geometria abstrata.</p>
         <p className="mt-6 font-univers text-base leading-relaxed text-branco/55">
-          Entra em títulos, intervenções e momentos de maior impacto — o
-          contraponto geométrico à base.
+          Entra em títulos, intervenções e momentos de maior impacto.
         </p>
       </div>
       <div className="flex flex-col gap-6 md:gap-8">
