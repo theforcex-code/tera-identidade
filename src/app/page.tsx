@@ -212,8 +212,9 @@ export default function Page() {
             </p>
           </div>
 
-          {/* O percurso, frase a frase — mesma espinha vertical do fluxograma */}
-          <div className={`${SHELL} pb-20 md:pb-28`}>
+          {/* O percurso, frase a frase — mesma espinha vertical do fluxograma.
+              Fecha a seção: a placa que vinha depois repetia a tese de cima. */}
+          <div className={`${SHELL} pb-24 md:pb-36`}>
             <ol className="mx-auto flex max-w-xl flex-col items-center gap-0">
               {[
                 "Terra vira cristal.",
@@ -230,13 +231,6 @@ export default function Page() {
                 </li>
               ))}
             </ol>
-          </div>
-
-          {/* Fechamento — placa invertida, a mesma linguagem do fluxograma */}
-          <div className={`${SHELL} pb-24 md:pb-36`}>
-            <p className="mx-auto max-w-3xl bg-branco px-6 py-4 text-center font-univers text-xl font-bold uppercase leading-[1.4] tracking-[0.06em] text-preto md:text-3xl">
-              A tecnologia não escapa da natureza. Ela a reorganiza.
-            </p>
           </div>
         </section>
 
