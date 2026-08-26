@@ -40,4 +40,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# arquivo vivo do conceito; cópias carimbadas não entram no histórico
+conceito/backups/
+
 .vercel
