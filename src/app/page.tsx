@@ -659,7 +659,8 @@ function LuzPalette() {
         </article>
         <article className="palette-column palette-column--accent relative flex min-w-0 flex-col justify-between p-5 sm:p-7 md:p-10 text-branco" style={{ background: LUZ_GRADIENT }}>
           <div className="flex items-start justify-between gap-3"><span className={`${LABEL} text-[10px] opacity-65`}>03</span><span className={`${LABEL} text-right text-[9px] opacity-65`}>Gradiente</span></div>
-          <h3 className="palette-column__name self-center font-inter font-bold not-italic">Luz</h3>
+          <h3 className="palette-column__name font-inter font-bold not-italic">Luz</h3>
+          <div className="palette-column__details invisible" aria-hidden="true">Campo de contraste</div>
         </article>
       </div>
     </section>

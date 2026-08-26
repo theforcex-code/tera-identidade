@@ -7,13 +7,7 @@ type Weight = {
   weight: number;
 };
 
-const PRIMARY_WEIGHTS: Weight[] = [
-  { name: "Light", weight: 300 },
-  { name: "Regular", weight: 400 },
-  { name: "Bold", weight: 700 },
-];
-
-const MONO_WEIGHTS: Weight[] = [
+const FAMILY_WEIGHTS: Weight[] = [
   { name: "Light", weight: 300 },
   { name: "Regular", weight: 400 },
   { name: "Bold", weight: 700 },
@@ -23,19 +17,18 @@ export function TypographyEditorial() {
   return (
     <>
       <SpecimenBoard
-        title="PP Neue Montreal"
-        metadata={["Pangram Pangram", "Mat Desjardins", "2018", "Tipografia principal"]}
-        weights={PRIMARY_WEIGHTS}
-        fontClass="font-neue-montreal"
-        boardLabel="PP Neue Montreal - tipografia principal"
+        title="Futura PT"
+        metadata={["ParaType", "Geometria", "Títulos e intervenções", "Tipografia principal"]}
+        weights={FAMILY_WEIGHTS}
+        fontClass="font-futura"
+        boardLabel="Futura PT - tipografia principal da Matéria"
       />
       <SpecimenBoard
-        title="PP Neue Montreal Mono"
-        metadata={["Pangram Pangram", "Largura fixa", "Dados e informação", "Tipografia secundária"]}
-        weights={MONO_WEIGHTS}
-        fontClass="font-neue-montreal-mono"
-        boardLabel="PP Neue Montreal Mono - tipografia secundária"
-        compactTitle
+        title="Inter"
+        metadata={["Rasmus Andersson", "2016", "Google Fonts", "Tipografia secundária"]}
+        weights={FAMILY_WEIGHTS}
+        fontClass="font-inter"
+        boardLabel="Inter - tipografia secundária da Matéria"
       />
     </>
   );
@@ -45,18 +38,19 @@ export function TypographyLuzEditorial() {
   return (
     <>
       <SpecimenBoard
-        title="Inter"
-        metadata={["Rasmus Andersson", "2016", "Google Fonts", "Tipografia principal"]}
-        weights={PRIMARY_WEIGHTS}
-        fontClass="font-inter"
-        boardLabel="Inter - tipografia principal da Luz"
+        title="PP Neue Montreal"
+        metadata={["Pangram Pangram", "Mat Desjardins", "2018", "Tipografia principal"]}
+        weights={FAMILY_WEIGHTS}
+        fontClass="font-neue-montreal"
+        boardLabel="PP Neue Montreal - tipografia principal da Luz"
       />
       <SpecimenBoard
-        title="Futura PT"
-        metadata={["ParaType", "Geometria", "Títulos e intervenções", "Tipografia secundária"]}
-        weights={PRIMARY_WEIGHTS}
-        fontClass="font-futura"
-        boardLabel="Futura PT - tipografia secundária da Luz"
+        title="PP Neue Montreal Mono"
+        metadata={["Pangram Pangram", "Largura fixa", "Dados e informação", "Tipografia secundária"]}
+        weights={FAMILY_WEIGHTS}
+        fontClass="font-neue-montreal-mono"
+        boardLabel="PP Neue Montreal Mono - tipografia secundária da Luz"
+        compactTitle
       />
     </>
   );
