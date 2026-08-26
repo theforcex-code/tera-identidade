@@ -84,10 +84,9 @@ const neueMontrealMono = localFont({
   variable: "--font-neue-montreal-mono",
   display: "swap",
   src: [
-    { path: "../../public/fonts/PPNeueMontrealMono-Regular.ttf", weight: "400", style: "normal" },
-    { path: "../../public/fonts/PPNeueMontrealMono-Book.ttf", weight: "450", style: "normal" },
-    { path: "../../public/fonts/PPNeueMontrealMono-Medium.ttf", weight: "500", style: "normal" },
-    { path: "../../public/fonts/PPNeueMontrealMono-Bold.ttf", weight: "700", style: "normal" },
+    { path: "../../public/fonts/PPNeueMontrealMono-Light.ttf", weight: "300", style: "normal" },
+    { path: "../../public/fonts/PPNeueMontrealMono-Regular-Verified.ttf", weight: "400", style: "normal" },
+    { path: "../../public/fonts/PPNeueMontrealMono-Bold-Verified.ttf", weight: "700", style: "normal" },
   ],
 });
 

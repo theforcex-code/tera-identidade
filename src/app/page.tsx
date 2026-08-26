@@ -8,8 +8,7 @@ import { useGSAP } from "@gsap/react";
 import { MindMap } from "@/components/mind-map";
 import { EditableImage } from "@/components/editable";
 import { DynamicFrameLayout } from "@/components/ui/dynamic-frame-layout";
-import { TypographyEditorial } from "@/components/ui/typography-editorial";
-import { VibracaoPaletteBoard } from "@/components/ui/vibracao-palette-board";
+import { TypographyEditorial, TypographyLuzEditorial } from "@/components/ui/typography-editorial";
 import { AreiaLab } from "@/components/areia-lab";
 import { makeFrames } from "@/components/media-frames";
 
@@ -293,43 +292,17 @@ export default function Page() {
 
         {/* 05 · Tipografia — Inter: a mesma base modular em 3 cortes */}
         <TopicDivider label="Luz" name="Tipografia" fontClass="font-inter font-semibold not-italic" />
-        <section className={SECTION}>
-          <div className={SHELL}>
-            {/* Mesma diagramação da paleta: texto à esquerda, specimens à direita */}
-            <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16">
-              <div className="max-w-md">
-                <SectionHead num="05" kicker="Luz — Tipografia" />
-                <h3 className="mt-8 font-inter text-3xl font-semibold leading-tight text-branco md:text-4xl">
-                  Inter
-                </h3>
-                <p className="mt-6 font-univers text-lg leading-snug text-branco/80">
-                  Estrutura modular.
-                </p>
-                <p className="mt-6 font-univers text-base leading-relaxed text-branco/55">
-                  Uma base precisa para organizar repetições, alternâncias e
-                  sobreposições.
-                </p>
-              </div>
-              {/* Specimens — Medium / Bold / Extra Light Italic */}
-              <div className="flex flex-col gap-6 md:gap-8">
-                <TextSpecimen label="INTER MEDIUM" styleClass="font-inter font-medium not-italic" />
-                <TextSpecimen label="INTER BOLD" styleClass="font-inter font-bold not-italic" />
-                <TextSpecimen label="INTER BOLD" styleClass="font-inter font-bold not-italic" />
-              </div>
-            </div>
-            {/* Secundária — Futura (mesma estrutura) */}
-            <FuturaBoard marginClass="mt-10" />
-          </div>
-        </section>
+        <TypographyLuzEditorial />
 
-        {/* Paleta de luz atual */}
+        {/* 05 · Paleta da Luz */}
         <TopicDivider label="Luz" name="Paleta" fontClass="font-inter font-semibold not-italic" />
-        <VibracaoPaletteBoard />
+        <LuzPalette />
 
+        {/* Lab Areia funcional */}
         <AreiaLab
           srcGpu="/areia/index.html?paleta=plasma"
           srcWebgl="/areia/3d.html?encher&paleta=plasma"
-          title="Lab Areia — wordmark TÉRA preenchido por areia"
+          title="Lab Areia - wordmark TÉRA preenchido por areia"
         />
 
         {/* Moodboard fecha o caminho */}
@@ -345,51 +318,24 @@ export default function Page() {
               title="Logo."
               desc="Variações da marca aplicadas em diferentes contextos e suportes."
             />
-            <div className="mt-16 grid gap-6 md:grid-cols-3">
+            <div className="mt-16 grid gap-16 md:grid-cols-2 md:gap-24">
               {[
                 { id: "logo-1", src: "/brand/logo-1.svg", label: "Variação 01" },
                 { id: "logo-2", src: "/brand/logo-2.svg", label: "Variação 02" },
-                { id: "logo-3", src: "/brand/logo-3.svg", label: "Variação 03" },
-                { id: "logo-1-repetido", src: "/brand/logo-1.svg", label: "Variação 01" },
-                { id: "logo-2-repetido", src: "/brand/logo-2.svg", label: "Variação 02" },
-                { id: "logo-3-repetido", src: "/brand/logo-3.svg", label: "Variação 03" },
               ].map((l) => (
-                <figure key={l.id} className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-branco">
-                  <div className="absolute inset-8">
+                <figure key={l.id} className="relative aspect-[4/3] overflow-hidden bg-preto">
+                  <div className="absolute inset-0">
                     <EditableImage
                       group="images"
                       id={l.id}
                       defaultSrc={l.src}
-                      alt={`TÉRA — ${l.label}`}
+                      alt={`TÉRA - ${l.label}`}
                       fit="contain"
+                      invert
                     />
                   </div>
-                  <figcaption className={`absolute bottom-4 left-4 ${LABEL} text-[10px] text-preto/45`}>
+                  <figcaption className={`absolute bottom-0 left-0 ${LABEL} text-[10px] text-branco/45`}>
                     {l.label}
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
-
-            <div className="mt-12 grid gap-6 sm:grid-cols-2 md:grid-cols-3">
-              {[
-                { src: "/media/logo-motion-01.mp4", label: "Movimento 01" },
-                { src: "/media/logo-motion-02.mp4", label: "Movimento 02" },
-                { src: "/media/logo-motion-03.mp4", label: "Movimento 03" },
-                { src: "/media/logo-motion-04.mp4", label: "Movimento 04" },
-                { src: "/media/logo-motion-05.mp4", label: "Movimento 05" },
-              ].map((video) => (
-                <figure key={video.src} className="relative aspect-square overflow-hidden rounded-2xl border border-white/10 bg-preto">
-                  <video
-                    src={video.src}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="h-full w-full object-cover"
-                  />
-                  <figcaption className={`absolute bottom-4 left-4 ${LABEL} text-[10px] text-branco/45`}>
-                    {video.label}
                   </figcaption>
                 </figure>
               ))}
@@ -695,6 +641,30 @@ const POSSIBILIDADE_PALETTE = [
 ] as const;
 
 const POSSIBILIDADE_GRADIENT = "linear-gradient(180deg, #B8B5AF 0%, #6E4A30 34%, #A54E1F 67%, #C7955D 100%)";
+const LUZ_GRADIENT = "linear-gradient(180deg, #EE2F58 0%, #46A2B7 38%, #FFAE0D 72%, #F93406 100%)";
+
+function LuzPalette() {
+  return (
+    <section className="palette-screen" aria-label="Paleta Luz">
+      <div className="palette-board palette-board--screen">
+        <article className="palette-column palette-column--base relative flex min-w-0 flex-col justify-between p-5 sm:p-7 md:p-10 text-preto" style={{ background: "#F5F4F0" }}>
+          <div className="flex items-start justify-between gap-3"><span className={`${LABEL} text-[10px] opacity-65`}>01</span><span className={`${LABEL} text-right text-[9px] opacity-65`}>Base</span></div>
+          <h3 className="palette-column__name font-inter font-bold not-italic">Branco</h3>
+          <div className="palette-column__details font-univers opacity-70">Luz de base</div>
+        </article>
+        <article className="palette-column palette-column--base relative flex min-w-0 flex-col justify-between p-5 sm:p-7 md:p-10 text-branco" style={{ background: "#11110F" }}>
+          <div className="flex items-start justify-between gap-3"><span className={`${LABEL} text-[10px] opacity-65`}>02</span><span className={`${LABEL} text-right text-[9px] opacity-65`}>Base</span></div>
+          <h3 className="palette-column__name font-inter font-bold not-italic">Preto</h3>
+          <div className="palette-column__details font-univers opacity-70">Campo de contraste</div>
+        </article>
+        <article className="palette-column palette-column--accent relative flex min-w-0 flex-col justify-between p-5 sm:p-7 md:p-10 text-branco" style={{ background: LUZ_GRADIENT }}>
+          <div className="flex items-start justify-between gap-3"><span className={`${LABEL} text-[10px] opacity-65`}>03</span><span className={`${LABEL} text-right text-[9px] opacity-65`}>Gradiente</span></div>
+          <h3 className="palette-column__name self-center font-inter font-bold not-italic">Luz</h3>
+        </article>
+      </div>
+    </section>
+  );
+}
 
 function PaletaPossibilidade() {
   return (
