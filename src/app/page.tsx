@@ -7,10 +7,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { MindMap } from "@/components/mind-map";
 import { EditableImage } from "@/components/editable";
-import { AnimatedText } from "@/components/ui/animated-text";
 import { DynamicFrameLayout } from "@/components/ui/dynamic-frame-layout";
-import { NeueMontrealSpecimen } from "@/components/ui/neue-montreal-specimen";
-import { TextRoll } from "@/components/ui/text-roll";
+import { TypographyEditorial } from "@/components/ui/typography-editorial";
 import { VibracaoPaletteBoard } from "@/components/ui/vibracao-palette-board";
 import { makeFrames } from "@/components/media-frames";
 
@@ -259,61 +257,11 @@ export default function Page() {
 
         {/* 04 · Tipografia — Neue Montreal como base do Caminho 01 */}
         <TopicDivider label="Continuidade" name="Tipografia" fontClass="font-neue-montreal font-medium" />
-        <section className={SECTION}>
-          <div className={SHELL}>
-            <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16">
-              <div className="max-w-md">
-                <SectionHead num="04" kicker="Continuidade — Tipografia" />
-                <h3 className="mt-8 font-neue-montreal text-3xl font-medium leading-tight text-branco md:text-4xl">
-                  Neue Montreal
-                </h3>
-                <p className="mt-6 font-univers text-lg leading-snug text-branco/80">
-                  Continuidade tipográfica.
-                </p>
-                <p className="mt-6 font-univers text-base leading-relaxed text-branco/55">
-                  Uma base contínua e precisa, capaz de variar em presença sem
-                  perder a clareza da estrutura.
-                </p>
-              </div>
-              <div className="flex flex-col gap-6 md:gap-8">
-                <NeueMontrealSpecimen label="LIGHT" className="font-light">NEUE MONTREAL</NeueMontrealSpecimen>
-                <NeueMontrealSpecimen label="REGULAR" className="font-normal">NEUE MONTREAL</NeueMontrealSpecimen>
-                <NeueMontrealSpecimen label="MEDIUM" className="font-medium">NEUE MONTREAL</NeueMontrealSpecimen>
-                <NeueMontrealSpecimen label="BOLD" className="font-bold">NEUE MONTREAL</NeueMontrealSpecimen>
-              </div>
-            </div>
-            <NeueMontrealMonoBoard />
-            <div className="mt-24 space-y-20 overflow-hidden md:mt-32 md:space-y-32">
-              <div className="flex min-h-[320px] items-center justify-center overflow-hidden md:min-h-[440px]">
-                <TextRoll />
-              </div>
-              <div className="flex min-h-[320px] items-center justify-center overflow-hidden md:min-h-[440px]">
-                <AnimatedText text="Neue Montreal" duration={4.2} delayMultiplier={0.18} />
-              </div>
-            </div>
-            <figure className="mt-24 overflow-hidden rounded-2xl border border-white/10 bg-black md:mt-32">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/media/continuidade-tipografia-motion.gif"
-                alt="Tipografia em movimento: a forma se estende e se contrai"
-                className="h-full w-full object-cover grayscale"
-              />
-              <figcaption className="px-6 py-4 font-univers text-sm leading-snug text-branco/55">
-                Em movimento, a estrutura se estende e se contrai sem se romper.
-              </figcaption>
-            </figure>
-          </div>
-        </section>
+        <TypographyEditorial />
 
         {/* 04 · Paleta — Vibração da Matéria (segue o PDF do Caminho 01) */}
         <TopicDivider label="Continuidade" name="Paleta" fontClass="font-neue-montreal font-medium" />
-        <PaletaCaminho num="04" path="Continuidade" data={VIBRACAO_DATA} />
-        <section className={SECTION}>
-          <div className={SHELL}>
-            <SectionHead num="04" kicker="Continuidade — Sistema cromático" />
-            <VibracaoPaletteBoard />
-          </div>
-        </section>
+        <VibracaoPaletteBoard />
 
         {/* ================= 05 · CAMINHO 02 · POSSIBILIDADE ================= */}
         {/* Capa — GIF de fundo editável */}
@@ -745,63 +693,60 @@ const VIBRACAO_DATA = {
   accents: [
     { code: "A1", name: "Rosa", hex: "#EE2F58", rgb: "238 / 47 / 88", cmyk: "0 / 80 / 63 / 7", pantone: "a validar", tag: "Brilho", note: "Reflexo intenso — ponto de energia sobre a base." },
     { code: "A2", name: "Ciano", hex: "#46A2B7", rgb: "70 / 162 / 183", cmyk: "62 / 12 / 0 / 28", pantone: "a validar", tag: "Reflexo", note: "Frieza mineral — luz que atravessa a superfície." },
-    { code: "A3", name: "Âmbar", hex: "#FFAE0D", rgb: "255 / 174 / 13", cmyk: "0 / 32 / 95 / 0", pantone: "a validar", tag: "Luz", note: "Calor luminoso — incidência direta sobre a matéria." },
-    { code: "A4", name: "Óxido", hex: "#F93406", rgb: "249 / 52 / 6", cmyk: "0 / 79 / 98 / 2", pantone: "a validar", tag: "Calor", note: "Incandescência — a matéria no limite térmico." },
+    { code: "A3", name: "Amarelo", hex: "#FFAE0D", rgb: "255 / 174 / 13", cmyk: "0 / 32 / 95 / 0", pantone: "a validar", tag: "Luz", note: "Calor luminoso — incidência direta sobre a matéria." },
+    { code: "A4", name: "Vermelho", hex: "#F93406", rgb: "249 / 52 / 6", cmyk: "0 / 79 / 98 / 2", pantone: "a validar", tag: "Calor", note: "Incandescência — a matéria no limite térmico." },
   ],
   conceitoTitle: "A estrutura permanece. A matéria muda.",
   conceitoBody: "Branco e Preto garantem continuidade. Os acentos dão a cada obra uma manifestação própria — a matéria encontrando a luz.",
 };
 
 const POSSIBILIDADE_PALETTE = [
-  { name: "Preto Carvão", hex: "#171819", rgb: "23 / 24 / 25", cmyk: "8 / 4 / 0 / 90", text: "text-branco" },
-  { name: "Cinza Concreto Escuro", hex: "#292B2C", rgb: "41 / 43 / 44", cmyk: "7 / 2 / 0 / 83", text: "text-branco" },
-  { name: "Cinza Mineral", hex: "#B8B5AF", rgb: "184 / 181 / 175", cmyk: "0 / 2 / 5 / 28", text: "text-preto" },
-  { name: "Azul Ardósia", hex: "#354A55", rgb: "53 / 74 / 85", cmyk: "38 / 13 / 0 / 67", text: "text-branco" },
-  { name: "Marrom Terra", hex: "#6E4A30", rgb: "110 / 74 / 48", cmyk: "0 / 33 / 56 / 57", text: "text-branco" },
-  { name: "Terracota", hex: "#A54E1F", rgb: "165 / 78 / 31", cmyk: "0 / 53 / 81 / 35", text: "text-branco" },
-  { name: "Ocre Iluminado", hex: "#C7955D", rgb: "199 / 149 / 93", cmyk: "0 / 25 / 53 / 22", text: "text-preto" },
+  { name: "Branco Cal", hex: "#F7F7F5", rgb: "247 / 247 / 245", cmyk: "0 / 0 / 1 / 3", text: "text-preto", role: "Base", weight: "palette-column--base" },
+  { name: "Preto Subsolo", hex: "#0A0A0A", rgb: "10 / 10 / 10", cmyk: "0 / 0 / 0 / 96", text: "text-branco", role: "Base", weight: "palette-column--base" },
+  { name: "Cinza Cimento", hex: "#B8B5AF", rgb: "184 / 181 / 175", cmyk: "0 / 2 / 5 / 28", text: "text-preto", role: "Acento", weight: "palette-column--accent" },
+  { name: "Marrom Terra", hex: "#6E4A30", rgb: "110 / 74 / 48", cmyk: "0 / 33 / 56 / 57", text: "text-branco", role: "Acento", weight: "palette-column--accent" },
+  { name: "Aço Corten", hex: "#A54E1F", rgb: "165 / 78 / 31", cmyk: "0 / 53 / 81 / 35", text: "text-branco", role: "Acento", weight: "palette-column--accent" },
+  { name: "Ocre Iluminado", hex: "#C7955D", rgb: "199 / 149 / 93", cmyk: "0 / 25 / 53 / 22", text: "text-preto", role: "Acento", weight: "palette-column--accent" },
 ] as const;
+
+const POSSIBILIDADE_GRADIENT = "linear-gradient(180deg, #B8B5AF 0%, #6E4A30 34%, #A54E1F 67%, #C7955D 100%)";
 
 function PaletaPossibilidade() {
   return (
-    <section className={`${SECTION} flex min-h-[100dvh] items-center py-12 md:py-16`}>
-      <div className={SHELL}>
-        <SectionHead num="05" kicker="Possibilidade — Paleta" />
-
-        <div className="mt-10 overflow-x-auto pb-2 md:mt-12">
-          <div className="palette-board mx-auto min-w-[980px] overflow-hidden rounded-2xl bg-preto ring-1 ring-white/10">
-            {POSSIBILIDADE_PALETTE.map((color, index) => (
-              <article
-                key={color.name}
-                className={`palette-column group relative flex min-w-0 flex-1 flex-col justify-between p-6 ${color.text} ${
-                  index === 2 ? "ring-1 ring-inset ring-white/45" : ""
-                }`}
-                style={{ background: color.hex }}
-              >
-                <div className="flex items-start justify-between gap-3">
-                  <span className={`${LABEL} text-[10px] opacity-65`}>
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <span className={`${LABEL} text-right text-[9px] opacity-0 transition-opacity duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-65`}>
-                    {index < 3 ? "Base" : "Acento"}
-                  </span>
-                </div>
-
-                <div className="my-auto pr-4">
-                  <h3 className="font-inter text-2xl font-bold leading-[0.98] tracking-tight not-italic md:text-3xl">
-                    {color.name}
-                  </h3>
-                </div>
-
-                <div className="space-y-1.5 font-univers text-[10px] leading-snug opacity-0 transition-opacity duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-70">
-                  <p>HEX {color.hex}</p>
-                  <p>RGB {color.rgb}</p>
-                  <p>CMYK {color.cmyk}</p>
-                </div>
-              </article>
-            ))}
+    <section className="palette-screen" aria-label="Paleta Possibilidade">
+      <div className="palette-board palette-board--screen">
+        {POSSIBILIDADE_PALETTE.map((color, index) => (
+          <article
+            key={color.name}
+            className={`palette-column ${color.weight} relative flex min-w-0 flex-col justify-between p-5 sm:p-7 md:p-10 ${color.text}`}
+            style={{ background: color.hex }}
+          >
+            <div className="flex items-start justify-between gap-3">
+              <span className={`${LABEL} text-[10px] opacity-65`}>
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <span className={`${LABEL} text-right text-[9px] opacity-65`}>
+                {color.role}
+              </span>
+            </div>
+            <h3 className="palette-column__name font-inter font-bold not-italic">{color.name}</h3>
+            <div className="palette-column__details space-y-1 font-univers opacity-70">
+              <p>RGB {color.rgb}</p>
+              <p>CMYK {color.cmyk}</p>
+            </div>
+          </article>
+        ))}
+        <article
+          className="palette-column palette-column--accent palette-column--gradient relative flex min-w-0 flex-col justify-between p-5 sm:p-7 md:p-10 text-branco"
+          style={{ background: POSSIBILIDADE_GRADIENT }}
+        >
+          <div className="flex items-start justify-between gap-3">
+            <span className={`${LABEL} text-[10px] opacity-65`}>07</span>
+            <span className={`${LABEL} text-right text-[9px] opacity-65`}>Gradiente</span>
           </div>
-        </div>
+          <h3 className="palette-column__name font-inter font-bold not-italic">Matéria em variação</h3>
+          <div className="palette-column__details font-univers opacity-70">Cinza · Terra · Corten · Ocre</div>
+        </article>
       </div>
     </section>
   );
@@ -878,9 +823,6 @@ function PaletaCaminho({
                     className="flex-1 rounded-xl border border-white/10"
                     style={{ background: a.hex }}
                   />
-                  <span className="flex w-14 items-center font-univers text-[10px] tracking-wider text-branco/50">
-                    {a.hex.replace("#", "")}
-                  </span>
                 </div>
               ))}
             </div>

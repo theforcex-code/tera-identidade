@@ -108,6 +108,461 @@ body {
   font-weight: 300;
 }
 
+/* ==================================================================
+   TIPOGRAFIA EDITORIAL — sistema visual do painel 04
+   Classes estritamente prefixadas: type-editorial-*
+================================================================== */
+
+/* Step 1 — Base do sistema */
+.type-editorial-panel {
+  position: relative;
+  isolation: isolate;
+  min-height: 100dvh;
+  overflow: hidden;
+  background: #000;
+  color: var(--color-branco);
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+.type-editorial-meta {
+  position: absolute;
+  z-index: 5;
+  top: clamp(1.25rem, 2.5vw, 2.75rem);
+  right: clamp(1.25rem, 3vw, 4rem);
+  left: clamp(1.25rem, 3vw, 4rem);
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-family: var(--font-neue-montreal-mono);
+  font-size: 0.58rem;
+  line-height: 1.2;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(247, 247, 245, 0.56);
+}
+.type-editorial-label {
+  font-family: var(--font-neue-montreal-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(247, 247, 245, 0.58);
+}
+
+/* Step 2 — Panel 1: specimen (cinco colunas) */
+.type-editorial-specimen__columns {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr 0.7fr 0.7fr 1.6fr;
+  pointer-events: none;
+}
+.type-editorial-specimen__columns span {
+  border-right: 1px solid rgba(255, 255, 255, 0.16);
+}
+.type-editorial-specimen__columns span:last-child { border-right: 0; }
+
+.type-editorial-specimen__title-block {
+  position: absolute;
+  z-index: 1;
+  top: clamp(5rem, 12vw, 11rem);
+  left: clamp(1.5rem, 4vw, 5rem);
+  max-width: 28%;
+}
+.type-editorial-specimen__title-block h2 {
+  font-family: var(--font-neue-montreal);
+  font-size: clamp(5.5rem, 11vw, 12rem);
+  font-weight: 500;
+  line-height: 0.8;
+  letter-spacing: -0.075em;
+}
+.type-editorial-specimen__origin {
+  position: absolute;
+  z-index: 1;
+  bottom: clamp(7rem, 14vw, 12rem);
+  left: clamp(1.5rem, 4vw, 5rem);
+  font-family: var(--font-neue-montreal-mono);
+  font-size: 0.58rem;
+  line-height: 1.6;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(247, 247, 245, 0.56);
+}
+.type-editorial-specimen__statement {
+  position: absolute;
+  z-index: 1;
+  bottom: clamp(3.5rem, 6vw, 6rem);
+  left: clamp(1.5rem, 4vw, 5rem);
+  max-width: 28%;
+  font-family: var(--font-neue-montreal-mono);
+  font-size: 0.58rem;
+  line-height: 1.5;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(247, 247, 245, 0.46);
+}
+.type-editorial-specimen__charset {
+  position: absolute;
+  z-index: 1;
+  bottom: clamp(3.5rem, 6vw, 6rem);
+  left: clamp(1.5rem, 4vw, 5rem);
+  max-width: 28%;
+  font-family: var(--font-neue-montreal-mono);
+  font-size: 0.52rem;
+  line-height: 1.7;
+  letter-spacing: 0.06em;
+  color: rgba(247, 247, 245, 0.32);
+  margin-top: 2.5rem;
+}
+.type-editorial-specimen__weights {
+  position: absolute;
+  z-index: 1;
+  top: clamp(5rem, 12vw, 11rem);
+  left: 26%;
+  right: clamp(1.5rem, 4vw, 5rem);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+.type-editorial-specimen__weights span {
+  font-family: var(--font-neue-montreal-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(247, 247, 245, 0.56);
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.type-editorial-specimen__letter-object {
+  position: absolute;
+  z-index: 1;
+  right: -0.1em;
+  bottom: -0.18em;
+  font-family: var(--font-neue-montreal);
+  font-size: clamp(20rem, 47vw, 55rem);
+  font-weight: 500;
+  line-height: 0.62;
+  letter-spacing: -0.13em;
+  color: rgba(247, 247, 245, 1);
+  user-select: none;
+}
+
+.type-editorial-specimen__details {
+  position: absolute;
+  z-index: 2;
+  right: clamp(1.5rem, 4vw, 5rem);
+  top: clamp(5rem, 12vw, 11rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-family: var(--font-neue-montreal-mono);
+}
+.type-editorial-specimen__details > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+.type-editorial-specimen__details span {
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(247, 247, 245, 0.72);
+}
+.type-editorial-specimen__details small {
+  font-size: 0.52rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(247, 247, 245, 0.38);
+}
+
+.type-editorial-specimen__motion {
+  position: absolute;
+  z-index: 3;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  padding: clamp(1.25rem, 2.5vw, 2.5rem) clamp(1.5rem, 4vw, 5rem);
+  display: flex;
+  align-items: baseline;
+  gap: clamp(2rem, 6vw, 6rem);
+  background: #000;
+}
+
+/* Step 3 — Panel 2: família proporcional vs. monoespaçada */
+.type-editorial-family {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+}
+.type-editorial-family__voice,
+.type-editorial-family__information {
+  position: relative;
+  display: flex;
+  min-height: 100dvh;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(5rem, 10vw, 10rem) clamp(1.5rem, 4vw, 5rem) clamp(2rem, 4vw, 4rem);
+}
+.type-editorial-family__information {
+  border-left: 1px solid rgba(255, 255, 255, 0.16);
+}
+.type-editorial-family__voice h2 {
+  font-family: var(--font-neue-montreal);
+  font-size: clamp(8rem, 23vw, 28rem);
+  font-weight: 500;
+  line-height: 0.72;
+  letter-spacing: -0.1em;
+}
+.type-editorial-family__mono-word,
+.type-editorial-family__proof {
+  font-family: var(--font-neue-montreal-mono);
+}
+.type-editorial-family__mono-word {
+  font-size: clamp(2.5rem, 6vw, 8rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.type-editorial-family__proof {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+}
+.type-editorial-family__proof span {
+  padding: 1rem 0;
+  text-align: center;
+  border-right: 1px solid rgba(255, 255, 255, 0.16);
+  font-size: clamp(0.7rem, 1.2vw, 1rem);
+  letter-spacing: 0.06em;
+  color: rgba(247, 247, 245, 0.72);
+}
+.type-editorial-family__proof span:last-child { border-right: 0; }
+
+.type-editorial-family__voice p:not(.type-editorial-label) {
+  font-family: var(--font-neue-montreal-mono);
+  font-size: 0.58rem;
+  line-height: 1.8;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(247, 247, 245, 0.56);
+}
+.type-editorial-family__information p:not(.type-editorial-label):not(.type-editorial-family__mono-word) {
+  font-family: var(--font-neue-montreal-mono);
+  font-size: 0.58rem;
+  line-height: 1.8;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(247, 247, 245, 0.56);
+}
+
+.type-editorial-family__notes {
+  position: absolute;
+  z-index: 2;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: clamp(1rem, 2vw, 2rem) clamp(1.5rem, 4vw, 5rem);
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: 1rem;
+  font-family: var(--font-neue-montreal-mono);
+  font-size: 0.58rem;
+  line-height: 1.5;
+  letter-spacing: 0.08em;
+  color: rgba(247, 247, 245, 0.42);
+  background: #000;
+}
+
+/* Step 4 — Panel 3: aplicação espacial */
+.type-editorial-space__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.type-editorial-space__contrast {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.38);
+}
+.type-editorial-meta--overlay {
+  color: rgba(247, 247, 245, 0.74);
+}
+.type-editorial-space__rule {
+  position: absolute;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.42);
+}
+.type-editorial-space__rule--vertical {
+  top: 0;
+  bottom: 0;
+  left: 56%;
+  width: 1px;
+}
+.type-editorial-space__rule--horizontal {
+  right: 0;
+  bottom: 29%;
+  left: 56%;
+  height: 1px;
+}
+.type-editorial-space__application {
+  position: absolute;
+  z-index: 3;
+  left: clamp(1.5rem, 5vw, 6rem);
+  bottom: clamp(2.5rem, 9vw, 8rem);
+}
+.type-editorial-space__application h2 {
+  font-family: var(--font-neue-montreal);
+  font-size: clamp(8rem, 25vw, 29rem);
+  font-weight: 500;
+  line-height: 0.7;
+  letter-spacing: -0.1em;
+}
+.type-editorial-space__artist {
+  font-family: var(--font-neue-montreal);
+  font-size: clamp(1.5rem, 3vw, 4rem);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-top: 0.5rem;
+}
+.type-editorial-space__date,
+.type-editorial-space__format,
+.type-editorial-space__caption {
+  font-family: var(--font-neue-montreal-mono);
+}
+.type-editorial-space__date {
+  position: absolute;
+  z-index: 3;
+  top: clamp(5rem, 12vw, 11rem);
+  left: calc(56% + 1.5rem);
+  right: clamp(1.5rem, 4vw, 5rem);
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(247, 247, 245, 0.74);
+}
+.type-editorial-space__format {
+  position: absolute;
+  z-index: 3;
+  top: calc(clamp(5rem, 12vw, 11rem) + 1.6rem);
+  left: calc(56% + 1.5rem);
+  right: clamp(1.5rem, 4vw, 5rem);
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(247, 247, 245, 0.74);
+}
+.type-editorial-space__caption {
+  position: absolute;
+  z-index: 3;
+  bottom: clamp(2.5rem, 9vw, 8rem);
+  left: clamp(1.5rem, 5vw, 6rem);
+  right: calc(44% + 1.5rem);
+  font-size: 0.58rem;
+  line-height: 1.5;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(247, 247, 245, 0.56);
+}
+.type-editorial-space__motion {
+  position: absolute;
+  z-index: 3;
+  left: calc(56% + 1.5rem);
+  right: clamp(1.5rem, 4vw, 5rem);
+  top: calc(71% - 1px);
+  bottom: clamp(4rem, 10vw, 9rem);
+  overflow: hidden;
+}
+.type-editorial-space__motion img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+  display: block;
+}
+
+/* Step 5 — Mobile reflow (sem overflow horizontal de documento) */
+@media (max-width: 767px) {
+  .type-editorial-panel { min-height: 100svh; }
+  .type-editorial-meta { top: 1.25rem; right: 1.25rem; left: 1.25rem; }
+
+  /* Panel 1 mobile */
+  .type-editorial-specimen__columns { grid-template-columns: repeat(3, 1fr); }
+  .type-editorial-specimen__weights { grid-template-columns: repeat(2, 1fr); }
+  .type-editorial-specimen__motion { overflow: hidden; }
+  .type-editorial-specimen__title-block {
+    top: 4.5rem;
+    left: 1.25rem;
+    max-width: 60%;
+  }
+  .type-editorial-specimen__origin {
+    left: 1.25rem;
+    bottom: 14rem;
+  }
+  .type-editorial-specimen__statement {
+    left: 1.25rem;
+    max-width: 66%;
+    bottom: 7rem;
+  }
+  .type-editorial-specimen__charset {
+    left: 1.25rem;
+    max-width: 66%;
+    bottom: 3.5rem;
+    margin-top: 0;
+  }
+  .type-editorial-specimen__weights {
+    top: 4.5rem;
+    left: 55%;
+    right: 1.25rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .type-editorial-specimen__letter-object {
+    font-size: clamp(12rem, 70vw, 20rem);
+  }
+  .type-editorial-specimen__details {
+    right: 1.25rem;
+    top: auto;
+    bottom: 7rem;
+  }
+  .type-editorial-specimen__motion {
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+  }
+
+  /* Panel 2 mobile */
+  .type-editorial-family { display: block; }
+  .type-editorial-family__voice,
+  .type-editorial-family__information {
+    min-height: 62svh;
+    padding: 5rem 1.25rem 2rem;
+  }
+  .type-editorial-family__information {
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+    border-left: 0;
+  }
+  .type-editorial-family__notes {
+    position: static;
+    grid-template-columns: 1fr;
+    padding: 1rem 1.25rem;
+  }
+
+  /* Panel 3 mobile */
+  .type-editorial-space__rule--vertical { left: 68%; }
+  .type-editorial-space__rule--horizontal { bottom: 34%; left: 68%; }
+  .type-editorial-space__application { right: 1.25rem; left: 1.25rem; }
+  .type-editorial-space__motion {
+    width: min(42vw, 11rem);
+    left: calc(68% + 1.25rem);
+    right: 1.25rem;
+  }
+  .type-editorial-space__date,
+  .type-editorial-space__format { left: calc(68% + 1.25rem); right: 1.25rem; }
+  .type-editorial-space__caption { left: 1.25rem; right: 1.25rem; bottom: 2rem; }
+}
+
 /* Apresentação em slides — cada seção é um card de bordas arredondadas */
 .slides > section {
   border-radius: 28px;
@@ -140,31 +595,62 @@ body {
   }
 }
 
-/* Board cromático do Caminho 02 - uma grade fixa com foco progressivo. */
-.palette-board {
+/* Paletas — superfície cromática em escala de tela. A base (branco/preto)
+   detém metade exata do plano; os acentos ocupam a outra metade. */
+.palette-screen {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) clamp(32px, 7dvh, 72px);
+  width: 100%;
+  min-height: 100dvh;
+  background: var(--color-preto);
+}
+.palette-board--screen {
   display: flex;
-  height: min(64dvh, 640px);
-  min-height: 440px;
+  min-height: 0;
+  overflow: hidden;
 }
 .palette-column {
-  transition: flex 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  isolation: isolate;
+  overflow: hidden;
 }
-.palette-board:hover .palette-column {
-  flex: 0.72 1 0%;
+.palette-column--base {
+  flex: 0 0 25%;
 }
-.palette-board .palette-column:hover {
-  flex: 1.95 1 0%;
+.palette-column--accent {
+  flex: 1 1 0%;
 }
-.palette-column:hover > div:last-child,
-.palette-column:hover > div:first-child > span:last-child {
-  opacity: 0.7;
+.palette-column__name {
+  max-width: 13ch;
+  align-self: flex-start;
+  font-size: clamp(0.9rem, 1.35vw, 1.35rem);
+  font-weight: 600;
+  line-height: 0.96;
+  letter-spacing: -0.035em;
 }
-@media (prefers-reduced-motion: reduce) {
-  .palette-column,
-  .palette-board:hover .palette-column,
-  .palette-board .palette-column:hover {
-    transition: none;
-    flex: 1 1 0%;
+.palette-column__details {
+  font-size: 0.56rem;
+  line-height: 1.45;
+  letter-spacing: 0.035em;
+}
+.palette-gradient {
+  width: 100%;
+}
+
+@media (max-width: 767px) {
+  .palette-screen {
+    min-height: 100svh;
+  }
+  .palette-board--screen {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+  }
+  .palette-column {
+    flex: 0 0 52vw;
+    min-width: 52vw;
+    scroll-snap-align: start;
+  }
+  .palette-column--base {
+    flex-basis: 52vw;
   }
 }
 
