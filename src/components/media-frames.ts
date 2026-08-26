@@ -12,38 +12,41 @@ import type { Frame } from "@/components/ui/dynamic-frame-layout";
 
 type Item = { src: string; type: "image" | "video"; alt?: string };
 
-// Camada 01 · Dobra — continuidade (em cor: transição / fluxo)
-const DOBRA_MEDIA: Item[] = [
-  { src: "/media/dobra-1.mp4", type: "video", alt: "Dobra — vídeo de abertura" },
-  { src: "/media/dobra-2.png", type: "image", alt: "Dobra — tipografia em perspectiva" },
-  { src: "/media/dobra-3.png", type: "image", alt: "Dobra — fluxo de tinta" },
-  { src: "/media/dobra-4.png", type: "image", alt: "Dobra — marca" },
-  { src: "/media/continuidade.mp4", type: "video", alt: "Dobra — vídeo continuidade" },
-  { src: "/media/dobra-5.gif", type: "image", alt: "Dobra — animação" },
-  { src: "/media/moodboard-c1-video.mp4", type: "video", alt: "Continuidade — vídeo pixel-stretch" },
-  { src: "/media/moodboard-c1-stretch.png", type: "image", alt: "Continuidade — colagem pixel-stretch (parque)" },
-  { src: "/media/moodboard-c1-klalam.jpg", type: "image", alt: "Continuidade — mural tipográfico KLALAM" },
-  { src: "/media/dobra-1.png", type: "image", alt: "Dobra — frame de abertura" },
+// Camada 01 · MATÉRIA — o que ficou: superfície, módulo, corte, dobra e vão.
+// Peças do moodboard "matéria" do conceito (theforcex-code @1faa711).
+// O geodo (mood-materia-r0-03) não entra aqui: ele é o hero do Conceito Central.
+const MATERIA_MEDIA: Item[] = [
+  { src: "/media/mood-materia-r0-00.jpeg", type: "image", alt: "Matéria — o módulo repetido em faixas" },
+  { src: "/media/mood-materia-r1-00.mp4", type: "video", alt: "Matéria — corte e dobra em movimento" },
+  { src: "/media/mood-materia-r0-01.jpeg", type: "image", alt: "Matéria — Carsten Nicolai, unitxt" },
+  { src: "/media/mood-materia-r0-05.jpeg", type: "image", alt: "Matéria — estratos: a terra que ficou, camada sobre camada" },
+  { src: "/media/mood-materia-r1-02.mp4", type: "video", alt: "Matéria — vão e profundidade" },
+  { src: "/media/mood-materia-r0-02.jpeg", type: "image", alt: "Matéria — faixas cromáticas em grade" },
+  { src: "/media/mood-materia-r1-01.jpeg", type: "image", alt: "Matéria — arquitetura em plano dobrado" },
+  { src: "/media/mood-materia-r1-04.jpeg", type: "image", alt: "Matéria — Luigi Snozzi, cartaz tipográfico" },
+  { src: "/media/mood-materia-r1-05.mp4", type: "video", alt: "Matéria — superfície em corte" },
+  { src: "/media/mood-materia-r1-06.jpeg", type: "image", alt: "Matéria — marca vazada sobre a chapa" },
 ];
 
-// Camada 02 · Possibilidade — alternância (materiais reais; posições 4,5,7,9,10 atualizadas)
-const QUEBRA_MEDIA: Item[] = [
-  { src: "/media/mod-4.mp4", type: "video", alt: "Possibilidade — material 04" },
-  { src: "/media/quebra-2.png", type: "image", alt: "Possibilidade — pôsteres geométricos" },
-  { src: "/media/quebra-3.png", type: "image", alt: "Possibilidade — tipografia em ripas" },
-  { src: "/media/quebra-1.png", type: "image", alt: "Possibilidade — instalação LED tipográfica" },
-  { src: "/media/mod-5.mp4", type: "video", alt: "Possibilidade — material 05" },
-  { src: "/media/quebra-6.png", type: "image", alt: "Possibilidade — referência gráfica" },
-  { src: "/media/mod-7.png", type: "image", alt: "Possibilidade — material 07" },
-  { src: "/media/quebra-8.png", type: "image", alt: "Possibilidade — referência gráfica" },
-  { src: "/media/mod-9.webp", type: "image", alt: "Possibilidade — material 09" },
-  { src: "/media/mod-10.mp4", type: "video", alt: "Possibilidade — material 10" },
+// Camada 02 · LUZ — o que entrou: matéria luminosa e luz na arquitetura.
+// Peças do moodboard "luz" do mesmo conceito.
+const LUZ_MEDIA: Item[] = [
+  { src: "/media/mood-luz-r0-00.jpeg", type: "image", alt: "Luz — o plasma preenchendo a letra" },
+  { src: "/media/mood-luz-r0-01.mp4", type: "video", alt: "Luz — matéria luminosa em movimento" },
+  { src: "/media/mood-luz-r0-02.jpeg", type: "image", alt: "Luz — gradiente que escoa pela grade" },
+  { src: "/media/mood-luz-r0-03.jpeg", type: "image", alt: "Luz — corpo preenchido por espectro" },
+  { src: "/media/mood-luz-r0-05.jpeg", type: "image", alt: "Luz — a matéria em estado líquido" },
+  { src: "/media/mood-luz-r1-01.mp4", type: "video", alt: "Luz — projeção sobre a arquitetura" },
+  { src: "/media/mood-luz-r0-06.jpeg", type: "image", alt: "Luz — espectro cristalizado" },
+  { src: "/media/mood-luz-r1-02.jpeg", type: "image", alt: "Luz — tipografia atravessada por luz" },
+  { src: "/media/mood-luz-r1-04.jpeg", type: "image", alt: "Luz — sistema em variação cromática" },
+  { src: "/media/mood-luz-r1-05.jpeg", type: "image", alt: "Luz — a peça acesa na rua" },
 ];
 
 // Grade de 10 mídias — arranjo (colunas × linhas) é definido no
 // DynamicFrameLayout (5×2 no desktop, 2×5 no mobile via fullScreen).
 export function makeFrames(offset = 0): Frame[] {
-  const media = offset === 0 ? DOBRA_MEDIA : QUEBRA_MEDIA;
+  const media = offset === 0 ? MATERIA_MEDIA : LUZ_MEDIA;
   return media.map((item, i) => ({
     id: i + 1 + offset * 100,
     media: item.src,
