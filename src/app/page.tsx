@@ -10,6 +10,7 @@ import { EditableImage } from "@/components/editable";
 import { DynamicFrameLayout } from "@/components/ui/dynamic-frame-layout";
 import { makeFrames } from "@/components/media-frames";
 import { AreiaLab } from "@/components/areia-lab";
+import { VideoScrub } from "@/components/video-scrub";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -106,48 +107,29 @@ export default function Page() {
           <div className="absolute inset-0 bg-preto/35" />
           <div className="absolute inset-0 bg-gradient-to-t from-preto/75 via-preto/15 to-preto/45" />
 
-          <div className="relative z-[5] grid h-full place-content-center px-6 text-center">
-            <Logo invert className="mx-auto w-[78vw] max-w-[820px]" />
-          </div>
+          {/* O wordmark em 3D, girando. O renderer pinta preto opaco (o clear
+              color não é transparente, testei), então quem apaga o fundo é o
+              blend. `lighten` em vez de `screen`: pega o maior valor por canal,
+              e como as letras são mais claras que a foto elas saem sólidas —
+              `screen` somava e deixava tudo translúcido.
+              `escala` encolhe o modelo para caber com folga; `semdica` tira a
+              instrução de arrastar, que aqui não vale porque o iframe está com
+              pointer-events desligado — ela captura roda e arrasto, e na
+              primeira tela isso prenderia o scroll da apresentação inteira. */}
+          <iframe
+            src="/logo3d/index.html?spin=1&ortho=1&escala=0.62&semdica"
+            title="TÉRA — wordmark em 3D"
+            aria-hidden
+            tabIndex={-1}
+            className="pointer-events-none absolute inset-0 z-[5] h-full w-full border-0 mix-blend-lighten"
+          />
         </section>
 
-        {/* ============ 01 · MANIFESTO (única seção branca) ============ */}
-        <section className="relative flex w-full flex-col justify-center border-t border-white/10 bg-branco py-24 text-preto md:min-h-screen md:py-36">
-          <div className={SHELL}>
-            <header className="max-w-4xl">
-              <div className="flex items-center gap-4">
-                <span className="font-univers text-xs text-preto/40">01</span>
-                <span className="h-px w-10 bg-preto/25" />
-                <span className={`${LABEL} text-[11px] text-preto/45`}>Manifesto</span>
-              </div>
-            </header>
-            <h2 className="mt-8 max-w-4xl font-univers text-4xl font-light leading-[1.08] tracking-tight md:text-7xl">
-              Uma identidade para espetáculos que ainda não existem.
-            </h2>
-            <div className="mt-14 grid max-w-4xl gap-10 font-univers text-lg leading-relaxed text-preto/70 md:grid-cols-2 md:text-xl">
-              <p>
-                Téra nasce para receber artistas, linguagens e obras de
-                diferentes naturezas. Por isso, sua identidade não define uma
-                estética fechada: estabelece um sistema reconhecível, capaz de se
-                transformar a cada espetáculo.
-              </p>
-              <p>
-                Essa capacidade se desenvolve em dois caminhos, e o conceito já
-                tem uma palavra para cada um. Matéria nasce do que ficou: o
-                módulo das chapas gradeadas, a emenda dos gabinetes, a marca
-                vazada com luz atravessando por trás. Luz nasce do que entrou: a
-                matéria escoa, entra por uma fresta e preenche as letras por
-                dentro.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* ============ 02 · MAPA CONCEITUAL ============ */}
+        {/* ============ 01 · MAPA CONCEITUAL ============ */}
         <section className={SECTION}>
           <div className={SHELL}>
             <SectionHead
-              num="02"
+              num="01"
               kicker="Fluxograma"
               title="A construção do conceito."
             />
@@ -157,14 +139,14 @@ export default function Page() {
           </div>
         </section>
 
-        {/* ============ 03 · CONCEITO CENTRAL ============ */}
+        {/* ============ 02 · CONCEITO CENTRAL ============ */}
         {/* Espaço amplo: hero em 16:9 mostra a imagem INTEIRA (contain, sem
             recorte) + parágrafo com respiro. A seção cresce além de 1 tela,
             então o pin do empilhamento nunca corta o conteúdo. */}
         <section className="relative w-full overflow-hidden border-t border-white/10 bg-preto">
           <div className={`${SHELL} pt-24 md:pt-28`}>
             <span className={`${LABEL} text-xs text-branco/50`}>
-              03 — Conceito central
+              02 — Conceito central
             </span>
           </div>
 
@@ -231,6 +213,40 @@ export default function Page() {
                 </li>
               ))}
             </ol>
+          </div>
+        </section>
+
+        {/* ============ 03 · MANIFESTO (única seção branca) ============ */}
+        {/* Depois do conceito, não antes: o manifesto agora lê como consequência
+            do argumento, e a única tela branca dá respiro após três escuras. */}
+        <section className="relative flex w-full flex-col justify-center border-t border-white/10 bg-branco py-24 text-preto md:min-h-screen md:py-36">
+          <div className={SHELL}>
+            <header className="max-w-4xl">
+              <div className="flex items-center gap-4">
+                <span className="font-univers text-xs text-preto/40">03</span>
+                <span className="h-px w-10 bg-preto/25" />
+                <span className={`${LABEL} text-[11px] text-preto/45`}>Manifesto</span>
+              </div>
+            </header>
+            <h2 className="mt-8 max-w-4xl font-univers text-4xl font-light leading-[1.08] tracking-tight md:text-7xl">
+              Uma identidade para espetáculos que ainda não existem.
+            </h2>
+            <div className="mt-14 grid max-w-4xl gap-10 font-univers text-lg leading-relaxed text-preto/70 md:grid-cols-2 md:text-xl">
+              <p>
+                Téra nasce para receber artistas, linguagens e obras de
+                diferentes naturezas. Por isso, sua identidade não define uma
+                estética fechada: estabelece um sistema reconhecível, capaz de se
+                transformar a cada espetáculo.
+              </p>
+              <p>
+                Essa capacidade se desenvolve em dois caminhos, e o conceito já
+                tem uma palavra para cada um. Matéria nasce do que ficou: o
+                módulo das chapas gradeadas, a emenda dos gabinetes, a marca
+                vazada com luz atravessando por trás. Luz nasce do que entrou: a
+                matéria escoa, entra por uma fresta e preenche as letras por
+                dentro.
+              </p>
+            </div>
           </div>
         </section>
 
@@ -482,17 +498,36 @@ export default function Page() {
               title="Logo."
               desc="Variações da marca aplicadas em diferentes contextos e suportes."
             />
-            <div className="mt-16 grid gap-6 md:grid-cols-3">
+            {/* As três variações da marca e cinco estudos de símbolo no mesmo
+                grid. Os símbolos trazem fundo preto no próprio SVG, então o
+                tile deles é preto — o contraste separa marca de estudo sem
+                precisar de dois blocos. */}
+            <div className="mt-16 grid gap-6 sm:grid-cols-2 md:grid-cols-4">
               {[
-                { id: "logo-1", src: "/brand/logo-1.svg", label: "Variação 01" },
-                { id: "logo-2", src: "/brand/logo-2.svg", label: "Variação 02" },
-                { id: "logo-3", src: "/brand/logo-3.svg", label: "Variação 03" },
-                { id: "logo-1-repetido", src: "/brand/logo-1.svg", label: "Variação 01" },
-                { id: "logo-2-repetido", src: "/brand/logo-2.svg", label: "Variação 02" },
-                { id: "logo-3-repetido", src: "/brand/logo-3.svg", label: "Variação 03" },
+                { id: "logo-1", src: "/brand/logo-1.svg", label: "Variação 01", escuro: false },
+                { id: "logo-2", src: "/brand/logo-2.svg", label: "Variação 02", escuro: false },
+                // A assinatura entra no lugar da terceira variação. Já vem com
+                // fundo preto e respiro próprios no arquivo, daí `justo`.
+                { id: "assinatura", src: "/brand/lockup-monograma-descritor.png", label: "Assinatura com descritor", escuro: true, justo: true },
+                { id: "simbolo-01", src: "/brand/simbolo-01-vao.svg", label: "01 · Vão", escuro: true },
+                { id: "simbolo-02", src: "/brand/simbolo-02-arco.svg", label: "02 · Arco", escuro: true },
+                { id: "simbolo-17", src: "/brand/simbolo-17-rastro.svg", label: "17 · Rastro", escuro: true },
+                { id: "simbolo-14", src: "/brand/simbolo-14-torcao.svg", label: "14 · Torção", escuro: true },
+                { id: "simbolo-46", src: "/brand/simbolo-46-grade.svg", label: "46 · Grade", escuro: true },
               ].map((l) => (
-                <figure key={l.id} className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-branco">
-                  <div className="absolute inset-8">
+                <figure
+                  key={l.id}
+                  className={`relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 ${
+                    // preto puro: é o mesmo do retângulo dentro do SVG, senão
+                    // o quadrado do símbolo aparece recortado sobre o tile
+                    l.escuro ? "bg-black" : "bg-branco"
+                  }`}
+                >
+                  <div
+                    className={`absolute ${
+                      "justo" in l && l.justo ? "inset-0" : l.escuro ? "inset-4" : "inset-8"
+                    }`}
+                  >
                     <EditableImage
                       group="images"
                       id={l.id}
@@ -501,72 +536,48 @@ export default function Page() {
                       fit="contain"
                     />
                   </div>
-                  <figcaption className={`absolute bottom-4 left-4 ${LABEL} text-[10px] text-preto/45`}>
+                  <figcaption
+                    className={`absolute bottom-4 left-4 ${LABEL} text-[10px] ${
+                      l.escuro ? "text-branco/45" : "text-preto/45"
+                    }`}
+                  >
                     {l.label}
                   </figcaption>
                 </figure>
               ))}
             </div>
-
-            <div className="mt-12 grid gap-6 sm:grid-cols-2 md:grid-cols-3">
-              {[
-                { src: "/media/logo-motion-01.mp4", label: "Movimento 01" },
-                { src: "/media/logo-motion-02.mp4", label: "Movimento 02" },
-                { src: "/media/logo-motion-03.mp4", label: "Movimento 03" },
-                { src: "/media/logo-motion-04.mp4", label: "Movimento 04" },
-                { src: "/media/logo-motion-05.mp4", label: "Movimento 05" },
-              ].map((video) => (
-                <figure key={video.src} className="relative aspect-square overflow-hidden rounded-2xl border border-white/10 bg-preto">
-                  <video
-                    src={video.src}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="h-full w-full object-cover"
-                  />
-                  <figcaption className={`absolute bottom-4 left-4 ${LABEL} text-[10px] text-branco/45`}>
-                    {video.label}
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
+            <p className="mt-6 max-w-2xl font-univers text-sm leading-relaxed text-branco/45">
+              As três primeiras são a marca. As cinco seguintes são estudos de
+              símbolo — posições de partida da exploração, nenhuma delas final.
+            </p>
           </div>
         </section>
 
-        {/* ============ 07 · PRINCÍPIO FINAL ============ */}
-        <section className="relative bg-preto flex min-h-screen w-full flex-col justify-center overflow-hidden border-t border-white/10 py-24">
-          <div className={`relative ${SHELL}`}>
-            <SectionHead num="07" kicker="Princípio final" />
-            <div className="mt-14 grid max-w-5xl gap-16 md:grid-cols-2">
-              <div>
-                <h3 className="font-univers text-4xl font-light tracking-tight md:text-5xl">
-                  Matéria
-                </h3>
-                <p className="mt-6 font-univers text-lg leading-relaxed text-branco/70">
-                  A identidade nasce do que ficou: o grid, a chapa, o vão. O que
-                  é sólido, imutável, geométrico.
-                </p>
-              </div>
-              <div>
-                <h3 className="font-univers text-4xl font-light tracking-tight md:text-5xl">
-                  Luz
-                </h3>
-                <p className="mt-6 font-univers text-lg leading-relaxed text-branco/70">
-                  A identidade nasce do que entrou: a onda, o plasma, a obra de
-                  cada artista. O que muda a cada espetáculo.
-                </p>
-              </div>
-            </div>
-            <p className="mt-20 max-w-2xl font-univers text-2xl leading-relaxed text-branco md:text-3xl">
-              Terra é memória. Luz é o presente.
-              <br />
-              <span className="text-branco/55">
-                Matéria é a moldura. Luz é o que a preenche.
-              </span>
-            </p>
-            <Logo invert className="mt-16 w-[60vw] max-w-[640px]" />
-          </div>
+        {/* 06 · A marca em movimento — tela cheia, sem moldura e sem legenda.
+            O mouse é a linha do tempo: mover sobre a seção assume o controle
+            da posição; sair devolve o loop. */}
+        <VideoScrub
+          src="/media/tera-logo.mp4"
+          title="TÉRA — a marca em difração"
+        />
+
+        {/* ============ 07 · OBRIGADO ============ */}
+        {/* Fecho de aperto de mão, no lugar do princípio final: as duas frases
+            que estavam aqui já encerram o fluxograma, então repeti-las no fim
+            era eco. Aqui sobra a marca, o agradecimento e quem assina. */}
+        <section className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden border-t border-white/10 bg-preto px-6 text-center">
+          <Logo invert className="w-[52vw] max-w-[520px]" />
+          <h2 className="mt-16 font-univers text-6xl font-light leading-none tracking-tight text-branco md:text-8xl">
+            Obrigado.
+          </h2>
+          <a
+            href="https://theforce.cc"
+            target="_blank"
+            rel="noreferrer"
+            className={`mt-10 ${LABEL} text-[11px] text-branco/45 transition-colors hover:text-branco`}
+          >
+            theforce.cc
+          </a>
         </section>
       </main>
     </ReactLenis>

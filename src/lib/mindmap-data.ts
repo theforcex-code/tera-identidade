@@ -137,7 +137,7 @@ export const TIERS: Tier[] = [
     stage: { no: "04", tt: "O conceito" },
     nodes: [],
     explain: [
-      "Para receber o projeto, a obra escavou o subsolo do antigo Hospital Matarazzo. Sob as estruturas históricas, novas fundações foram executadas e reforçadas — algumas escavadas manualmente — para que o edifício permanecesse de pé enquanto a terra era retirada.",
+      "Para receber o projeto, a obra escavou o subsolo do antigo Hospital Matarazzo. Sob as estruturas históricas, novas fundações foram executadas e reforçadas para que o edifício permanecesse de pé enquanto a terra era retirada.",
       "O LED ocupa hoje esse mesmo plano escavado. **Onde havia terra, hoje há luz** — e toda noite o público atravessa essa fundação para chegar até ela.",
       "A própria tela repete o percurso. Do quartzo vem o silício: extraído, purificado e cristalizado até virar a base dos circuitos que comandam a imagem. A luz nasce em outros semicondutores cristalinos, construídos camada por camada — quando a corrente os atravessa, eles emitem fótons.",
       "E então o processo se inverte. A matéria produziu luz; agora a luz age sobre a matéria. Um fóton é absorvido dentro do olho e uma molécula muda de forma — um dos primeiros eventos da visão, o que desencadeia o sinal que o cérebro transforma em percepção.",
