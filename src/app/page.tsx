@@ -181,22 +181,14 @@ export default function Page() {
             </p>
           </div>
 
-          {/* Parágrafo — abaixo da imagem, com respiro generoso */}
-          <div className={`${SHELL} py-20 md:py-28`}>
-            <p className="mx-auto max-w-2xl text-center font-univers text-lg leading-relaxed text-branco/70 md:text-xl">
-              Para receber o projeto, a obra escavou o subsolo do antigo Hospital
-              Matarazzo: retirou-se a terra em volta da fundação e os pilares
-              ficaram de pé. O LED ocupa hoje esse mesmo plano escavado — onde
-              havia terra, hoje há luz, e toda noite o público atravessa essa
-              fundação para chegar até ela. A própria tela repete o percurso: do
-              quartzo vem o silício, e do silício vem o fóton que o olho absorve.
-              A matéria produziu luz; agora a luz age sobre a matéria.
-            </p>
-          </div>
+          {/* Sem parágrafo de racional aqui: ele era um resumo do texto que o
+              estágio 04 do fluxograma já traz por inteiro. A seção vai direto
+              da tese para o percurso. */}
 
           {/* O percurso, frase a frase — mesma espinha vertical do fluxograma.
-              Fecha a seção: a placa que vinha depois repetia a tese de cima. */}
-          <div className={`${SHELL} pb-24 md:pb-36`}>
+              Fecha a seção: a placa que vinha depois repetia a tese de cima.
+              O `pt` cobre o respiro que o parágrafo removido dava. */}
+          <div className={`${SHELL} pb-24 pt-20 md:pb-36 md:pt-28`}>
             <ol className="mx-auto flex max-w-xl flex-col items-center gap-0">
               {[
                 "Terra vira cristal.",
@@ -271,16 +263,14 @@ export default function Page() {
         >
           <Eyebrow>04 · Matéria — Descrição</Eyebrow>
           <p className="mt-8 border-l-2 border-white/30 pl-6 font-forma text-2xl font-light leading-snug md:text-4xl">
-            A identidade nasce do que ficou.
+            Tudo se apoia no mesmo módulo.
           </p>
+          {/* Sem repetir a lista de materiais da capa: aqui o assunto é o que o
+              sistema faz com ela. */}
           <p className="mt-8 max-w-md font-univers text-base leading-relaxed text-branco/60">
-            O grid de 1×1 m das chapas gradeadas, a emenda dos gabinetes, o
-            formato da tela de LED, a terra que ficou nos pilares. Tudo o que é
-            sólido, imutável, geométrico — a moldura que não muda de um
-            espetáculo para o outro.
-          </p>
-          <p className={`mt-6 ${LABEL} text-[11px] text-branco/45`}>
-            chapa · grid · módulo · corte · dobra · vão
+            Proporção, alinhamento e recorte saem de uma grade só. Marca,
+            tipografia e imagem obedecem a ela — e é isso que faz a Téra ser
+            reconhecível antes de qualquer obra entrar.
           </p>
         </Split>
 
@@ -291,12 +281,13 @@ export default function Page() {
           alt="Matéria — o módulo repetido: a superfície antes de qualquer imagem"
         >
           <Eyebrow>04 · Matéria — Racional</Eyebrow>
+          {/* A escavação já é narrada no estágio 02 do fluxograma; aqui entra
+              só o que ela deixou como regra de projeto. */}
           <p className="mt-8 max-w-md font-univers text-lg leading-relaxed text-branco/70">
-            A fundação original do antigo Hospital Matarazzo foi preservada:
-            retirou-se a terra em volta e os pilares ficaram de pé, aparentes na
-            entrada. Este caminho parte do que sobrou dessa operação — o concreto
-            aparente, a chapa gradeada de 1×1 m, a emenda dos gabinetes — e
-            transforma a arquitetura da sala na moldura da identidade.
+            A sala foi construída à vista: estrutura, concreto e revestimento
+            continuam aparentes, sem acabamento que os esconda. É dessa
+            construção que o sistema tira suas medidas. A identidade não se
+            sobrepõe à arquitetura — usa a arquitetura como régua.
           </p>
         </Split>
 
@@ -375,16 +366,13 @@ export default function Page() {
         >
           <Eyebrow>05 · Luz — Descrição</Eyebrow>
           <p className="mt-8 border-l-2 border-white/30 pl-6 font-inter text-2xl font-bold leading-snug md:text-4xl">
-            A identidade nasce do que entrou.
+            Nada aqui tem forma fixa.
           </p>
+          {/* Sem repetir "escoa / fresta / preenche": essa frase já é a legenda
+              do fluxograma e o manifesto. Aqui o assunto é a regra. */}
           <p className="mt-8 max-w-md font-univers text-base leading-relaxed text-branco/60">
-            A matéria escoa, entra por uma fresta e preenche as letras por
-            dentro. A onda, o orgânico, o plasma, as artes de cada espetáculo:
-            tudo o que muda de uma obra para a outra e encontra na moldura o seu
-            limite.
-          </p>
-          <p className={`mt-6 ${LABEL} text-[11px] text-branco/45`}>
-            plasma · onda · fresta · escoamento · preenchimento
+            Cor, textura e movimento chegam com cada obra e ocupam os vazios que
+            o módulo abriu. O sistema não escolhe a imagem: abre lugar para ela.
           </p>
         </Split>
 
@@ -394,12 +382,13 @@ export default function Page() {
           alt="A letra preenchida por dentro — o plasma dentro da forma"
         >
           <Eyebrow>05 · Luz — Racional</Eyebrow>
+          {/* A escavação já foi contada duas vezes antes; aqui entra o que a
+              sala virou, e o que isso exige da marca. */}
           <p className="mt-8 max-w-md font-univers text-lg leading-relaxed text-branco/70">
-            Quatro faces de LED ocupam o fundo do vão, no mesmo plano de onde a
-            terra saiu. Este caminho parte do que entrou nesse lugar — a imagem
-            em 32K, o plasma, a obra de cada artista — para criar uma identidade
-            que não tem forma própria: assume a do espetáculo que estiver
-            acontecendo.
+            Quatro faces de LED envolvem o público, e a imagem em 32K deixa de
+            ocupar uma parede para constituir o espaço. Cada temporada traz
+            outra obra, outra paleta, outro ritmo — e a marca acompanha sem se
+            redesenhar, porque o que muda é o preenchimento, não o contorno.
           </p>
         </Split>
 
@@ -832,7 +821,8 @@ const VIBRACAO_DATA = {
     { code: "A3", name: "Âmbar", hex: "#FFAE0D", rgb: "255 / 174 / 13", cmyk: "0 / 32 / 95 / 0", pantone: "a validar", tag: "Luz", note: "Calor luminoso — incidência direta sobre a matéria." },
     { code: "A4", name: "Óxido", hex: "#F93406", rgb: "249 / 52 / 6", cmyk: "0 / 79 / 98 / 2", pantone: "a validar", tag: "Calor", note: "Incandescência — a matéria no limite térmico." },
   ],
-  conceitoTitle: "A moldura permanece. A luz muda.",
+  // Não repetir o lead ("A moldura permanece") — aqui o ponto é de quem é a cor.
+  conceitoTitle: "A cor não é da marca. É da obra.",
   conceitoBody: "Branco e Preto garantem continuidade. Os acentos dão a cada obra uma manifestação própria — a luz encontrando a matéria.",
 };
 
