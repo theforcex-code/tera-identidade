@@ -231,12 +231,12 @@ export default function Page() {
                 transformar a cada espetáculo.
               </p>
               <p>
-                Essa capacidade se desenvolve em dois caminhos, e o conceito já
-                tem uma palavra para cada um. Matéria nasce do que ficou: o
-                módulo das chapas gradeadas, a emenda dos gabinetes, a marca
-                vazada com luz atravessando por trás. Luz nasce do que entrou: a
-                matéria escoa, entra por uma fresta e preenche as letras por
-                dentro.
+                Essa capacidade se desenvolve em dois caminhos, um para cada
+                palavra do conceito. Matéria vem da arquitetura: as grades que
+                revestem a sala, o formato e os ângulos dos painéis de LED, a
+                terra que ficou nos pilares — a geometria que já estava lá. Luz
+                vem do que acontece dentro dela: o orgânico, o fluido, a obra
+                que muda a cada espetáculo.
               </p>
             </div>
           </div>
