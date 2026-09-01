@@ -544,14 +544,20 @@ export default function Page() {
           alt="TÉRA v1 7x7  -  módulos sobre a grade"
         />
         <BlankBoard num="20" name="Mockup" />
+        {/* Oito peças, com respiro. A ordem equilibra as duas fileiras: somo
+            as proporções de cada uma para elas saírem com a mesma altura
+            (3,27 contra 3,16), senão uma fica bem mais baixa que a outra. */}
         <PecasBoard
+          respiro
           pecas={[
             { id: "l2-01", src: "/media/logo2/l2-01.mp4", razao: 0.8, alt: "TÉRA v1 7x7  -  feed do evento 01" },
-            { id: "l2-04", src: "/media/logo2/l2-04.mp4", razao: 1.0, alt: "TÉRA v1 7x7  -  quadrado do espetáculo" },
+            { id: "l2-casaco", src: "/media/logo2/l2-casaco.jpg", razao: 1.0, alt: "TÉRA v1 7x7  -  bordado no casaco" },
             { id: "l2-02", src: "/media/logo2/l2-02.mp4", razao: 0.8, alt: "TÉRA v1 7x7  -  feed do evento 02" },
+            { id: "l2-placa", src: "/media/logo2/l2-placa.jpg", razao: 0.6656, alt: "TÉRA v1 7x7  -  placa de sinalização" },
             { id: "l2-05", src: "/media/logo2/l2-05.mp4", razao: 0.8, alt: "TÉRA v1 7x7  -  feed do espetáculo 48s" },
             { id: "l2-06", src: "/media/logo2/l2-06.mp4", razao: 0.8, alt: "TÉRA v1 7x7  -  feed do espetáculo 12s" },
             { id: "l2-03", src: "/media/logo2/l2-03.mp4", razao: 0.5625, alt: "TÉRA v1 7x7  -  reel do espetáculo" },
+            { id: "l2-04", src: "/media/logo2/l2-04.mp4", razao: 1.0, alt: "TÉRA v1 7x7  -  quadrado do espetáculo" },
           ]}
         />
 
@@ -569,13 +575,30 @@ export default function Page() {
           midiaSrc="/media/entrega2-capa.mp4"
         />
         <BlankBoard num="26" name="Mockup" />
+        {/* Dez aplicações da v2, em dois boards de cinco. Numa tela só, com
+            respiro, a menor delas caía para 131 px de largura  -  peça desse
+            tamanho não prova aplicação nenhuma. Em cinco, cada uma fica com
+            cerca do dobro de área. A soma das proporções de cada board fica
+            perto da proporção da tela (1,64 e 1,76 contra 1,78), que é o que
+            faz o bloco preencher o board em vez de encolher para caber. */}
         <PecasBoard
+          respiro
           pecas={[
-            { id: "aplic-01", src: "/media/aplicacoes/aplic-01.jpg", razao: 0.6651, alt: "TÉRA v2  -  aplicação 01" },
-            { id: "aplic-02", src: "/media/aplicacoes/aplic-02.jpg", razao: 1.7778, alt: "TÉRA v2  -  aplicação 02" },
-            { id: "aplic-03", src: "/media/aplicacoes/aplic-03.jpg", razao: 1.7778, alt: "TÉRA v2  -  aplicação 03" },
-            { id: "aplic-04", src: "/media/aplicacoes/aplic-04.jpg", razao: 1.7778, alt: "TÉRA v2  -  aplicação 04" },
-            { id: "aplic-08", src: "/media/aplicacoes/aplic-08.mp4", razao: 1.0000, alt: "TÉRA v2  -  aplicação 05" },
+            { id: "l3-01", src: "/media/logo3/l3-01.jpg", razao: 1.7775, alt: "TÉRA v2  -  cartaz deitado" },
+            { id: "l3-02", src: "/media/logo3/l3-02.jpg", razao: 1.0000, alt: "TÉRA v2  -  quadrado 01" },
+            { id: "l3-03", src: "/media/logo3/l3-03.jpg", razao: 1.7779, alt: "TÉRA v2  -  peça deitada 01" },
+            { id: "l3-04", src: "/media/logo3/l3-04.jpg", razao: 1.0000, alt: "TÉRA v2  -  quadrado 02" },
+            { id: "l3-05", src: "/media/logo3/l3-05.jpg", razao: 1.0000, alt: "TÉRA v2  -  quadrado 03" },
+          ]}
+        />
+        <PecasBoard
+          respiro
+          pecas={[
+            { id: "l3-06", src: "/media/logo3/l3-06.jpg", razao: 1.8821, alt: "TÉRA v2  -  matéria" },
+            { id: "l3-07", src: "/media/logo3/l3-07.jpg", razao: 0.6000, alt: "TÉRA v2  -  vertical" },
+            { id: "l3-08", src: "/media/logo3/l3-08.jpg", razao: 1.7779, alt: "TÉRA v2  -  peça deitada 02" },
+            { id: "l3-09", src: "/media/logo3/l3-09.jpg", razao: 1.0000, alt: "TÉRA v2  -  quadrado 04" },
+            { id: "l3-10", src: "/media/logo3/l3-10.jpg", razao: 1.7779, alt: "TÉRA v2  -  peça deitada 03" },
           ]}
         />
         {/* A sala em movimento, depois das aplicações do Logo 3. Alternei
@@ -599,10 +622,9 @@ export default function Page() {
         {/* As quatro variações, juntas, logo depois de apresentar a marca. */}
         <VariacoesBoard
           pecas={[
-            { id: "var-01", src: "/brand/variacoes/var-png-1.png", nome: "Sem tagline", inverter: false, alt: "TÉRA  -  sem tagline" },
-            { id: "var-02", src: "/brand/variacoes/var-png-6.png", nome: "Sem tagline · alternativa", inverter: false, alt: "TÉRA  -  sem tagline, alternativa" },
-            { id: "var-03", src: "/brand/variacoes/var-png-3.png", nome: "Acento em ângulo, com tagline", inverter: false, alt: "TÉRA  -  acento em ângulo, com tagline" },
-            { id: "var-04", src: "/brand/variacoes/var-png-2.png", nome: "Acento em ângulo, invertida", inverter: true, alt: "TÉRA  -  acento em ângulo, letra branca" },
+            { id: "var-01", src: "/brand/variacoes/var-png-1.png", inverter: false, alt: "TÉRA  -  sem tagline" },
+            { id: "var-02", src: "/brand/variacoes/var-png-4.png", inverter: false, alt: "TÉRA  -  acento em ângulo, sem tagline" },
+            { id: "var-03", src: "/brand/variacoes/var-png-3.png", inverter: false, alt: "TÉRA  -  acento em ângulo, com tagline" },
           ]}
         />
         <LogoTrioBoard
@@ -812,7 +834,13 @@ type Peca = { id: string; src: string; alt: string; razao: number };
 // provar coisa alguma, então o excedente vai para o board seguinte.
 const PECAS_POR_BOARD = 10;
 
-function PecasBoard({ pecas }: { pecas: Peca[] }) {
+function PecasBoard({
+  pecas,
+  respiro = false,
+}: {
+  pecas: Peca[];
+  respiro?: boolean;
+}) {
   if (pecas.length > PECAS_POR_BOARD) {
     const grupos: Peca[][] = [];
     for (let i = 0; i < pecas.length; i += PECAS_POR_BOARD) {
@@ -821,16 +849,40 @@ function PecasBoard({ pecas }: { pecas: Peca[] }) {
     return (
       <>
         {grupos.map((g) => (
-          <PecasBoard key={g[0].id} pecas={g} />
+          <PecasBoard key={g[0].id} pecas={g} respiro={respiro} />
         ))}
       </>
     );
   }
 
-  const corte = pecas.length > 3 ? Math.ceil(pecas.length / 2) : pecas.length;
-  const fileiras = [pecas.slice(0, corte), pecas.slice(corte)].filter(
-    (f) => f.length > 0,
+  // Quantas fileiras. Fixo em duas, dez peças davam fileiras de soma 6,8 e o
+  // bloco saía com proporção 3,4  -  muito mais deitado que a tela, então
+  // encolhia até caber na largura e ocupava 28% do board. Com k fileiras a
+  // proporção do bloco é (soma total / k) / k, então o k que aproxima o bloco
+  // da tela é a raiz de (soma / 1,7). Para dez peças isso dá três fileiras e
+  // a ocupação sobe para perto de 85%.
+  const somaTotal = pecas.reduce((a, p) => a + p.razao, 0);
+  const nLinhas = Math.max(
+    1,
+    Math.min(pecas.length, Math.round(Math.sqrt(somaTotal / 1.7))),
   );
+  // Reparte na ordem dada, fechando cada fileira quando ela chega à soma alvo.
+  const alvo = somaTotal / nLinhas;
+  const fileiras: Peca[][] = [];
+  let atual: Peca[] = [];
+  let acumulado = 0;
+  pecas.forEach((p, i) => {
+    atual.push(p);
+    acumulado += p.razao;
+    const faltam = pecas.length - i - 1;
+    const podeFechar = fileiras.length < nLinhas - 1;
+    if (podeFechar && (acumulado >= alvo || faltam <= nLinhas - fileiras.length - 1)) {
+      fileiras.push(atual);
+      atual = [];
+      acumulado = 0;
+    }
+  });
+  if (atual.length > 0) fileiras.push(atual);
   // Fileira de largura 1 tem altura 1/soma-das-proporções.
   const alturas = fileiras.map(
     (f) => 1 / f.reduce((soma, p) => soma + p.razao, 0),
@@ -839,15 +891,19 @@ function PecasBoard({ pecas }: { pecas: Peca[] }) {
   const blocoRazao = 1 / somaAlturas;
 
   return (
-    <section className="relative flex h-screen w-full items-center justify-center overflow-hidden border-t border-white/10 bg-preto">
+    <section
+      className={`relative flex h-screen w-full items-center justify-center overflow-hidden border-t border-white/10 bg-preto ${
+        respiro ? "p-6 md:p-12" : ""
+      }`}
+    >
       <div
-        className="flex max-h-full max-w-full flex-col"
+        className={`flex max-h-full max-w-full flex-col ${respiro ? "gap-4 md:gap-6" : ""}`}
         style={{ aspectRatio: blocoRazao, width: "100%" }}
       >
         {fileiras.map((fila, i) => (
           <div
             key={i}
-            className="flex min-h-0 w-full"
+            className={`flex min-h-0 w-full ${respiro ? "gap-4 md:gap-6" : ""}`}
             /* Normalizado: fator de crescimento abaixo de 1 distribui só essa
                fração do espaço livre, e as fileiras encolhiam. Somando 1, o
                espaço é repartido inteiro. */
@@ -1020,10 +1076,10 @@ function ManualEmbutido() {
   );
 }
 
-// Board das variações: as quatro juntas, em células iguais de 2 x 2. Os
-// arquivos são pretos sobre transparente, então entram com `invert`  -  o
-// mesmo recurso que o componente Logo do deck já usa. Cada célula é um slot
-// editável, para trocar por uma re-exportação sem mexer no código.
+// Board das variações: as três lado a lado, em células iguais, sem legenda.
+// Célula igual e `contain` dentro dela: as três têm proporções diferentes
+// (2,57 / 2,87 / 1,94), então "mesmo tamanho" é a célula  -  igualar a mancha
+// exigiria cortar, e peça apresentada não se corta.
 function VariacoesBoard({
   pecas,
 }: {
@@ -1031,30 +1087,26 @@ function VariacoesBoard({
     id: string;
     src: string;
     alt: string;
-    nome: string;
-    /** Arquivo já em branco não inverte. Os SVGs vieram pretos sobre
-     *  transparente; um PNG branco sobre preto entra como está. */
+    /** Arquivo já em branco não inverte. */
     inverter?: boolean;
   }[];
 }) {
   return (
-    <section className="relative grid h-screen w-full place-content-center overflow-hidden border-t border-white/10 bg-preto px-8 py-16">
-      <div className={`${SHELL} grid gap-x-16 gap-y-14 md:grid-cols-2`}>
+    // `flex` e não `grid place-content-center`: a faixa do grid é dimensionada
+    // pelo conteúdo, e aí o `w-full` do SHELL não tem contra o que resolver  -
+    // as células flex-1 colapsavam para zero.
+    <section className="relative flex h-screen w-full items-center justify-center overflow-hidden border-t border-white/10 bg-preto px-8 py-16">
+      <div className={`${SHELL} flex flex-col items-stretch gap-12 md:flex-row md:gap-14`}>
         {pecas.map((p) => (
-          <figure key={p.id} className="flex flex-col items-center gap-6">
-            <div className="relative flex h-[22vh] w-full items-center justify-center">
-              <EditableImage
-                group="images"
-                id={p.id}
-                defaultSrc={p.src}
-                alt={p.alt}
-                fit="contain"
-                invert={p.inverter ?? true}
-              />
-            </div>
-            <figcaption className={`${LABEL} text-[10px] text-branco/40`}>
-              {p.nome}
-            </figcaption>
+          <figure key={p.id} className="relative h-[18vh] flex-1 md:h-[26vh]">
+            <EditableImage
+              group="images"
+              id={p.id}
+              defaultSrc={p.src}
+              alt={p.alt}
+              fit="contain"
+              invert={p.inverter ?? true}
+            />
           </figure>
         ))}
       </div>
