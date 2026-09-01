@@ -21,7 +21,7 @@ async function readContent(): Promise<Content> {
 }
 
 /* ------------------------------------------------------------------
-   FONTES — SISTEMA FINAL: Univers × Forma DJR × Futura (public/fonts)
+   FONTES  -  SISTEMA FINAL: Univers × Forma DJR × Futura (public/fonts)
    Univers      -> estrutura comum aos dois caminhos     (--font-univers)
                    Light/Regular/Bold + Condensed         (--font-univers-cn)
    Forma DJR    -> secundária da DOBRA (variável wght/wdth)(--font-forma)
@@ -38,7 +38,7 @@ const univers = localFont({
   ],
 });
 
-// Univers Condensed — variação de largura dentro do mesmo sistema.
+// Univers Condensed  -  variação de largura dentro do mesmo sistema.
 const universCn = localFont({
   variable: "--font-univers-cn",
   display: "swap",
@@ -48,7 +48,7 @@ const universCn = localFont({
   ],
 });
 
-// Forma DJR Display — variável (optical size, slant, width, weight).
+// Forma DJR Display  -  variável (optical size, slant, width, weight).
 const forma = localFont({
   variable: "--font-forma",
   display: "swap",
@@ -57,7 +57,7 @@ const forma = localFont({
   ],
 });
 
-// Neue Montreal — tipografia primária do Caminho 01 (Continuidade).
+// Neue Montreal  -  tipografia primária do Caminho 01 (Continuidade).
 const neueMontreal = localFont({
   variable: "--font-neue-montreal",
   display: "swap",
@@ -79,7 +79,7 @@ const robotoFlex = localFont({
   ],
 });
 
-// PP Neue Montreal Mono — secundária do Caminho 01, para legendas e dados técnicos.
+// PP Neue Montreal Mono  -  secundária do Caminho 01, para legendas e dados técnicos.
 const neueMontrealMono = localFont({
   variable: "--font-neue-montreal-mono",
   display: "swap",
@@ -90,7 +90,7 @@ const neueMontrealMono = localFont({
   ],
 });
 
-// Inter — tipografia do Caminho 02 (Possibilidade): cortes roman dedicados.
+// Inter  -  tipografia do Caminho 02 (Possibilidade): cortes roman dedicados.
 const inter = localFont({
   variable: "--font-inter",
   display: "swap",
@@ -102,7 +102,7 @@ const inter = localFont({
   ],
 });
 
-// Futura PT — geométrica; cortes Light → Bold.
+// Futura PT  -  geométrica; cortes Light → Bold.
 const futura = localFont({
   variable: "--font-futura",
   display: "swap",
@@ -116,9 +116,9 @@ const futura = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "TÉRA — Identidade Visual",
+  title: "TÉRA  -  Identidade Visual",
   description:
-    "Espaço de realidade expandida em 32K, no subsolo da Cidade Matarazzo. Diretrizes de identidade visual — Dobra e Ruptura.",
+    "Espaço de realidade expandida em 32K, no subsolo da Cidade Matarazzo. Diretrizes de identidade visual  -  Dobra e Ruptura.",
 };
 
 export default async function RootLayout({

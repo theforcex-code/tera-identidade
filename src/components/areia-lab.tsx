@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
 /* ------------------------------------------------------------------
-   LAB 02 · AREIA — embed em tela cheia.
+   LAB 02 · AREIA  -  embed em tela cheia.
 
    O problema: o lab usa a roda do mouse para dar zoom (OrbitControls).
    Como eventos dentro de um iframe não sobem para a janela de fora, a
@@ -15,7 +15,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
    escuta. Um clique no canvas entra em modo zoom e a roda volta a ser
    do lab; Esc, ou tirar o ponteiro do quadro, devolve o scroll.
 
-   Cliques nunca são interceptados — os botões do lab (encher, paletas,
+   Cliques nunca são interceptados  -  os botões do lab (encher, paletas,
    formas) seguem funcionando no primeiro clique, sem camada por cima.
 ------------------------------------------------------------------- */
 

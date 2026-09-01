@@ -145,7 +145,7 @@ function Panel() {
           <input
             ref={fileRef}
             type="file"
-            accept="image/*"
+            accept="image/*,video/mp4,video/webm"
             onChange={onUpload}
             className="hidden"
           />

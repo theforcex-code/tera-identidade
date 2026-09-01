@@ -44,3 +44,8 @@ next-env.d.ts
 conceito/backups/
 
 .vercel
+
+# capturas e scripts de verificação do assistente
+.chrome-*/
+.claude-*
+.claude/

@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* ==================================================================
-   TÉRA — TOKENS DE IDENTIDADE
+   TÉRA  -  TOKENS DE IDENTIDADE
    Paleta "Camadas do Subsolo": preto/branco constantes,
    óxido/ocre como camadas minerais variáveis.
 ================================================================== */
@@ -11,7 +11,7 @@
   --color-branco: #f7f7f5;
   --color-oxido: #873f32;
   --color-ocre: #a88952;
-  --color-creme: #e9e3d5; /* afloramento — camada clara quente */
+  --color-creme: #e9e3d5; /* afloramento  -  camada clara quente */
   --color-terra: #16110b; /* camada escura quente (quase preto) */
 
   /* Fontes (mapeadas das variáveis do next/font) */
@@ -38,7 +38,7 @@ body {
 /* ------------------------------------------------------------------
    UTILITÁRIOS DE TIPOGRAFIA
 ------------------------------------------------------------------- */
-/* Tamanhos de display (clamp — não dependem de valores arbitrários) */
+/* Tamanhos de display (clamp  -  não dependem de valores arbitrários) */
 .display-hero {
   font-size: clamp(4.5rem, 20vw, 22rem);
   line-height: 0.8;
@@ -55,22 +55,22 @@ body {
   letter-spacing: -0.02em;
 }
 
-/* Forma DJR — secundária da Dobra (grotesca com densidade; variável wght/wdth) */
+/* Forma DJR  -  secundária da Dobra (grotesca com densidade; variável wght/wdth) */
 .font-forma {
   font-family: var(--font-forma);
   font-weight: 500;
 }
-/* Neue Montreal — tipografia primária do Caminho 01. */
+/* Neue Montreal  -  tipografia primária do Caminho 01. */
 .font-neue-montreal {
   font-family: var(--font-neue-montreal);
 }
 
-/* PP Neue Montreal Mono — legendas e dados técnicos do Caminho 01. */
+/* PP Neue Montreal Mono  -  legendas e dados técnicos do Caminho 01. */
 .font-neue-montreal-mono {
   font-family: var(--font-neue-montreal-mono);
 }
 
-/* Roboto Flex — ativo histórico do Caminho 01. */
+/* Roboto Flex  -  ativo histórico do Caminho 01. */
 .font-roboto-flex {
   font-family: var(--font-roboto-flex);
   font-variation-settings: "wght" 400, "wdth" 100;
@@ -88,12 +88,12 @@ body {
   font-variation-settings: "wght" 500, "wdth" 62, "opsz" 14;
 }
 
-/* Inter — tipografia do Caminho 02 (base modular; variável wght) */
+/* Inter  -  tipografia do Caminho 02 (base modular; variável wght) */
 .font-inter {
   font-family: var(--font-inter);
 }
 
-/* Futura — secundária da Quebra (geométrica abstrata) */
+/* Futura  -  secundária da Quebra (geométrica abstrata) */
 .font-futura {
   font-family: var(--font-futura);
   font-weight: 700;
@@ -109,7 +109,7 @@ body {
 }
 
 /* ==================================================================
-   TIPOGRAFIA EDITORIAL — sistema visual do painel 04
+   TIPOGRAFIA EDITORIAL  -  sistema visual do painel 04
    Classes estritamente prefixadas: type-editorial-*
 ================================================================== */
 
@@ -317,7 +317,7 @@ body {
 
 /* Legado dos primeiros testes editoriais: não renderizado pelo componente atual. */
 
-/* Step 1 — Base do sistema */
+/* Step 1  -  Base do sistema */
 .type-editorial-panel {
   position: relative;
   isolation: isolate;
@@ -351,7 +351,7 @@ body {
   color: rgba(247, 247, 245, 0.58);
 }
 
-/* Step 2 — Panel 1: specimen (cinco colunas) */
+/* Step 2  -  Panel 1: specimen (cinco colunas) */
 .type-editorial-specimen__columns {
   position: absolute;
   inset: 0;
@@ -492,7 +492,7 @@ body {
   background: #000;
 }
 
-/* Step 3 — Panel 2: família proporcional vs. monoespaçada */
+/* Step 3  -  Panel 2: família proporcional vs. monoespaçada */
 .type-editorial-family {
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
@@ -578,7 +578,7 @@ body {
   background: #000;
 }
 
-/* Step 4 — Panel 3: aplicação espacial */
+/* Step 4  -  Panel 3: aplicação espacial */
 .type-editorial-space__image {
   position: absolute;
   inset: 0;
@@ -688,7 +688,7 @@ body {
   display: block;
 }
 
-/* Step 5 — Mobile reflow (sem overflow horizontal de documento) */
+/* Step 5  -  Mobile reflow (sem overflow horizontal de documento) */
 @media (max-width: 767px) {
   .type-editorial-panel { min-height: 100svh; }
   .type-editorial-meta { top: 1.25rem; right: 1.25rem; left: 1.25rem; }
@@ -767,7 +767,7 @@ body {
   .type-editorial-space__caption { left: 1.25rem; right: 1.25rem; bottom: 2rem; }
 }
 
-/* Apresentação em slides — cada seção é um card de bordas arredondadas */
+/* Apresentação em slides  -  cada seção é um card de bordas arredondadas */
 .slides > section {
   border-radius: 28px;
   border: 1px solid rgba(255, 255, 255, 0.09);
@@ -799,7 +799,7 @@ body {
   }
 }
 
-/* Paletas — superfície cromática em escala de tela. A base (branco/preto)
+/* Paletas  -  superfície cromática em escala de tela. A base (branco/preto)
    detém metade exata do plano; os acentos ocupam a outra metade. */
 .palette-screen {
   display: grid;
@@ -882,4 +882,13 @@ html.lenis body {
 ::selection {
   background: var(--color-branco);
   color: var(--color-preto);
+}
+
+/* Sem ancoragem de rolagem. O navegador, ao ver um elemento acima do que está
+   em cena mudar de tamanho (vídeo que carrega, imagem que resolve, iframe que
+   monta), corrige o scroll para "segurar" o conteúdo  -  com mais de vinte
+   vídeos no deck isso vira deriva contínua e briga com o Lenis: a página
+   abria fora do topo e voltava sozinha depois de qualquer scrollTo. */
+html {
+  overflow-anchor: none;
 }

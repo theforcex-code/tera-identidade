@@ -81,7 +81,7 @@ const FlowArt: React.FC<FlowArtProps> = ({
         gsap.set(section, { zIndex: i + 1 });
 
         // Empilhamento reto: cada seção (menos a última) fica presa (pin)
-        // enquanto a próxima sobe por cima — sem rotação/inclinação.
+        // enquanto a próxima sobe por cima  -  sem rotação/inclinação.
         if (i < sections.length - 1) {
           triggers.push(
             ScrollTrigger.create({

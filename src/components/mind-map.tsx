@@ -6,13 +6,13 @@ import { useContent } from "@/components/content-provider";
 import { EditableImage, EditOverlay } from "@/components/editable";
 
 /* ------------------------------------------------------------------
-   MAPA MENTAL TÉRA — diagrama em níveis (tiers)
+   MAPA MENTAL TÉRA  -  diagrama em níveis (tiers)
    Fluxo vertical, alinhado e limpo: cada nível é uma linha centrada,
    conectada ao próximo por um traço reto. Sem linhas curvas cruzando.
    As imagens e textos de cada nó são editáveis no localhost (dev).
 
    Tipografia: os 7 degraus do fluxo-conceito (9/10/11/13.5/17/21/clamp),
-   multiplicados por --fx — o documento original é lido a 100%, aqui é
+   multiplicados por --fx  -  o documento original é lido a 100%, aqui é
    projeção. --fx: 1 devolve os tamanhos literais do original.
    Os degraus de 8px do ritmo vertical NÃO escalam: o grid é o grid.
 ------------------------------------------------------------------- */
@@ -83,7 +83,7 @@ function Stage({ no, tt }: { no: string; tt: string }) {
 }
 
 // Nó da capa: wordmark "téra" (SVG preto) contido, invertido pra branco no
-// tile escuro — sem overlay redundante. Continua editável.
+// tile escuro  -  sem overlay redundante. Continua editável.
 function TeraMark({
   id,
   defaultSrc,
@@ -158,7 +158,7 @@ function Node({ n }: { n: NodeDef }) {
 }
 
 // O conceito como ciclo fechado. Duas placas e dois colchetes: desce pela
-// esquerda até "da luz à matéria", sobe pela direita e volta ao começo — o
+// esquerda até "da luz à matéria", sobe pela direita e volta ao começo  -  o
 // processo se inverte e recomeça, que é o que o texto acima descreve.
 function Loop({ ida, volta }: { ida: string; volta: string }) {
   const placa =

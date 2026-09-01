@@ -1,0 +1,4 @@
+.chrome-*
+.claude-*
+.claude/
+docs/

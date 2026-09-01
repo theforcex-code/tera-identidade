@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <!-- Placeholder de board vazio: totalmente transparente de proposito.
+       O numero grande do board mora atras deste slot e aparece atraves dele;
+       quando uma imagem real e enviada pelo editor, ela cobre o numero. -->
+  <rect width="1600" height="900" fill="none"/>
+</svg>
