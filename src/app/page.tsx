@@ -996,13 +996,20 @@ function FilmesLogo2() {
 // então quem rola é a apresentação  -  a seção se comporta como as outras, só
 // que comprida, do mesmo jeito que o board da defesa.
 //
-// A medida é fixa (1440 × 15370, medido no site) porque o conteúdo é de outro
+// A medida é fixa (1440 × 13180, medido no site) porque o conteúdo é de outro
 // domínio e não dá para ler a altura dele. Escalar a partir de uma medida
 // conhecida é determinístico; deixar o iframe em 100% de largura faria a altura
 // mudar com a tela e cortar o fim do manual.
+// O manual é servido por este mesmo projeto, de public/manual — cópia de build
+// de theforcex-code/tera-font, com o Poster Lab dentro. Antes ele vinha de um
+// deploy separado, o que deixava as duas metades desencontradas: mudar a altura
+// aqui exigia publicar lá. A variável ainda permite apontar para outro lugar.
+const MANUAL_URL =
+  process.env.NEXT_PUBLIC_MANUAL_URL ?? "/manual/index.html";
+
 function ManualEmbutido() {
   const LARGURA = 1440;
-  const ALTURA = 15370;
+  const ALTURA = 13180;
   const caixaRef = useRef<HTMLDivElement>(null);
   const [escala, setEscala] = useState(0);
   const [perto, setPerto] = useState(false);
@@ -1048,7 +1055,7 @@ function ManualEmbutido() {
       >
         {perto && (
           <iframe
-            src="https://site-rouge-pi-61.vercel.app/"
+            src={MANUAL_URL}
             title="Manual Téra  -  construção e versões"
             width={LARGURA}
             height={ALTURA}

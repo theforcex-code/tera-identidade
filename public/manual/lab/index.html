@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Editor paramétrico de pôsteres para a identidade TÉRA.">
+  <meta name="theme-color" content="#000000">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23111210'/%3E%3C/svg%3E">
+  <title>TÉRA Poster Lab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=DM+Mono:wght@400;500&display=swap">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-mobile-tab="poster">
+  <header class="topbar">
+    <a class="brand" href="#poster" aria-label="TÉRA Poster Lab, ir para o pôster">TÉRA POSTER LAB</a>
+    <div class="topbar-actions" aria-label="Ações do documento">
+      <button class="top-action" id="newPoster" type="button">NOVO</button>
+      <button class="top-action" id="savePosterTop" type="button">SALVAR</button>
+      <button class="top-action" id="randomizeTop" type="button">ALEATÓRIO</button>
+      <div class="export-control">
+        <button class="top-action top-action-accent" id="exportToggle" type="button" aria-expanded="false" aria-controls="exportMenu">EXPORTAR</button>
+        <div class="export-menu" id="exportMenu" role="menu" hidden>
+          <button type="button" role="menuitem" data-export="png">PNG</button>
+          <button type="button" role="menuitem" data-export="svg">SVG</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="mobile-tabs" aria-label="Áreas do editor">
+    <button type="button" data-tab="poster" aria-selected="true">PÔSTER</button>
+    <button type="button" data-tab="content" aria-selected="false">CONTEÚDO</button>
+    <button type="button" data-tab="style" aria-selected="false">ESTILO</button>
+  </nav>
+
+  <main class="app-main">
+    <aside class="inspector" aria-label="Controles do pôster">
+      <section class="control-section" data-mobile-panel="content">
+        <div class="section-heading">
+          <h2>CONTEÚDO</h2>
+        </div>
+
+        <label class="field">
+          <span>CHAMADA</span>
+          <input id="subtitleInput" data-bind="subtitle" type="text" maxlength="42" value="ESPAÇO MULTIDIMENSIONAL" autocomplete="off">
+        </label>
+
+        <label class="field field-textarea">
+          <span>INFORMAÇÃO 1</span>
+          <textarea data-bind="info1" rows="3">Cidade Matarazzo
+São Paulo - SP</textarea>
+        </label>
+
+        <label class="field field-textarea">
+          <span>INFORMAÇÃO 2</span>
+          <textarea data-bind="info2" rows="3">Funcionamento:
+Seg: 14h às 18h30
+Ter a Dom: 09h às 18h30</textarea>
+        </label>
+
+        <label class="field field-textarea">
+          <span>INFORMAÇÃO 3</span>
+          <textarea data-bind="info3" rows="3">Entrada gratuita</textarea>
+        </label>
+      </section>
+
+      <section class="control-section" data-mobile-panel="style">
+        <div class="section-heading">
+          <h2>SALVOS</h2>
+          <span id="savedCount">0 VERSÕES</span>
+        </div>
+        <div class="save-row">
+          <label>
+            <span class="visually-hidden">Nome da versão</span>
+            <input id="saveName" type="text" maxlength="36" placeholder="NOME DA VERSÃO" autocomplete="off">
+          </label>
+          <button id="savePosterPanel" type="button">SALVAR VERSÃO</button>
+        </div>
+        <div class="saved-list" id="savedList" aria-label="Pôsteres salvos"></div>
+      </section>
+
+      <section class="control-section" data-mobile-panel="style">
+        <div class="section-heading">
+          <h2>LOGOTIPO</h2>
+          <span>SVG OU FONTE</span>
+        </div>
+        <div class="layout-grid" role="group" aria-label="Layouts tipográficos">
+          <button type="button" data-type-layout="padrao" aria-pressed="true">PADRÃO</button>
+          <button type="button" data-type-layout="alto">ALTO</button>
+          <button type="button" data-type-layout="compacto">COMPACTO</button>
+          <button type="button" data-type-layout="amplo">AMPLO</button>
+          <button type="button" data-type-layout="rodape">RODAPÉ</button>
+        </div>
+        <div class="subtitle-controls">
+          <label class="check-field">
+            <input data-bind-checked="showSubtitle" type="checkbox" checked>
+            <span>MOSTRAR SUBTÍTULO</span>
+          </label>
+          <label class="range-field">
+            <span>TEXTOS Y</span>
+            <input data-bind-number="infoY" type="range" step="0.1" min="0" max="100" value="50">
+            <output data-output="infoY">50%</output>
+          </label>
+          <label class="range-field">
+            <span>SUB. ESCALA</span>
+            <input data-bind-number="subtitleScale" type="range" step="0.1" min="50" max="200" value="100">
+            <output data-output="subtitleScale">100%</output>
+          </label>
+          <label class="range-field">
+            <span>SUB. X</span>
+            <input data-bind-number="subtitleX" type="range" step="0.1" min="0" max="100" value="50">
+            <output data-output="subtitleX">50%</output>
+          </label>
+          <label class="range-field">
+            <span>SUB. Y</span>
+            <input data-bind-number="subtitleY" type="range" step="0.1" min="0" max="100" value="50">
+            <output data-output="subtitleY">50%</output>
+          </label>
+        </div>
+        <label class="field">
+          <span>DESENHO</span>
+          <select data-bind="logoSource">
+            <option value="svg">ASSINATURAS SVG</option>
+            <option value="font">FONTE TÉRA VARIÁVEL</option>
+          </select>
+        </label>
+        <div class="logo-grid" id="logoControl" aria-label="Opções oficiais de logotipo"></div>
+        <div class="tera-axes" data-tera-axes hidden>
+          <label class="range-field">
+            <span>PESO</span>
+            <input data-bind-number="teraWeight" data-unit="" type="range"
+                   min="100" max="900" value="640">
+            <output data-output="teraWeight">640</output>
+          </label>
+          <label class="range-field">
+            <span>ACENTO</span>
+            <input data-bind-number="teraAccentWidth" data-unit="" type="range"
+                   min="50" max="200" value="100">
+            <output data-output="teraAccentWidth">100</output>
+          </label>
+          <label class="range-field">
+            <span>TRAVESSÃO A</span>
+            <input data-bind-number="teraCrossbar" data-unit="" type="range"
+                   min="0" max="100" value="100">
+            <output data-output="teraCrossbar">100</output>
+          </label>
+          <label class="field">
+            <span>ACENTO</span>
+            <select data-bind="teraAccentForm">
+              <option value="">ANGULADO</option>
+              <option value="ss02">RETO</option>
+              <option value="ss03">CHAPADO</option>
+            </select>
+          </label>
+          <label class="check-field">
+            <input data-bind-checked="teraLegR" type="checkbox">
+            <span>R COM PERNA (SS01)</span>
+          </label>
+        </div>
+        <label class="range-field logo-range-first">
+          <span>ESCALA</span>
+          <input data-bind-number="titleScale" type="range" step="0.1" min="50" max="200" value="100">
+          <output data-output="titleScale">100%</output>
+        </label>
+        <label class="range-field">
+          <span>POSIÇÃO X</span>
+          <input data-bind-number="logoX" type="range" step="0.1" min="0" max="100" value="50">
+          <output data-output="logoX">50%</output>
+        </label>
+        <label class="range-field">
+          <span>POSIÇÃO Y</span>
+          <input data-bind-number="logoY" type="range" step="0.1" min="0" max="100" value="50">
+          <output data-output="logoY">50%</output>
+        </label>
+      </section>
+
+      <section class="control-section" data-mobile-panel="style">
+        <div class="section-heading">
+          <h2>FORMATO</h2>
+        </div>
+        <div class="segmented" id="formatControl" aria-label="Formato do papel">
+          <button type="button" data-format="A1">A1</button>
+          <button type="button" data-format="A2" aria-pressed="true">A2</button>
+          <button type="button" data-format="A3">A3</button>
+          <button type="button" data-format="A4">A4</button>
+          <button type="button" data-format="SQ">1:1</button>
+        </div>
+      </section>
+
+      <section class="control-section" data-mobile-panel="style">
+        <div class="section-heading">
+          <h2>MÓDULO</h2>
+        </div>
+        <div class="segmented segmented-modules" id="moduleControl" aria-label="Módulo gráfico">
+          <button type="button" data-module="eclipse" aria-pressed="true">ECLIPSE</button>
+          <button type="button" data-module="portal">PORTAL</button>
+          <button type="button" data-module="fold">DOBRA</button>
+          <button type="button" data-module="beam">FEIXE</button>
+        </div>
+
+        <div class="module-switches">
+          <div class="module-switch module-switch-layout">
+            <span>LAYOUT</span>
+            <div class="segmented segmented-layout" aria-label="Layout da imagem e do logo">
+              <button type="button" data-poster-layout="module" aria-pressed="true">MÓDULO</button>
+              <button type="button" data-poster-layout="full">TOTAL</button>
+              <button type="button" data-poster-layout="mask">MÁSCARA</button>
+              <button type="button" data-poster-layout="solid">SÓLIDO</button>
+            </div>
+          </div>
+          <div class="module-switch">
+            <span>CONTEÚDO</span>
+            <div class="segmented segmented-binary" aria-label="Contraste do conteúdo sobre a imagem">
+              <button type="button" data-content-treatment="normal" aria-pressed="true">NORMAL</button>
+              <button type="button" data-content-treatment="invert">INVERSO</button>
+            </div>
+          </div>
+          <div class="module-switch">
+            <span>SHAPES</span>
+            <div class="segmented segmented-binary" aria-label="Exibição dos shapes">
+              <button type="button" data-module-shapes="on" aria-pressed="true">COM</button>
+              <button type="button" data-module-shapes="off">SEM</button>
+            </div>
+          </div>
+          <div class="module-switch">
+            <span>IMAGEM</span>
+            <div class="segmented segmented-binary" aria-label="Tratamento de cor da imagem">
+              <button type="button" data-media-treatment="mono" aria-pressed="true">P&amp;B</button>
+              <button type="button" data-media-treatment="color">COR</button>
+            </div>
+          </div>
+          <div class="module-switch">
+            <span>BORDA</span>
+            <div class="segmented segmented-binary" aria-label="Borda da imagem ou vídeo">
+              <button type="button" data-media-border="inset" aria-pressed="true">COM</button>
+              <button type="button" data-media-border="bleed">SEM</button>
+            </div>
+          </div>
+          <div class="module-switch">
+            <span>LOGO + TEXTOS</span>
+            <div class="segmented segmented-binary" aria-label="Composição do logo e dos textos com o fundo">
+              <button type="button" data-logo-blend="normal" aria-pressed="true">NORMAL</button>
+              <button type="button" data-logo-blend="difference">PIXEL</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="media-presets">
+          <span>MÍDIA DO PROJETO</span>
+          <div class="segmented preset-media" aria-label="Mídias disponíveis no projeto">
+            <button type="button" data-media-preset="sand" aria-pressed="true">AREIA</button>
+            <button type="button" data-media-preset="flow">VÍDEO 01</button>
+            <button type="button" data-media-preset="morph">MORPH</button>
+            <button type="button" data-media-preset="light">LUZ E TEXTURA</button>
+          </div>
+        </div>
+
+        <div class="media-loader">
+          <label class="media-upload">
+            <input id="mediaInput" type="file" accept="image/*,video/*">
+            <span>CARREGAR IMAGEM OU VÍDEO</span>
+          </label>
+          <div class="media-status">
+            <span id="mediaName">IMAGEM DE REFERÊNCIA</span>
+            <button id="removeMedia" type="button" hidden>REMOVER</button>
+          </div>
+        </div>
+
+        <label class="range-field">
+          <span>ESCALA</span>
+          <input data-bind-number="moduleScale" type="range" min="40" max="200" value="100">
+          <output data-output="moduleScale">100%</output>
+        </label>
+        <label class="range-field">
+          <span>POSIÇÃO X</span>
+          <input data-bind-number="moduleX" type="range" min="10" max="90" value="50">
+          <output data-output="moduleX">50%</output>
+        </label>
+        <label class="range-field">
+          <span>POSIÇÃO Y</span>
+          <input data-bind-number="moduleY" type="range" min="10" max="90" value="50">
+          <output data-output="moduleY">50%</output>
+        </label>
+
+        <label class="check-field">
+          <input id="gridToggle" data-bind-checked="showGrid" type="checkbox">
+          <span>Mostrar grade</span>
+        </label>
+      </section>
+
+      <section class="control-section" data-mobile-panel="style">
+        <div class="section-heading">
+          <h2>CONTRASTE</h2>
+        </div>
+        <div class="palette-grid" id="paletteControl" aria-label="Paleta monocromática">
+          <button type="button" data-palette="paper" aria-pressed="true"><span class="palette-preview palette-paper" aria-hidden="true"></span><b>PAPEL</b></button>
+          <button type="button" data-palette="night"><span class="palette-preview palette-night" aria-hidden="true"></span><b>NOITE</b></button>
+        </div>
+      </section>
+
+      <section class="control-section" data-mobile-panel="style">
+        <div class="section-heading">
+          <h2>TIPO</h2>
+          <span class="font-count">NB / 6 FACES</span>
+        </div>
+        <label class="field font-field">
+          <span>PESO DOS TEXTOS</span>
+          <select data-bind="textWeight">
+            <option value="light">LIGHT</option>
+            <option value="regular">REGULAR</option>
+            <option value="bold">BOLD</option>
+          </select>
+        </label>
+        <label class="check-field font-italic-check">
+          <input data-bind-checked="textItalic" type="checkbox">
+          <span>TEXTOS ITÁLICOS</span>
+        </label>
+      </section>
+    </aside>
+
+    <section class="stage" id="poster" aria-label="Pré-visualização do pôster">
+      <div class="stage-meta">
+        <span id="formatLabel">A2 / 420 × 594 MM</span>
+        <span id="zoomLabel">100%</span>
+      </div>
+      <div class="poster-shell" id="posterShell">
+        <video id="videoPreview" class="media-video" muted loop playsinline autoplay hidden></video>
+        <svg id="posterPreview" viewBox="0 0 700 990" role="img" aria-label="Pôster TÉRA em edição"></svg>
+      </div>
+    </section>
+
+    <aside class="variations" aria-label="Variações do pôster">
+      <div class="variations-heading">
+        <h2>VARIAÇÕES</h2>
+        <button type="button" id="refreshVariations">ATUALIZAR</button>
+      </div>
+      <div class="variation-list" id="variationList"></div>
+    </aside>
+  </main>
+
+  <div class="mobile-actions" aria-label="Ações rápidas">
+    <button type="button" id="randomizeMobile">ALEATÓRIO</button>
+    <button type="button" id="exportMobile">EXPORTAR PNG</button>
+  </div>
+
+  <div class="status" id="status" role="status" aria-live="polite"></div>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
