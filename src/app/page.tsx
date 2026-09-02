@@ -996,7 +996,7 @@ function FilmesLogo2() {
 // então quem rola é a apresentação  -  a seção se comporta como as outras, só
 // que comprida, do mesmo jeito que o board da defesa.
 //
-// A medida é fixa (1440 × 13941, medido no site) porque o conteúdo é de outro
+// A medida é fixa (1440 × 12448, medido no site) porque o conteúdo é de outro
 // domínio e não dá para ler a altura dele. Escalar a partir de uma medida
 // conhecida é determinístico; deixar o iframe em 100% de largura faria a altura
 // mudar com a tela e cortar o fim do manual.
@@ -1009,7 +1009,7 @@ const MANUAL_URL =
 
 function ManualEmbutido() {
   const LARGURA = 1440;
-  const ALTURA = 13941;
+  const ALTURA = 12448;
   const caixaRef = useRef<HTMLDivElement>(null);
   const [escala, setEscala] = useState(0);
   const [perto, setPerto] = useState(false);
